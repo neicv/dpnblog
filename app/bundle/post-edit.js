@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	window.Post = {
 
@@ -118,7 +118,7 @@
 	Vue.ready(window.Post);
 
 
-/***/ }),
+/***/ },
 /* 1 */,
 /* 2 */,
 /* 3 */,
@@ -126,7 +126,7 @@
 /* 5 */,
 /* 6 */,
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
@@ -157,9 +157,9 @@
 	  }
 	})()}
 
-/***/ }),
+/***/ },
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -180,9 +180,9 @@
 
 	};
 
-/***/ }),
+/***/ },
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
@@ -213,9 +213,9 @@
 	  }
 	})()}
 
-/***/ }),
+/***/ },
 /* 10 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -243,17 +243,17 @@
 	  }
 	};
 
-/***/ }),
+/***/ },
 /* 11 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = "\n<div>\n  <div v-if=\"tags.length > 0\" class=\"uk-panel uk-panel-box\" style=\"padding:10px;\">\n    <ul class=\"uk-grid uk-grid-small\" data-uk-margin=\"\">\n      <li v-for=\"(indis , tag) in tags\">\n        <span @click=\"remove(indis)\" class=\"uk-badge uk-badge-success\">\n          {{tag}}\n          <i class=\"uk-icon-close\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n  <input class=\"uk-form-large uk-width-1-1\" v-model=\"modelTag\" v-bind:placeholder=\"'Press Space' | trans\" @keyup.ctrl.space=\"addTags\">\n</div>\n";
 
-/***/ }),
+/***/ },
 /* 12 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = "\n\n<div class=\"uk-grid pk-grid-large pk-width-sidebar-large uk-form-stacked\" data-uk-grid-margin>\n    <div class=\"pk-width-content\">\n\n        <div class=\"uk-form-row\">\n            <input class=\"uk-width-1-1 uk-form-large\" type=\"text\" name=\"title\" :placeholder=\"'Enter Title' | trans\" v-model=\"post.title\" v-validate:required>\n            <p class=\"uk-form-help-block uk-text-danger\" v-show=\"form.title.invalid\">{{ 'Title cannot be blank.' | trans }}</p>\n        </div>\n        <div class=\"uk-form-row\">\n            <v-editor id=\"post-content\" :value.sync=\"post.content\" :options=\"{markdown : post.data.markdown}\"></v-editor>\n        </div>\n        <div class=\"uk-form-row\">\n            <label for=\"form-post-excerpt\" class=\"uk-form-label\">{{ 'Excerpt' | trans }}</label>\n            <div class=\"uk-form-controls\">\n                <v-editor id=\"post-excerpt\" :value.sync=\"post.excerpt\" :options=\"{markdown : post.data.markdown, height: 250}\"></v-editor>\n            </div>\n        </div>\n\n    </div>\n    <div class=\"pk-width-sidebar\">\n\n        <div class=\"uk-panel\">\n\n            <div class=\"uk-form-row\">\n                <label for=\"form-image\" class=\"uk-form-label\">{{ 'Image' | trans }}</label>\n                <div class=\"uk-form-controls\">\n                    <input-image-meta :image.sync=\"post.data.image\" class=\"pk-image-max-height\"></input-image-meta>\n                </div>\n            </div>\n\n            <div class=\"uk-form-row\">\n                <label for=\"form-slug\" class=\"uk-form-label\">{{ 'Slug' | trans }}</label>\n                <div class=\"uk-form-controls\">\n                    <input id=\"form-slug\" class=\"uk-width-1-1\" type=\"text\" v-model=\"post.slug\">\n                </div>\n            </div>\n            <div class=\"uk-form-row\">\n                <label for=\"form-status\" class=\"uk-form-label\">{{ 'Status' | trans }}</label>\n                <div class=\"uk-form-controls\">\n                    <select id=\"form-status\" class=\"uk-width-1-1\" v-model=\"post.status\">\n                        <option v-for=\"(id, status) in data.statuses\" :value=\"id\">{{status}}</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"uk-form-row\" v-if=\"data.canEditAll\">\n                <label for=\"form-author\" class=\"uk-form-label\">{{ 'Author' | trans }}</label>\n                <div class=\"uk-form-controls\">\n                    <select id=\"form-author\" class=\"uk-width-1-1\" v-model=\"post.user_id\">\n                        <option v-for=\"author in data.authors\" :value=\"author.id\">{{author.username}}</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"uk-form-row\" v-if=\"data.canEditAll\">\n                <label for=\"form-author\" class=\"uk-form-label\">{{ 'Category' | trans }}</label>\n                <div class=\"uk-form-controls\">\n                    <select id=\"form-author\" class=\"uk-width-1-1\" v-model=\"post.category_id\" required>\n                        <option v-for=\"category in data.category\" :value=\"category.id\">{{category.title}}</option>\n                    </select>\n                </div>\n            </div>\n\n            <div class=\"uk-form-row\">\n                <label for=\"form-author\" class=\"uk-form-label\">{{ 'Tags' | trans }}</label>\n                <input-tag\n                  :placeholder=\"Add Tags\"\n                  :tags.sync=\"post.tags\"\n                ></input-tag>\n            </div>\n\n            <div class=\"uk-form-row\">\n                <span class=\"uk-form-label\">{{ 'Publish on' | trans }}</span>\n                <div class=\"uk-form-controls\">\n                    <input-date :datetime.sync=\"post.date\"></input-date>\n                </div>\n            </div>\n\n            <div class=\"uk-form-row\">\n                <span class=\"uk-form-label\">{{ 'Restrict Access' | trans }}</span>\n                <div class=\"uk-form-controls uk-form-controls-text\">\n                    <p v-for=\"role in data.roles\" class=\"uk-form-controls-condensed\">\n                        <label><input type=\"checkbox\" :value=\"role.id\" v-model=\"post.roles\" number> {{ role.name }}</label>\n                    </p>\n                </div>\n            </div>\n            <div class=\"uk-form-row\">\n                <span class=\"uk-form-label\">{{ 'Options' | trans }}</span>\n                <div class=\"uk-form-controls\">\n                    <label><input type=\"checkbox\" v-model=\"post.data.markdown\" value=\"1\"> {{ 'Enable Markdown' | trans }}</label>\n                </div>\n                <div class=\"uk-form-controls\">\n                    <label><input type=\"checkbox\" v-model=\"post.comment_status\" value=\"1\"> {{ 'Enable Comments' | trans }}</label>\n                </div>\n            </div>\n\n        </div>\n\n    </div>\n</div>\n\n";
 
-/***/ })
+/***/ }
 /******/ ]);

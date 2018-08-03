@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	window.Category = {
 
@@ -110,9 +110,9 @@
 	Vue.ready(window.Category);
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
@@ -143,9 +143,9 @@
 	  }
 	})()}
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -161,11 +161,11 @@
 	    }
 	};
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"uk-grid pk-grid-large pk-width-sidebar-large uk-form-stacked\" data-uk-grid-margin>\n    <div class=\"pk-width-content\">\n\n        <div class=\"uk-form-row\">\n            <input class=\"uk-width-1-1 uk-form-large\" type=\"text\" :placeholder=\"'Enter Title' | trans\" v-model=\"category.title\" v-validate:required>\n        </div>\n        <hr />\n        <div class=\"uk-form-row\">\n          <input id=\"form-meta-title\" class=\"uk-width-1-1 uk-form-large\" type=\"text\" :placeholder=\"'Meta Title' | trans\" v-model=\"category.data.meta['og:title']\">\n        </div>\n        <div class=\"uk-form-row\">\n          <textarea class=\"uk-width-1-1 uk-form-large uk-height-medium\" id=\"form-meta-description\" :placeholder=\"'Meta Desc' | trans\" rows=\"8\" v-model=\"category.data.meta['og:description']\"></textarea>\n        </div>\n\n    </div>\n\n    <div class=\"pk-width-sidebar\">\n\n      <div class=\"uk-panel uk-panel-box\">\n        <div>\n          <label class=\"uk-form-label\">{{'Sub Category' | trans}}</label>\n\n          <ul class=\"uk-list uk-form-row\">\n            <li v-if=\"data.other == 0\">\n              <p class=\"uk-text-small uk-text-center\">\n                {{'Not Found Sub Category' | trans}}\n              </p>\n            </li>\n            <li class=\"uk-form-controls\" v-for=\"sub in data.other\">\n              <label class=\"uk-form-label\">\n                <input type=\"checkbox\" :value=\"sub.id\" v-model=\"category.sub_category\">\n                {{sub.title}}\n              </label>\n            </li>\n          </ul>\n\n        </div>\n      </div>\n\n      <div class=\"uk-form-row uk-margin\">\n          <label for=\"form-slug\" class=\"uk-form-label\">Slug</label>\n          <div class=\"uk-form-controls\">\n              <input id=\"form-slug\" class=\"uk-width-1-1\" v-model=\"category.slug\" type=\"text\">\n          </div>\n      </div>\n\n\n      <div class=\"uk-form-row uk-margin\">\n          <label for=\"form-slug\" class=\"uk-form-label\">Icon</label>\n          <div class=\"uk-form-controls\">\n              <input id=\"form-slug\" list=\"iconsList\" v-model=\"category.data.icon\" class=\"uk-width-1-1\" type=\"text\">\n          </div>\n          <datalist id=\"iconsList\">\n            <option v-for=\"icon in data.icons\" :value=\"icon\">{{icon}}</option>\n          </datalist>\n          <p v-if=\"data.icons.length = 0\" class=\"uk-text-small uk-margin-small-left uk-margin-small-top\">\n            <a :href=\"$url.route('/admin/dpnblog/settings/icon')\">{{'First you need to add icon.' | trans}}</a>\n          </p>\n      </div>\n    </div>\n</div>\n";
 
-/***/ })
+/***/ }
 /******/ ]);

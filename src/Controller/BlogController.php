@@ -77,17 +77,17 @@ class BlogController extends GeneralConf
               ->get();
 
             $roles = App::db()->createQueryBuilder()
-                ->from('@system_role')
-                ->where(['id' => Role::ROLE_ADMINISTRATOR])
-                ->whereInSet('permissions', ['dpnblog: manage all posts', 'dpnblog: manage own posts'], false, 'OR')
-                ->execute('id')
-                ->fetchAll(\PDO::FETCH_COLUMN);
+              ->from('@system_role')
+              ->where(['id' => Role::ROLE_ADMINISTRATOR])
+              ->whereInSet('permissions', ['dpnblog: manage all posts', 'dpnblog: manage own posts'], false, 'OR')
+              ->execute('id')
+              ->fetchAll(\PDO::FETCH_COLUMN);
 
             $authors = App::db()->createQueryBuilder()
-                ->from('@system_user')
-                ->whereInSet('roles', $roles)
-                ->execute('id, username')
-                ->fetchAll();
+              ->from('@system_user')
+              ->whereInSet('roles', $roles)
+              ->execute('id, username')
+              ->fetchAll();
 
             return [
                 '$view' => [
@@ -128,13 +128,13 @@ class BlogController extends GeneralConf
                 'name'  => 'dpnblog/admin/comment-index.php'
             ],
             '$data'   => [
-                'statuses' => Comment::getStatuses(),
-                'config'   => [
-                    'filter' => (object) $filter,
-                    'page'   => $page,
-                    'post'   => $post,
-                    'limit'  => App::module('dpnblog')->config('comments.comments_per_page')
-                ]
+              'statuses' => Comment::getStatuses(),
+              'config'   => [
+                'filter' => (object) $filter,
+                'page'   => $page,
+                'post'   => $post,
+                'limit'  => App::module('dpnblog')->config('comments.comments_per_page')
+              ]
             ]
         ];
     }
@@ -146,11 +146,11 @@ class BlogController extends GeneralConf
     {
         return [
             '$view' => [
-                'title' => __('Blog Settings'),
-                'name'  => 'dpnblog/admin/settings.php'
+              'title' => __('Blog Settings'),
+              'name'  => 'dpnblog/admin/settings.php'
             ],
             '$data' => [
-                'config' => App::module('dpnblog')->config()
+              'config' => App::module('dpnblog')->config()
             ]
         ];
     }
@@ -162,24 +162,7 @@ class BlogController extends GeneralConf
      */
     public function categoryAction($sub = 0)
     {
-        if ($sub === 0) {
-          $query = Category::query()->where('sub_category IS NULL')->orderBy('id' , 'ASC')->get();
-        }else{
-          $query = Category::query()->where('sub_category LIKE :search' , [':search' => "%{$sub}%"])->orderBy('id' , 'ASC')->get();
-        }
-
-
-        return [
-            '$view' => [
-                'title' => $sub >= 1 ? __('Sub Categories'):__('Categories'),
-                'name'  => 'dpnblog/admin/category-index.php'
-            ],
-            '$data' => [
-                'category' => $query,
-                'sub'       => $sub
-            ],
-            'categories' => $sub >= 1 ? __('Sub Categories'):__('Categories'),
-        ];
+      return 'Maintenance';
     }
 
     /**
@@ -188,53 +171,7 @@ class BlogController extends GeneralConf
      * @Request({"id": "int"})
      */
     public function categoryEditAction($id = 0){
-      try {
-
-        if (!$category = Category::where(compact('id'))->first()) {
-
-          if ($id) {
-              App::abort(404, __('Invalid category id.'));
-          }
-
-          $category = Category::create([
-            'status'  => 2,
-            'data'  => [
-              'meta' => [
-                'og:title' => ''
-              ]
-            ]
-          ]);
-        }
-
-        if (!$others = array_values(Category::query()->where(['status = ?' , 'id != ?' , 'sub_category IS NULL'] , [2 , $id])->orderBy('sub_category' , 'ASC')->get())) {
-          $others = [];
-        }
-
-        if (!is_array($category->sub_category)) {
-          $category->sub_category = [];
-        }
-
-        $icons = App::module('dpnblog');
-
-        return [
-          '$view' => [
-            'title' => $id == 0 ? __('New Category'):__('Edit Category'),
-            'name'  => 'dpnblog:views/admin/category-edit.php'
-          ],
-          '$data' => [
-            'category'  => $category,
-            'other'     => $others,
-            'icons'     => $icons->config['icons']
-          ]
-        ];
-
-      } catch (\Exception $e) {
-
-          App::message()->error($e->getMessage());
-
-          return App::redirect('@dpnblog/category');
-      }
-
+      return 'Maintenance';
     }
 
 }
