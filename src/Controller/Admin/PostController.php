@@ -7,13 +7,13 @@ use Pagekit\Application as App;
 /**
  * @Access(admin=true)
  */
-class DpnblogController
+class PostController
 {
 
   /**
-  * @Route("/post")
+  * @Route("/")
   */
-  public function postAction(){
+  public function postsAction(){
 
     return 'Hello World';
 
