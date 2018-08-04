@@ -39,6 +39,12 @@ return [
           'Pastheme\\Blog\\Controller\\Admin\\PostController',
           'Pastheme\\Blog\\Controller\\Admin\\CategoryController'
         ]
+      ],
+      '/apidpnblog' => [
+        'name' => '@apidpnblog',
+        'controller' => [
+          'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController'
+        ]
       ]
     ]
 

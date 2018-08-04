@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 
@@ -53,9 +53,22 @@
 	  data:function()
 	  {
 	    return _.merge({
-
+	      config:{
+	        filter:{
+	          date:'desc',
+	          status:null,
+	          search:'',
+	        },
+	        page:0,
+	        selected:[],
+	      }
 	    }, window.$data)
 	  },
+
+	  ready:function()
+	  {
+	    
+	  }
 
 
 	}
@@ -63,5 +76,5 @@
 	Vue.ready(module.exports);
 
 
-/***/ }
+/***/ })
 /******/ ]);
