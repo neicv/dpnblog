@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pagekit UNKNOWN (pagekit/extension-blog, messages)\n"
+"POT-Creation-Date: 2015-09-17 15:47+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Filter by"
+msgstr ""

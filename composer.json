@@ -1,8 +1,8 @@
 {
     "name": "pastheme/dpnblog",
     "type": "pagekit-extension",
-    "version": "1.4.6",
-    "title": "Advanced Blog (Beta)",
+    "version": "2.0.0",
+    "title": "Advanced Blog",
     "description": "An Advanced Blog Extension with some extra features.",
     "license": "MIT",
     "authors": [

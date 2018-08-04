@@ -9,10 +9,24 @@ return [
 
     'name' => 'dpnblog',
 
-    'autoload' => [
+    'autoload' => ['Pastheme\\Blog\\' => 'src'],
 
-        'Pastheme\\Blog\\' => 'src'
-
+    'menu' => [
+      'dpnblog' => [
+        'label' => 'Blog',
+        'icon'  => 'dpnblog:icon.svg',
+        'url'   => '@dpnblog/post',
+        'priority' => 110
+      ]
     ],
+
+    'routes' => [
+      '/dpnblog' => [
+        'name' => '@dpnblog/post',
+        'controller' => [
+          
+        ]
+      ]
+    ]
 
 ];
