@@ -24,20 +24,22 @@ class ApiCategoryController
     try {
 
       $query = Category::query();
+      $filter = array_merge(array_fill_keys(['status' , 'search' , 'order'] , '') , $filter);
+      extract($filter , EXTR_SKIP);
 
-      if (!empty($filter['search'])) {
-        $query->where(['title LIKE :search' , 'slug LIKE :search'] , ['search' => "%{$filter['search']}%"]);
+      if ( !empty($search) ) {
+        $query->where(['title LIKE :search' , 'slug LIKE :search'] , ['search' => "%{$search}%"]);
       }
 
-      if (!empty($filter['status'])) {
-        $query->where('status = ?' , [$filter['status']]);
+      if ( !empty($status) ) {
+        $query->where('status = ?' , [$status]);
       }
 
-      $query->get();
+      $categories = array_values($query->get());
+      $count = $query->count();
+      $page = 0;
 
-      print_r($query);
-
-      return $backanswer->success($query , 'Tebrikler');
+      return compact('categories' , 'filter' , 'page' , 'count');
 
     } catch (\Exception $e) {
       return $backanswer->return();

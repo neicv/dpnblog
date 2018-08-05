@@ -67,7 +67,7 @@ class BackAnswer
   * @param data array()
   * @param status [default = 200]
   */
-  public function success($msg = null , $status = 200)
+  public function success($data = array() , $msg = null , $status = 200)
   {
     if (empty($msg)) {
       $msg = __('Success');
@@ -76,7 +76,7 @@ class BackAnswer
     return [
       'status' => $status,
       'msg' => $msg,
-    
+      'data' => $data
     ];
   }
 

@@ -19,7 +19,7 @@ class Category
   /* Post unpublished. */
   const STATUS_UNPUBLISHED = 3;
 
-  /** @Column(type="int") , @Id */
+  /** @Column(type="integer") , @Id */
   public $id;
 
   /** @Column(type="string") */
@@ -28,7 +28,7 @@ class Category
   /** @Column(type="string") */
   public $slug;
 
-  /** @Column(type="int") */
+  /** @Column(type="string") */
   public $status;
 
   /** @Column(type="datetime") */
@@ -37,7 +37,7 @@ class Category
   /** @Column(type="json_array") */
   public $data;
 
-  /** @Column(type="integer") **/
+  /** @Column(type="simple_array") **/
   public $sub_category;
 
   /** @var array */
