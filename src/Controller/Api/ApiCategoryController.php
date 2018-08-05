@@ -4,6 +4,7 @@ namespace Pastheme\Blog\Controller\Api;
 
 use Pagekit\Application as App;
 use Pastheme\Blog\Helper\BackAnswer;
+use Pastheme\Blog\Model\Category;
 
 /**
 * @Access(admin=true)
@@ -22,16 +23,24 @@ class ApiCategoryController
 
     try {
 
-      if (is_string($categories)) {
-        $backanswer->abort(404 , 'Hello World');
+      $query = Category::query();
+
+      if (!empty($filter['search'])) {
+        $query->where(['title LIKE :search' , 'slug LIKE :search'] , ['search' => "%{$filter['search']}%"]);
       }
 
-      return $backanswer->success('Tebrikler');
+      if (!empty($filter['status'])) {
+        $query->where('status = ?' , [$filter['status']]);
+      }
+
+      $query->get();
+
+      print_r($query);
+
+      return $backanswer->success($query , 'Tebrikler');
 
     } catch (\Exception $e) {
-
       return $backanswer->return();
-
     }
 
   }

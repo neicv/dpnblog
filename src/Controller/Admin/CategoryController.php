@@ -23,7 +23,7 @@ class CategoryController
       ],
       '$data' => [
         'config' => [
-          'filter' => $filter,
+          'filter' => (object)$filter,
           'page'   => $page
         ]
       ]

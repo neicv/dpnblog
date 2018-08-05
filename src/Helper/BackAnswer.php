@@ -64,20 +64,20 @@ class BackAnswer
   /**
   * This function compiles information that comes from the abort
   * @param msg [Post Saved]
+  * @param data array()
   * @param status [default = 200]
   */
-  public function success($msg = '' , $status = 200)
+  public function success($msg = null , $status = 200)
   {
-
-    if (!empty($msg)) {
-      return [
-        'status' => $status,
-        'msg' => $msg
-      ];
+    if (empty($msg)) {
+      $msg = __('Success');
     }
 
-    return false;
-
+    return [
+      'status' => $status,
+      'msg' => $msg,
+    
+    ];
   }
 
 }
