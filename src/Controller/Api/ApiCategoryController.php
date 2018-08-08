@@ -48,11 +48,103 @@ class ApiCategoryController
   }
 
   /**
-  * @Route("/" , methods="POST")
-  * @Route("/{id}" , methods="POST" , requirements={"id" ="\d+"})
+  * @Route("/get/" , methods="GET")
+  * @Route("/get/{id}" , methods="GET")
+  * @Request({"ids":"integer"} , csrf=true)
   */
-  public function saveAction()
+  public function getAction($ids = null)
   {
+
+    $backanswer = new BackAnswer;
+
+    try {
+
+      if ( !$query = Category::where('id = ?' , [$ids])->first() ) {
+        $query = Category::create([
+          'status' => Category::STATUS_PUBLISHED,
+          'data'  => [
+            'meta' => [
+              'og:title' => '',
+              'og:description' => '',
+            ]
+          ]
+        ]);
+      }
+
+      return $backanswer->success($query , 'Get operation succeeded');
+
+    } catch (\Exception $e) {
+      return $backanswer->return();
+    }
+
+
+  }
+
+  /**
+  * @Route("/save" , methods="POST")
+  * @Request({"data":"array" , "ids":"integer"} , csrf=true)
+  */
+  public function saveAction($data = array() , $ids = null)
+  {
+
+    $backanswer = new BackAnswer;
+
+    try {
+
+      if (!$query = Category::find($ids)) {
+        unset($data['id']);
+        $query = Category::create();
+
+        if (Category::findByTitle($data['title']) == true) {
+          $data['title'] = $data['title'] . ' - '.rand(0,999);
+        }
+
+      }
+
+      $data['date'] = new \DateTime();
+
+      if (empty($data['slug'])) {
+        $data['slug'] = App::filter($data['slug'] ?: $data['title'] , 'slugify');
+      }
+
+      $query->save($data);
+
+      return $backanswer->success($query , 'Category add');
+
+    } catch (\Exception $e) {
+      return $backanswer->return();
+    }
+
+
+  }
+
+  /**
+  * @Route("/change" , methods="PUT")
+  * @Request({"ids":"integer" , "status":"integer"} , csrf=true)
+  */
+  public function changeAction($ids = null , $status = null)
+  {
+    $backanswer = new BackAnswer;
+    try {
+
+      if (!$query = Category::find($ids)) {
+        $backanswer->abort('404' , 'Category Not Found');
+      }
+
+      if ($query->status == 2) {
+        $query->status = 3;
+      }else{
+        $query->status = 2;
+      }
+
+      $query->save();
+
+      return $backanswer->success([] , $ids.' Update');
+
+    } catch (\Exception $e) {
+      return $backanswer->return();
+    }
+
 
   }
 

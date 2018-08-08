@@ -3,12 +3,13 @@
 namespace Pastheme\Blog\Model;
 
 use Pagekit\Database\ORM\ModelTrait;
+
 /**
 * @Entity(tableClass="@dpnblog_category")
 */
 class Category
 {
-  use ModelTrait;
+  use CategoryModelTrait;
 
   /* Post draft status. */
   const STATUS_DRAFT = 0;
@@ -46,6 +47,7 @@ class Category
       'published' => 'isPublished',
       'accessible' => 'isAccessible'
   ];
+
   public static function getStatuses()
   {
       return [
@@ -55,6 +57,7 @@ class Category
           self::STATUS_PENDING_REVIEW => __('Pending Review')
       ];
   }
+
   public function getStatusText()
   {
       $statuses = self::getStatuses();

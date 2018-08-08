@@ -34,7 +34,7 @@ return [
           $table->addColumn('title', 'string', ['length' => 255]);
           $table->addColumn('slug', 'string', ['length' => 255]);
           $table->addColumn('status', 'string', ['length' => 255]);
-          $table->addColumn('date', 'datetime', ['notnull' => false]);
+          $table->addColumn('date', 'datetime');
           $table->addColumn('data', 'json_array', ['notnull' => false]);
           $table->addColumn('sub_category', 'simple_array', ['notnull' => false]);
           $table->setPrimaryKey(['id']);
@@ -101,7 +101,7 @@ return [
     'enable' => function ($app) {},
     'disable' => function ($app) {},
     'updates' => [
-      
+
     ]
 ];
 ?>
