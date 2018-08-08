@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 
@@ -60,7 +60,6 @@
 	          search:'',
 	        }),
 	        page:0,
-	        selected:[],
 	      },
 	      categoryForm:'',
 	      selected: [],
@@ -164,6 +163,11 @@
 	          this.load();
 	        }
 	      })
+	    },
+
+	    allStatus:function(val)
+	    {
+	    
 	    }
 
 	  }
@@ -173,5 +177,5 @@
 	Vue.ready(module.exports);
 
 
-/***/ }
+/***/ })
 /******/ ]);

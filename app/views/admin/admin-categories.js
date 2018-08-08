@@ -14,7 +14,6 @@ module.exports = {
           search:'',
         }),
         page:0,
-        selected:[],
       },
       categoryForm:'',
       selected: [],
@@ -118,6 +117,11 @@ module.exports = {
           this.load();
         }
       })
+    },
+
+    allStatus:function(val)
+    {
+    
     }
 
   }
