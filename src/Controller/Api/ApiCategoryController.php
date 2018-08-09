@@ -144,8 +144,38 @@ class ApiCategoryController
     } catch (\Exception $e) {
       return $backanswer->return();
     }
+  }
 
+  /**
+  * @Route("/allchange" , methods="PUT")
+  * @Request({"data":"array", "status":"integer"} , csrf=true)
+  */
+  public function allChangeAction($data = [] , $status = null)
+  {
+    $backanswer = new BackAnswer;
+    foreach ($data as $value) {
+      if ($query = Category::find($value)) {
+        $query->status = $status;
+        $query->save();
+      }
+    }
+    return $backanswer->success(array() , 'Update');
+  }
 
+  /**
+  * @Route("/draft" , methods="DELETE")
+  * @Request({"data":"array"} , csrf="true")
+  */
+  public function draftAction($data)
+  {
+    $backanswer = new BackAnswer;
+    foreach ($data as $value) {
+      if ($query = Category::find($value)) {
+        $query->status = 0;
+        $query->save();
+      }
+    }
+    return $backanswer->success(array() , 'Update');
   }
 
 }

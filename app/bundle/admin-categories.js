@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = {
 
@@ -165,9 +165,24 @@
 	      })
 	    },
 
-	    allStatus:function(val)
+	    allChange:function(val)
 	    {
-	    
+	      this.resource.update({id:"allchange"} , {data:this.selected , status:val}).then( res => {
+	        if (res.data.status == 200) {
+	          this.selected = [];
+	          this.load();
+	        }
+	      })
+	    },
+
+	    remove:function()
+	    {
+	      this.resource.delete({id:"draft"} , {data:this.selected}).then( res => {
+	        if (res.data.status == 200) {
+	          this.selected = [];
+	          this.load();
+	        }
+	      })
 	    }
 
 	  }
@@ -177,5 +192,5 @@
 	Vue.ready(module.exports);
 
 
-/***/ })
+/***/ }
 /******/ ]);
