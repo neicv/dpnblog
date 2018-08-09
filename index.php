@@ -11,6 +11,7 @@ return [
 
     'autoload' => ['Pastheme\\Blog\\' => 'src'],
 
+    ##
     'menu' => [
       'dpnblog' => [
         'label' => 'Blog',
@@ -32,6 +33,7 @@ return [
       ]
     ],
 
+    ##
     'routes' => [
       '/dpnblog' => [
         'name' => '@dpnblog',
@@ -43,9 +45,61 @@ return [
       '/apidpnblog' => [
         'name' => '@apidpnblog',
         'controller' => [
-          'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController'
+          'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController',
+          'Pastheme\\Blog\\Controller\\Api\\ApiPostController',
         ]
       ]
-    ]
+    ],
 
+    ##
+    'permissions' => [
+      'dpnblog: manage own posts' => [
+        'title' => 'Manage own posts',
+        'description' => 'Create, edit, delete and publish posts of their own'
+      ],
+      'dpnblog: manage all posts' => [
+        'title' => 'Manage all posts',
+        'description' => 'Create, edit, delete and publish posts by all users'
+      ],
+      'dpnblog: manage all categories' => [
+        'title' => 'Manage all categories',
+        'description' => 'Create, edit, delete and publish categories by all users'
+      ],
+      'dpnblog: manage comments' => [
+        'title' => 'Manage comments',
+        'description' => 'Approve, edit and delete comments'
+      ],
+      'dpnblog: post comments' => [
+        'title' => 'Post comments',
+        'description' => 'Allowed to write comments on the site'
+      ],
+      'dpnblog: skip comment approval' => [
+        'title' => 'Skip comment approval',
+        'description' => 'User can write comments without admin approval'
+      ],
+      'dpnblog: comment approval required once' => [
+        'title' => 'Comment approval required only once',
+        'description' => 'First comment needs to be approved, later comments are approved automatically'
+      ],
+      'dpnblog: skip comment min idle' => [
+        'title' => 'Skip comment minimum idle time',
+        'description' => 'User can write multiple comments without having to wait in between'
+      ]
+    ],
+
+    ##
+    'config' => [
+
+      'posts' => [
+        'posts_per_page' => 20,
+        'comments_enabled' => true,
+        'markdown_enabled' => true
+      ],
+
+      'permalink' => [
+        'type' => '',
+        'custom' => '{slug}'
+      ],
+
+    ]
 ];

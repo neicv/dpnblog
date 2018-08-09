@@ -101,7 +101,9 @@ return [
     'enable' => function ($app) {},
     'disable' => function ($app) {},
     'updates' => [
-
+        '2.0.1' => [
+            
+        ]
     ]
 ];
 ?>
