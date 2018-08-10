@@ -53,8 +53,16 @@
                 </div>
             </div>
 
-            <div class="uk-form-row">
-                <image-input :image:source="post.data"></image-input>
+            <div class="uk-margin">
+                <input-image :post.sync="post" v-if="
+                post.post_style == 0 ||
+                post.post_style == 2 ||
+                post.post_style == 4
+                "></input-image>
+            </div>
+
+            <div class="uk-margin">
+                <video :post.sync="post" v-if="post.post_style == 1"></video>
             </div>
 
         </div>
@@ -71,6 +79,11 @@ export default {
     section:{
         label:'Post',
         priority:0
+    },
+
+    components:{
+        inputImage:require('../../../components/admin/post-edit/post-style/input-image.vue'),
+        video:require('../../../components/admin/post-edit/post-style/input-video.vue')
     }
 
 }
