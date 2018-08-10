@@ -1,4 +1,5 @@
 <?php
+use Doctrine\DBAL\Schema\Comparator;
 return [
 
     'install' => function ($app) {
@@ -101,9 +102,18 @@ return [
     'enable' => function ($app) {},
     'disable' => function ($app) {},
     'updates' => [
-        '2.0.1' => [
-            
-        ]
+        '2.0.1' => function ($app) {
+            $util = $app['db']->getUtility();
+			if ($util->tableExists('@dpnblog_post')) {
+				$table =  $util->listTableDetails('@dpnblog_post');
+				if (!$table->hasColumn('post_style')) {
+					$table->addColumn('post_style', 'integer');
+					$table->addIndex(['post_style'], 'DPNBLOG_POST_POST_STYLE');
+					$util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
+					$app['db']->executeQuery('UPDATE @dpnblog_post SET status = 0');
+				}
+			}
+        }
     ]
 ];
 ?>

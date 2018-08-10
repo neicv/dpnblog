@@ -69,6 +69,9 @@ class Post
   /** @Column(type="integer") */
   public $category_id;
 
+  /** @Column(type="integer") */
+  public $post_style = 0;
+
   /** @Column(type="simple_array") */
   public $tags;
 

@@ -35,23 +35,25 @@
                 <div class="uk-form-row">
                     <div class="uk-form-controls">
                         <p class="uk-margin-small">
-                            <label><input type="radio" v-model="" value="0"> <i class="uk-icon-file"></i> {{'Default' | trans}}</label>
+                            <label><input type="radio" v-model="post.post_style" value="0"> <i class="uk-icon-file"></i> {{'Default' | trans}}</label>
                         </p>
                         <p class="uk-margin-small">
-                            <label><input type="radio" v-model="" value="1"> <i class="uk-icon-youtube-play"></i> {{'Video' | trans}}</label>
+                            <label><input type="radio" v-model="post.post_style" value="1"> <i class="uk-icon-youtube-play"></i> {{'Video' | trans}}</label>
                         </p>
                         <p class="uk-margin-small">
-                            <label><input type="radio" v-model="" value="2"> <i class="uk-icon-list-alt"></i> {{'Article' | trans}}</label>
+                            <label><input type="radio" v-model="post.post_style" value="2"> <i class="uk-icon-list-alt"></i> {{'Article' | trans}}</label>
                         </p>
                         <p class="uk-margin-small">
-                            <label><input type="radio" v-model="" value="3"> <i class="uk-icon-image"></i> {{'Gallery' | trans}}</label>
+                            <label><input type="radio" v-model="post.post_style" value="3"> <i class="uk-icon-image"></i> {{'Gallery' | trans}}</label>
                         </p>
                         <p class="uk-margin-small">
-                            <label><input type="radio" v-model="" value="4"> <i class="uk-icon-mortar-board"></i> {{'Document' | trans}}</label>
+                            <label><input type="radio" v-model="post.post_style" value="4"> <i class="uk-icon-mortar-board"></i> {{'Document' | trans}}</label>
                         </p>
                     </div>
                 </div>
             </div>
+
+            
 
         </div>
 

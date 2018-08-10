@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = {
 
@@ -192,5 +192,5 @@
 	Vue.ready(module.exports);
 
 
-/***/ })
+/***/ }
 /******/ ]);
