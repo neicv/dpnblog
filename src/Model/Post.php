@@ -70,7 +70,7 @@ class Post
   public $category_id;
 
   /** @Column(type="integer") */
-  public $post_style = 0;
+  public $post_style;
 
   /** @Column(type="simple_array") */
   public $tags;

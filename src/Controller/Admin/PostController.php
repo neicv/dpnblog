@@ -51,6 +51,7 @@ class PostController
             'user_id' => App::user()->id,
             'status' => Post::STATUS_DRAFT,
             'date' => new \DateTime(),
+            'post_style' => 0,
             'data' => array(
                 'meta' => [
                     'og:title' => null,
