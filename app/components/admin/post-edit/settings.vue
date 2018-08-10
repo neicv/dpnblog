@@ -53,7 +53,9 @@
                 </div>
             </div>
 
-            
+            <div class="uk-form-row">
+                <image-input :image:source="post.data"></image-input>
+            </div>
 
         </div>
 
