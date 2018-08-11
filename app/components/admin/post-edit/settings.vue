@@ -76,7 +76,7 @@
                 <label class="uk-form-label">{{ 'Categories' | trans}}</label>
                 <div class="uk-form-controls">
                     <select class="uk-width-1-1" v-model="post.category_id">
-                        <option v-for="category in categories" value="category.id">
+                        <option v-for="category in categories" v-bind:value="category.id">
                             {{category.title}}
                         </option>
                     </select>

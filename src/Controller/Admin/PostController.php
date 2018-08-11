@@ -47,14 +47,15 @@ class PostController
         }
 
         if (!$selected = Category::where('status = 2')->first()) {
-            // code...
+            App::abort(400 , 'No Categories Found');
         }
         $module = App::module('dpnblog');
 
         $post = Post::create([
             'user_id' => App::user()->id,
             'status' => Post::STATUS_PUBLISHED,
-            'post_style' => $selected->id,
+            'post_style' => 0,
+            'category_id' => $selected->id,
             'date' => new \DateTime(),
             'data' => array(
                 'meta' => [
