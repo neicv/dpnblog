@@ -20,9 +20,7 @@ class ApiCategoryController
   public function indexAction( $filter = array() , $page = 0)
   {
     $backanswer = new BackAnswer;
-
     try {
-
       $query = Category::query();
       $filter = array_merge(array_fill_keys(['status' , 'search' , 'order'] , '') , $filter);
       extract($filter , EXTR_SKIP);
@@ -40,11 +38,9 @@ class ApiCategoryController
       $page = 0;
 
       return compact('categories' , 'filter' , 'page' , 'count');
-
     } catch (\Exception $e) {
       return $backanswer->return();
     }
-
   }
 
   /**
@@ -54,11 +50,8 @@ class ApiCategoryController
   */
   public function getAction($ids = null)
   {
-
     $backanswer = new BackAnswer;
-
     try {
-
       if ( !$query = Category::where('id = ?' , [$ids])->first() ) {
         $query = Category::create([
           'status' => Category::STATUS_PUBLISHED,
@@ -70,14 +63,10 @@ class ApiCategoryController
           ]
         ]);
       }
-
       return $backanswer->success($query , 'Get operation succeeded');
-
     } catch (\Exception $e) {
       return $backanswer->return();
     }
-
-
   }
 
   /**
@@ -86,11 +75,8 @@ class ApiCategoryController
   */
   public function saveAction($data = array() , $ids = null)
   {
-
     $backanswer = new BackAnswer;
-
     try {
-
       if (!$query = Category::find($ids)) {
         unset($data['id']);
         $query = Category::create();
@@ -98,7 +84,6 @@ class ApiCategoryController
         if (Category::findByTitle($data['title']) == true) {
           $data['title'] = $data['title'] . ' - '.rand(0,999);
         }
-
       }
 
       $data['date'] = new \DateTime();
@@ -108,14 +93,10 @@ class ApiCategoryController
       }
 
       $query->save($data);
-
       return $backanswer->success($query , 'Category add');
-
     } catch (\Exception $e) {
       return $backanswer->return();
     }
-
-
   }
 
   /**
@@ -126,7 +107,6 @@ class ApiCategoryController
   {
     $backanswer = new BackAnswer;
     try {
-
       if (!$query = Category::find($ids)) {
         $backanswer->abort('404' , 'Category Not Found');
       }
@@ -138,9 +118,7 @@ class ApiCategoryController
       }
 
       $query->save();
-
       return $backanswer->success([] , $ids.' Update');
-
     } catch (\Exception $e) {
       return $backanswer->return();
     }

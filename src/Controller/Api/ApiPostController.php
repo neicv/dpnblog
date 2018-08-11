@@ -17,26 +17,16 @@ class ApiPostController
     * @Route("/get-categories" , methods="GET")
     * @Request(csrf=true)
     */
-    public function getCategoriesAction()
-    {
-
+    public function getCategoriesAction(){
         $backanswer = new BackAnswer;
-
         try {
-
-            if ( !$categories = Category::query()->where('status = 2')->order('date DESC')->get() ) {
-                $backanswer->abort('404' , 'Categories Not Found');
+            if ( !$categories = Category::where('status = 2')->orderBy('date', 'DESC')->get() ) {
+                return $backanswer->abort('404' , 'Categories Not Found');
             }
-
-            return compact('categories');
-
+            return $backanswer->success((array)$categories , 'GET All Categories');
         } catch (\Exception $e) {
-
-            $backanswer->return();
-
+            return $backanswer->return();
         }
-
-
     }
 
 }

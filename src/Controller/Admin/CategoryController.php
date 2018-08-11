@@ -16,10 +16,7 @@ class CategoryController
   */
   public function categoriesAction( $page = 0 , $filter = array() )
   {
-
     try {
-
-      ##
       $user = App::user();
       if(!$user->hasAccess('dpnblog: manage all posts') && $post->user_id !== $user->id) {
           App::abort(403, __('Insufficient User Rights.'));
@@ -39,16 +36,11 @@ class CategoryController
       ];
 
     } catch (\Exception $e) {
-
-      App::message()->error($e->getMessage());
-
-      return App::redirect('@dpnblog/posts');
-
+        App::message()->error($e->getMessage());
+        return App::redirect('@dpnblog/posts');
     }
-
-
   }
-
+  
 }
 
 

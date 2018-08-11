@@ -65,6 +65,67 @@
                 <video :post.sync="post" v-if="post.post_style == 1"></video>
             </div>
 
+            <div class="uk-form-row">
+                <label for="form-slug" class="uk-form-label">{{ 'Slug' | trans }}</label>
+                <div class="uk-form-controls">
+                    <input id="form-slug" class="uk-width-1-1" type="text" v-model="post.slug">
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <label class="uk-form-label">{{ 'Categories' | trans}}</label>
+                <div class="uk-form-controls">
+                    <select class="uk-width-1-1" v-model="post.category_id">
+                        <option v-for="category in categories" value="category.id">
+                            {{category.title}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <label for="form-status" class="uk-form-label">{{ 'Status' | trans }}</label>
+                <div class="uk-form-controls">
+                    <select id="form-status" class="uk-width-1-1" v-model="post.status">
+                        <option v-for="(id, status) in data.statuses" :value="id">{{status}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <label for="form-author" class="uk-form-label">{{ 'Author' | trans }}</label>
+                <div class="uk-form-controls">
+                    <select id="form-author" class="uk-width-1-1" v-model="post.user_id">
+                        <option v-for="author in data.authors" :value="author.id">{{author.username}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <span class="uk-form-label">{{ 'Publish on' | trans }}</span>
+                <div class="uk-form-controls">
+                    <input-date :datetime.sync="post.date"></input-date>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <span class="uk-form-label">{{ 'Restrict Access' | trans }}</span>
+                <div class="uk-form-controls uk-form-controls-text">
+                    <p v-for="role in data.roles" class="uk-form-controls-condensed">
+                        <label><input type="checkbox" :value="role.id" v-model="post.roles" number> {{ role.name }}</label>
+                    </p>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <span class="uk-form-label">{{ 'Options' | trans }}</span>
+                <div class="uk-form-controls">
+                    <label><input type="checkbox" v-model="post.data.markdown" value="1"> {{ 'Enable Markdown' | trans }}</label>
+                </div>
+                <div class="uk-form-controls">
+                    <label><input type="checkbox" v-model="post.comment_status" value="1"> {{ 'Enable Comments' | trans }}</label>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -79,6 +140,29 @@ export default {
     section:{
         label:'Post',
         priority:0
+    },
+
+    data:function(){
+        return {
+            categories:''
+        }
+    },
+
+    ready:function(){
+        this.getCategories();
+    },
+
+    methods:{
+        getCategories:function(){
+            this.$http.get('admin/apidpnblog/post/get-categories').then(res => {
+                if (res.data.status == 200) {
+                    this.categories = res.data.data;
+                    UIkit.notify(res.data.msg);
+                }else {
+                    UIkit.notify(res.data.msg);
+                }
+            });
+        }
     },
 
     components:{

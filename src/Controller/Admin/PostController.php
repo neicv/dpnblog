@@ -5,6 +5,7 @@ namespace Pastheme\Blog\Controller\Admin;
 use Pagekit\Application as App;
 use Pastheme\Blog\Model\Post;
 use Pagekit\User\Model\Role;
+use Pastheme\Blog\Model\Category;
 use Pastheme\Blog\Helper\BackAnswer;
 
 /**
@@ -45,13 +46,16 @@ class PostController
           App::abort(404, __('Invalid post id.'));
         }
 
+        if (!$selected = Category::where('status = 2')->first()) {
+            // code...
+        }
         $module = App::module('dpnblog');
 
         $post = Post::create([
             'user_id' => App::user()->id,
-            'status' => Post::STATUS_DRAFT,
+            'status' => Post::STATUS_PUBLISHED,
+            'post_style' => $selected->id,
             'date' => new \DateTime(),
-            'post_style' => 0,
             'data' => array(
                 'meta' => [
                     'og:title' => null,

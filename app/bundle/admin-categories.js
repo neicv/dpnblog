@@ -134,7 +134,6 @@
 	        this.categoryForm = '';
 	      }
 	      this.resource.query( {id:"get"} , {ids:categoryId} ).then( res => {
-	        console.log(res)
 	        if (res.data.status == 200) {
 	          this.categoryForm = res.data.data
 	        }
