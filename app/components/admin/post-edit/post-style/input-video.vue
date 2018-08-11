@@ -1,5 +1,5 @@
 <template lang="html">
-    <input-video :source.sync="source"></input-video>
+    <input-video :source.sync="post.data.video" class="pk-image-max-height"></input-video>
 </template>
 
 <script>

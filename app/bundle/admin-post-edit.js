@@ -248,7 +248,7 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<input-video :source.sync=\"source\"></input-video>\n";
+	module.exports = "\n<input-video :source.sync=\"post.data.video\" class=\"pk-image-max-height\"></input-video>\n";
 
 /***/ },
 /* 9 */
