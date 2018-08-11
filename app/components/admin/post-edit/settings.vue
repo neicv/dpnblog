@@ -54,15 +54,15 @@
             </div>
 
             <div class="uk-margin">
-                <input-image :post.sync="post" v-if="
+                <blog-image :post.sync="post" v-if="
                 post.post_style == 0 ||
                 post.post_style == 2 ||
                 post.post_style == 4
-                "></input-image>
+                "></blog-image>
             </div>
 
             <div class="uk-margin">
-                <video :post.sync="post" v-if="post.post_style == 1"></video>
+                <blog-video :post.sync="post" v-if="post.post_style == 1"></blog-video>
             </div>
 
             <div class="uk-form-row">
@@ -166,8 +166,8 @@ export default {
     },
 
     components:{
-        inputImage:require('../../../components/admin/post-edit/post-style/input-image.vue'),
-        video:require('../../../components/admin/post-edit/post-style/input-video.vue')
+        blogImage:require('../../../components/admin/post-edit/post-style/image.vue'),
+        BlogVideo:require('../../../components/admin/post-edit/post-style/video.vue')
     }
 
 }

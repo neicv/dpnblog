@@ -1,4 +1,4 @@
-<?= $view->script('admin-post-edit' , 'dpnblog:app/bundle/admin-post-edit.js' , ['vue' , 'editor']) ?>
+<?= $view->script('admin-post-edit' , 'dpnblog:app/bundle/admin-post-edit.js' , ['vue' , 'editor' , 'video']) ?>
 
 <form id="post" class="uk-form" v-validator="form" @submit.prevent="save | valid" v-cloak>
 
