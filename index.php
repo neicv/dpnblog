@@ -47,6 +47,7 @@ return [
         'controller' => [
           'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController',
           'Pastheme\\Blog\\Controller\\Api\\ApiPostController',
+          'Pastheme\\Blog\\Controller\\Api\\ApiTagsController',
         ]
       ]
     ],

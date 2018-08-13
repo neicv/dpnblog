@@ -118,7 +118,7 @@ return [
 				}
 			}
 
-            if ($util->tableExists('@dpnblog_tags')) {
+            if ($util->tableExists('@dpnblog_tags') === false) {
                 $util->createTable('@dpnblog_tags' , function($table){
                     $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
                     $table->addColumn('tags' , 'string' , ['length' => 100 , 'notnull' => false]);
