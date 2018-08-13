@@ -84,6 +84,11 @@
             </div>
 
             <div class="uk-form-row">
+                <label class="uk-form-label">{{'Tags' | trans}}</label>
+                <blog-tags :tags="post.tags"></blog-tags>
+            </div>
+
+            <div class="uk-form-row">
                 <label for="form-status" class="uk-form-label">{{ 'Status' | trans }}</label>
                 <div class="uk-form-controls">
                     <select id="form-status" class="uk-width-1-1" v-model="post.status">
@@ -133,6 +138,7 @@
 </template>
 
 <script>
+
 export default {
 
     props:['post' , 'data' , 'form'],
@@ -144,7 +150,7 @@ export default {
 
     data:function(){
         return {
-            categories:''
+            categories:'',
         }
     },
 
@@ -157,7 +163,7 @@ export default {
             this.$http.get('admin/apidpnblog/post/get-categories').then(res => {
                 if (res.data.status == 200) {
                     this.categories = res.data.data;
-                    UIkit.notify(res.data.msg);
+                    UIkit.notify(res.data.msg , 'primary');
                 }else {
                     UIkit.notify(res.data.msg);
                 }
@@ -167,7 +173,8 @@ export default {
 
     components:{
         blogImage:require('../../../components/admin/post-edit/post-style/image.vue'),
-        BlogVideo:require('../../../components/admin/post-edit/post-style/video.vue')
+        blogVideo:require('../../../components/admin/post-edit/post-style/video.vue'),
+        blogTags:require('../../../components/admin/post-edit/others/tags.vue')
     }
 
 }

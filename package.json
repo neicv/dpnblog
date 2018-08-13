@@ -4,7 +4,7 @@
   "description": "An Advanced Blog Extension with some extra features.",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "vue-style-loader": "^1.0.0"
   },
   "dependencies": {
+    "@voerro/vue-tagsinput": "^1.8.0",
     "vue-loader-v1": "^8.5.4"
   }
 }

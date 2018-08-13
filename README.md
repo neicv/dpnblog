@@ -13,4 +13,5 @@ If you want to have a blog that is always up to date. An Advanced blog for you. 
 - Add categories to the menu ( we think plannig to update in 2.0.5 Beta )
 - Category list and tags list widgets ( we think plannig to update in 2.0.5 Beta )
 
-If you want to see the **[demo](https://pastheme.com/projects/advanced-blog)**
+#### Post style page video
+http://www.fubiz.net/en/tv/jains-last-video-is-a-remarkable-come-back-2/
