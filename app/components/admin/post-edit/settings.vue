@@ -85,7 +85,7 @@
 
             <div class="uk-form-row">
                 <label class="uk-form-label">{{'Tags' | trans}}</label>
-                <blog-tags :post.sync="post.tags" :tags="tags"></blog-tags>
+                <blog-tags :post="post.tags"></blog-tags>
             </div>
 
             <div class="uk-form-row">
@@ -151,13 +151,11 @@ export default {
     data:function(){
         return {
             categories:'',
-            tags:'',
         }
     },
 
     ready:function(){
         this.getCategories();
-        this.getTags();
     },
 
     methods:{
@@ -171,17 +169,6 @@ export default {
                 }
             });
         },
-
-        getTags:function(){
-            this.$http.get('admin/apidpnblog/tags/gettags').then(res => {
-                if (res.data.status == 200) {
-                    this.tags = res.data.data;
-                    UIkit.notify(res.data.msg , 'primary');
-                }else {
-                    UIkit.notify(res.data.msg , 'danger');
-                }
-            })
-        }
     },
 
     components:{

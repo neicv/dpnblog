@@ -6,26 +6,26 @@ return [
       $util = $app['db']->getUtility();
       if ($util->tableExists('@dpnblog_post') === false) {
         $util->createTable('@dpnblog_post', function ($table) {
-          $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
-          $table->addColumn('user_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
-          $table->addColumn('slug', 'string', ['length' => 255]);
-          $table->addColumn('title', 'string', ['length' => 255]);
-          $table->addColumn('status', 'smallint');
-          $table->addColumn('date', 'datetime', ['notnull' => false]);
-          $table->addColumn('modified', 'datetime');
-          $table->addColumn('content', 'text');
-          $table->addColumn('excerpt', 'text' , ['notnull' => false]);
-          $table->addColumn('comment_status', 'boolean', ['default' => false]);
-          $table->addColumn('comment_count', 'integer', ['default' => 0]);
-          $table->addColumn('data', 'json_array', ['notnull' => false]);
-          $table->addColumn('roles', 'simple_array', ['notnull' => false]);
-          $table->addColumn('category_id', 'integer', ['notnull' => false]);
-          $table->addColumn('tags', 'simple_array' , ['notnull' => false]);
-          $table->setPrimaryKey(['id']);
-          $table->addUniqueIndex(['slug'], '@DPNBLOG_POST_SLUG');
-          $table->addIndex(['title'], '@DPNBLOG_POST_TITLE');
-          $table->addIndex(['user_id'], '@DPNBLOG_POST_USER_ID');
-          $table->addIndex(['date'], '@DPNBLOG_POST_DATE');
+            $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+            $table->addColumn('user_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
+            $table->addColumn('slug', 'string', ['length' => 255]);
+            $table->addColumn('title', 'string', ['length' => 255]);
+            $table->addColumn('status', 'smallint');
+            $table->addColumn('date', 'datetime', ['notnull' => false]);
+            $table->addColumn('modified', 'datetime');
+            $table->addColumn('content', 'text');
+            $table->addColumn('excerpt', 'text' , ['notnull' => false]);
+            $table->addColumn('comment_status', 'boolean', ['default' => false]);
+            $table->addColumn('comment_count', 'integer', ['default' => 0]);
+            $table->addColumn('data', 'json_array', ['notnull' => false]);
+            $table->addColumn('roles', 'simple_array', ['notnull' => false]);
+            $table->addColumn('category_id', 'integer', ['notnull' => false]);
+            $table->addColumn('tags', 'simple_array' , ['notnull' => false]);
+            $table->setPrimaryKey(['id']);
+            $table->addUniqueIndex(['slug'], '@DPNBLOG_POST_SLUG');
+            $table->addIndex(['title'], '@DPNBLOG_POST_TITLE');
+            $table->addIndex(['user_id'], '@DPNBLOG_POST_USER_ID');
+            $table->addIndex(['date'], '@DPNBLOG_POST_DATE');
         });
       }
 
