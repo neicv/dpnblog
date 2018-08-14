@@ -1,0 +1,4 @@
+.tm-tags-padding > span{
+    margin:2px;
+    text-transform: capitalize;
+}

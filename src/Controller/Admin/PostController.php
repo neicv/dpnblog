@@ -55,6 +55,7 @@ class PostController
             'user_id' => App::user()->id,
             'status' => Post::STATUS_PUBLISHED,
             'post_style' => 0,
+            'tags' => [],
             'category_id' => $selected->id,
             'date' => new \DateTime(),
             'data' => array(

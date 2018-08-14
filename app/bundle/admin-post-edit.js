@@ -364,8 +364,15 @@
 	        },
 
 	        addTags: function addTags() {
-	            this.$http.get('admin/apidpnblog/tags/').then(function (res) {
-	                if (res.data.data == 200) {} else if (res.data.data === 400) {
+	            var _this2 = this;
+
+	            this.$http.post('admin/apidpnblog/tags/addtags', { tags: this.newTags }).then(function (res) {
+
+	                if (res.data.status == 200) {
+	                    _this2.newTags = '';
+
+	                    _this2.getTags();
+	                } else {
 	                    UIkit.notify(res.data.msg, 'danger');
 	                }
 	            });
@@ -377,7 +384,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"uk-text-small uk-margin-small\">\n    <p v-if=\"tags\">\n        <span class=\"uk-badge uk-badge-success\">Hello World</span>\n    </p>\n    <p class=\"uk-text-large uk-text-center\" v-else>\n        {{'Not Found Tags' | trans}}\n    </p>\n    <div class=\"uk-form-controls uk-flex\">\n        <input type=\"text\" class=\"uk-width-1-1\" v-model=\"newTags\" :placeholder=\"'Add A New Tag' | trans\">\n        <button class=\"uk-button uk-button-primary\" @click=\"addTags\">{{'Add' | trans}}</button>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"uk-text-small uk-margin-small\">\n    <p v-if=\"tags\" class=\"tm-tags-padding\">\n        <span v-for=\"tag in tags\" class=\"uk-badge\">{{tag.tags}}</span>\n    </p>\n    <p class=\"uk-text-large uk-text-center\" v-else>\n        {{'Not Found Tags' | trans}}\n    </p>\n    <div class=\"uk-form-controls uk-flex\">\n        <input type=\"text\" class=\"uk-width-1-1\" v-model=\"newTags\" :placeholder=\"'Add A New Tag' | trans\">\n        <button class=\"uk-button uk-button-primary\" type=\"button\" v-on:click=\"addTags\">{{'Add' | trans}}</button>\n    </div>\n</div>\n";
 
 /***/ },
 /* 12 */

@@ -1,14 +1,14 @@
 <template lang="html">
     <div class="uk-text-small uk-margin-small">
-        <p v-if="tags">
-            <span class="uk-badge uk-badge-success">Hello World</span>
+        <p v-if="tags" class="tm-tags-padding">
+            <span v-for="tag in tags" class="uk-badge">{{tag.tags}}</span>
         </p>
         <p class="uk-text-large uk-text-center" v-else>
             {{'Not Found Tags' | trans}}
         </p>
         <div class="uk-form-controls uk-flex">
             <input type="text" class="uk-width-1-1" v-model="newTags" :placeholder="'Add A New Tag' | trans">
-            <button class="uk-button uk-button-primary" @click="addTags">{{'Add' | trans}}</button>
+            <button class="uk-button uk-button-primary" type="button" v-on:click="addTags">{{'Add' | trans}}</button>
         </div>
     </div>
 </template>
@@ -41,13 +41,16 @@ export default {
         },
 
         addTags:function(){
-            this.$http.get('admin/apidpnblog/tags/').then(res => {
-                if (res.data.data == 200) {
+            this.$http.post('admin/apidpnblog/tags/addtags' , {tags:this.newTags}).then(res => {
 
-                }else if (res.data.data === 400) {
+                if (res.data.status == 200) {
+                    this.newTags = '';
+                    //this.post.tags.push(res.data.data.id);
+                    this.getTags();
+                }else {
                     UIkit.notify(res.data.msg , 'danger');
                 }
-            })
+            });
         }
     }
 }
