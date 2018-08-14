@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="uk-text-small uk-margin-small">
         <p v-if="tags" class="tm-tags-padding">
-            <span v-for="tag in tags" class="uk-badge">{{tag.tags}}</span>
+            <span v-for="tag in tags" v-on:click="postTags(tag.id)" v-bind:class="tag.id | checkedTag">{{tag.tags}}</span>
         </p>
         <p class="uk-text-large uk-text-center" v-else>
             {{'Not Found Tags' | trans}}
@@ -28,6 +28,22 @@ export default {
         this.getTags();
     },
 
+    filters:{
+        checkedTag:function(val){
+            if (!this.post.length) {
+                return 'uk-badge';
+            }else {
+                for (var i = 0; i < this.post; i++) {
+                    if (val == this.post[i]) {
+                        return 'uk-badge uk-badge-success';
+                    }else {
+                        return 'uk-badge';
+                    }
+                }
+            }
+        }
+    },
+
     methods:{
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/gettags').then(res => {
@@ -39,7 +55,6 @@ export default {
                 }
             })
         },
-
         addTags:function(){
             this.$http.post('admin/apidpnblog/tags/addtags' , {tags:this.newTags}).then(res => {
 
@@ -51,6 +66,12 @@ export default {
                     UIkit.notify(res.data.msg , 'danger');
                 }
             });
+        },
+        postTags:function(val){
+            this.post.push(val);
+        },
+        removeTags:function(val){
+            this.post.splice(val , 0);
         }
     }
 }

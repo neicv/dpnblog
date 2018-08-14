@@ -349,6 +349,22 @@
 	        this.getTags();
 	    },
 
+	    filters: {
+	        checkedTag: function checkedTag(val) {
+	            if (!this.post.length) {
+	                return 'uk-badge';
+	            } else {
+	                for (var i = 0; i < this.post; i++) {
+	                    if (val == this.post[i]) {
+	                        return 'uk-badge uk-badge-success';
+	                    } else {
+	                        return 'uk-badge';
+	                    }
+	                }
+	            }
+	        }
+	    },
+
 	    methods: {
 	        getTags: function getTags() {
 	            var _this = this;
@@ -362,7 +378,6 @@
 	                }
 	            });
 	        },
-
 	        addTags: function addTags() {
 	            var _this2 = this;
 
@@ -376,6 +391,12 @@
 	                    UIkit.notify(res.data.msg, 'danger');
 	                }
 	            });
+	        },
+	        postTags: function postTags(val) {
+	            this.post.push(val);
+	        },
+	        removeTags: function removeTags(val) {
+	            this.post.splice(val, 0);
 	        }
 	    }
 	};
@@ -384,7 +405,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"uk-text-small uk-margin-small\">\n    <p v-if=\"tags\" class=\"tm-tags-padding\">\n        <span v-for=\"tag in tags\" class=\"uk-badge\">{{tag.tags}}</span>\n    </p>\n    <p class=\"uk-text-large uk-text-center\" v-else>\n        {{'Not Found Tags' | trans}}\n    </p>\n    <div class=\"uk-form-controls uk-flex\">\n        <input type=\"text\" class=\"uk-width-1-1\" v-model=\"newTags\" :placeholder=\"'Add A New Tag' | trans\">\n        <button class=\"uk-button uk-button-primary\" type=\"button\" v-on:click=\"addTags\">{{'Add' | trans}}</button>\n    </div>\n</div>\n";
+	module.exports = "\n<div class=\"uk-text-small uk-margin-small\">\n    <p v-if=\"tags\" class=\"tm-tags-padding\">\n        <span v-for=\"tag in tags\" v-on:click=\"postTags(tag.id)\" v-bind:class=\"tag.id | checkedTag\">{{tag.tags}}</span>\n    </p>\n    <p class=\"uk-text-large uk-text-center\" v-else>\n        {{'Not Found Tags' | trans}}\n    </p>\n    <div class=\"uk-form-controls uk-flex\">\n        <input type=\"text\" class=\"uk-width-1-1\" v-model=\"newTags\" :placeholder=\"'Add A New Tag' | trans\">\n        <button class=\"uk-button uk-button-primary\" type=\"button\" v-on:click=\"addTags\">{{'Add' | trans}}</button>\n    </div>\n</div>\n";
 
 /***/ },
 /* 12 */
