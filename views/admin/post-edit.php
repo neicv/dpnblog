@@ -1,5 +1,9 @@
-<?= $view->script('admin-post-edit' , 'dpnblog:app/bundle/admin-post-edit.js' , ['vue' , 'editor' , 'video']) ?>
+<?= $view->script('admin-post-edit' , 'dpnblog:app/bundle/admin-post-edit.js' , ['vue' , 'editor' , 'jquery']) ?>
+<?= $view->script('op-jquery-ui' , 'dpnblog:app/jquery/jquery-ui.min.js' , ['admin-post-edit']) ?>
+<?= $view->script('op-caret-jquery' , 'dpnblog:app/jquery/jquery.caret.min.js' , ['op-jquery-ui']) ?>
+<?= $view->script('op-tags-jquery' , 'dpnblog:app/jquery/jquery.tag-editor.min.js' , ['op-caret-jquery']) ?>
 <?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , 'theme') ?>
+<?= $view->style('op-tags-css' , 'dpnblog:app/jquery/jquery.tag-editor.css') ?>
 
 <form id="post" class="uk-form" v-validator="form" @submit.prevent="save | valid" v-cloak>
 

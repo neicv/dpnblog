@@ -18,10 +18,19 @@ class ApiTagsController{
     public function getTagsAction(){
         $back = new BackAnswer;
         try {
-            if (!$query = Tags::findAll()) {
+            $db = App::db()->createQueryBuilder();
+            $query = $db
+            ->select('tags')
+            ->from('@dpnblog_tags')
+            ->get();
+            if (!$query) {
                 return $back->success(array() , 'No Tags At All' , 404);
             }
-            return $back->success($query , 'GET All Tags');
+            $data = [];
+            foreach ($query as $key => $value) {
+                array_push($data,$value['tags']);
+            }
+            return $back->success( (object) $data , 'GET All Tags');
         } catch (\Exception $e) {
             return $back->return();
         }

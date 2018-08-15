@@ -90,7 +90,6 @@ return [
 
     ##
     'config' => [
-
       'posts' => [
         'posts_per_page' => 20,
         'comments_enabled' => true,
@@ -101,6 +100,5 @@ return [
         'type' => '',
         'custom' => '{slug}'
       ],
-
-    ]
+    ],
 ];
