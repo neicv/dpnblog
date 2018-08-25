@@ -340,7 +340,7 @@
 
 	    data: function data() {
 	        return {
-	            source: ''
+	            source: []
 	        };
 	    },
 
@@ -368,7 +368,10 @@
 
 	            this.$http.get('admin/apidpnblog/tags/gettags').then(function (res) {
 	                if (res.data.status == 200) {
-	                    _this.source = res.data.data;
+	                    var arrayGet = res.data.data;
+	                    for (var tagsKey in arrayGet) {
+	                        _this.source.push(arrayGet[tagsKey]);
+	                    }
 	                    UIkit.notify(res.data.msg, 'primary');
 	                } else {
 	                    UIkit.notify(res.data.msg, 'danger');

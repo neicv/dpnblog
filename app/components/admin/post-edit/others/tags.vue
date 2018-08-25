@@ -10,7 +10,7 @@ export default {
 
     data:function(){
         return {
-            source: ''
+            source: []
         }
     },
 
@@ -36,7 +36,10 @@ export default {
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/gettags').then(res => {
                 if (res.data.status == 200) {
-                    this.source = res.data.data;
+                    var arrayGet = res.data.data;
+                    for (var tagsKey in arrayGet) {
+                        this.source.push(arrayGet[tagsKey]);
+                    }
                     UIkit.notify(res.data.msg , 'primary');
                 }else {
                     UIkit.notify(res.data.msg , 'danger');
