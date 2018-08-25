@@ -271,11 +271,29 @@
 	    data: function data() {
 	        return _.merge({ source: '' }, $pagekit);
 	    },
+
+	    computed: {
+	        selectButton: function selectButton() {
+	            var selected = this.$refs.finder.getSelected();
+	            return selected.length === 1 && this.$refs.finder.isVideo(selected[0]);
+	        }
+	    },
+
 	    methods: {
 	        pick: function pick() {
 	            this.source = this.post.data.video;
 	            this.$refs.modal.open();
 	        },
+
+	        select: function select() {
+	            this.source = this.$refs.finder.getSelected()[0];
+	            this.$refs.modal.close();
+	        },
+
+	        video: function video() {
+	            this.$refs.modal.open();
+	        },
+
 	        update: function update() {
 	            this.post.data.video = this.source;
 	            this.$refs.modal.close();
@@ -287,11 +305,20 @@
 	    }
 	};
 
+
+	Vue.component('input-video', function (resolve, reject) {
+	    Vue.asset({
+	        js: ['app/assets/uikit/js/components/upload.min.js', 'app/system/modules/finder/app/bundle/panel-finder.js']
+	    }).then(function () {
+	        resolve(module.exports);
+	    });
+	});
+
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-	module.exports = "\n <a class=\"uk-placeholder uk-text-center uk-display-block uk-margin-remove\" v-if=\"!post.data.video\" @click.prevent=\"pick\">\n     <img width=\"60\" height=\"60\" :alt=\"'Placeholder Video' | trans\" :src=\"$url('app/system/assets/images/placeholder-video.svg')\">\n     <p class=\"uk-text-muted uk-margin-small-top\">{{ 'Add Video'| trans }}</p>\n </a>\n <v-modal v-ref:modal>\n    <form class=\"uk-form uk-form-stacked\" @submit=\"update\">\n\n        <div class=\"uk-modal-header\">\n            <h2 class=\"uk-text-capitalize\">{{ type | trans }}</h2>\n        </div>\n\n        <div class=\"uk-form-row\">\n            <input-video :source.sync=\"source\"></input-video>\n        </div>\n\n        <div class=\"uk-form-row\">\n            <label for=\"form-src\" class=\"uk-form-label\">{{ 'URL' | trans }}</label>\n            <div class=\"uk-form-controls\">\n                <input class=\"uk-width-1-1\" type=\"text\" v-model=\"source\" lazy>\n            </div>\n        </div>\n\n        <div class=\"uk-modal-footer uk-text-right\">\n            <button class=\"uk-button uk-button-link uk-modal-close\" type=\"button\">{{ 'Cancel' | trans }}</button>\n            <button class=\"uk-button uk-button-link\" type=\"button\" @click.prevent=\"update\">{{ 'Update' | trans }}</button>\n        </div>\n\n    </form>\n</v-modal>\n";
+	module.exports = "\n <a class=\"uk-placeholder uk-text-center uk-display-block uk-margin-remove\" v-if=\"!post.data.video\" @click.prevent=\"pick\">\n     <img width=\"60\" height=\"60\" :alt=\"'Placeholder Video' | trans\" :src=\"$url('app/system/assets/images/placeholder-video.svg')\">\n     <p class=\"uk-text-muted uk-margin-small-top\">{{ 'Add Video'| trans }}</p>\n </a>\n <v-modal v-ref:modal>\n     <form class=\"uk-form uk-form-stacked\" @submit=\"update\">\n\n         <div class=\"uk-modal-header\">\n             <h2 class=\"uk-text-capitalize\">{{ 'Video' | trans }}</h2>\n         </div>\n\n         <div class=\"uk-form-row\">\n             <input-image class=\"pk-image-max-height\"></input-image>\n         </div>\n\n         <div class=\"uk-form-row\">\n             <a class=\"uk-placeholder uk-text-center uk-display-block uk-margin-remove\" v-if=\"!post.data.video\" @click.prevent=\"video\">\n                 <img width=\"60\" height=\"60\" :alt=\"'Placeholder Video' | trans\" :src=\"$url('app/system/assets/images/placeholder-video.svg')\">\n                 <p class=\"uk-text-muted uk-margin-small-top\">{{ 'Add Video'| trans }}</p>\n             </a>\n         </div>\n\n         <v-modal v-ref:modal large>\n             <panel-finder :root=\"storage\" :modal=\"true\" v-ref:finder></panel-finder>\n\n             <div class=\"uk-modal-footer uk-text-right\">\n                 <button class=\"uk-button uk-button-link uk-modal-close\" type=\"button\">{{ 'Cancel' | trans }}</button>\n                 <button class=\"uk-button uk-button-primary\" type=\"button\" :disabled=\"!selectButton\" @click.prevent=\"select\">{{ 'Select' | trans }}</button>\n             </div>\n         </v-modal>\n\n         <div class=\"uk-modal-footer uk-text-right\">\n             <button class=\"uk-button uk-button-link uk-modal-close\" type=\"button\">{{ 'Cancel' | trans }}</button>\n             <button class=\"uk-button uk-button-link\" type=\"button\" @click.prevent=\"update\">{{ 'Update' | trans }}</button>\n        </div>\n\n     </form>\n</v-modal>\n";
 
 /***/ }),
 /* 9 */
@@ -358,7 +385,7 @@
 	                    delay: 0,
 	                    source: this.source
 	                },
-	                forceLowercase: true,
+	                forceLowercase: false,
 	                placeholder: 'Add Tags'
 	            });
 	        },

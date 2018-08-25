@@ -28,7 +28,7 @@ export default {
                    delay: 0, // show suggestions immediately
                    source:this.source
                 },
-                forceLowercase: true,
+                forceLowercase: false,
                 placeholder: 'Add Tags'
             });
         },
