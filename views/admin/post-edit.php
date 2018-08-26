@@ -5,7 +5,7 @@
 <?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , 'theme') ?>
 <?= $view->style('op-tags-css' , 'dpnblog:app/jquery/jquery.tag-editor.css') ?>
 
-<form id="post" class="uk-form" v-validator="form" @submit.prevent="save | valid" v-cloak>
+<form id="post" class="uk-form" @submit.prevent="save" v-cloak>
 
     <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
         <div data-uk-margin>

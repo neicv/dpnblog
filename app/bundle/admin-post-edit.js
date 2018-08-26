@@ -71,8 +71,8 @@
 
 	    methods:{
 	        save:function(){
-	            this.$http.post('' , {}).then(res => {
-	                // error
+	            this.$http.post('admin/apidpnblog/post/save' , {data:this.post}).then(res => {
+	                console.log(res.data);
 	            } , err => {
 	                // error
 	            })

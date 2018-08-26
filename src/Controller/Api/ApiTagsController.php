@@ -37,13 +37,36 @@ class ApiTagsController{
     }
 
     /**
-    * @inheritdoc
+    * @inheritdoc Insert and Check
     */
     public function checkedTags($data = array()){
+
+        $array = array();
 
         if (empty($data)) {
             return false;
         }
+
+        foreach ($data as $key => $value) {
+
+            $name = ucwords(trim($value));
+            $slug = App::filter($name , 'slugify');
+
+            if ( !$query = Tags::where(['tags = ?' , 'slug = ?'] , [$name , $slug])->first() ) {
+                $query = Tags::create([
+                    'tags' => $name,
+                    'slug' => $slug,
+                    'user_id' => App::user()->id,
+                    'date' => new \DateTime
+                ]);
+                $query->save();
+                array_push($array , $query->id);
+            }else{
+                array_push($array , $query->id);
+            }
+        }
+
+        return $array;
 
     }
 

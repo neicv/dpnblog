@@ -5,6 +5,7 @@ use Pagekit\Application as App;
 use Pastheme\Blog\Helper\BackAnswer;
 use Pastheme\Blog\Model\Category;
 use Pastheme\Blog\Model\Post;
+use Pastheme\Blog\Controller\Api\ApiTagsController;
 
 /**
 * @Access(admin=true)
@@ -20,7 +21,15 @@ class ApiPostController
     public function saveAction($data = null){
         $back = new BackAnswer;
         try {
+            if (empty($data)) {
+                return $back->abort(404 , 'Empty Data');
+            }
 
+
+
+            $tags = ApiTagsController::checkedTags($data['tags']);
+
+            //return $backanswer->success($tags , 'GET All Categories');
         } catch (\Exception $e) {
             return $back->return();
         }
