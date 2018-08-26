@@ -65,6 +65,10 @@
                 <blog-video :post.sync="post" v-if="post.post_style == 1"></blog-video>
             </div>
 
+            <div class="uk-margin">
+                <blog-gallery :post.sync="post" v-if="post.post_style == 3"></blog-gallery>
+            </div>
+
             <div class="uk-form-row">
                 <label for="form-slug" class="uk-form-label">{{ 'Slug' | trans }}</label>
                 <div class="uk-form-controls">
@@ -174,7 +178,8 @@ export default {
     components:{
         blogImage:require('../../../components/admin/post-edit/post-style/image.vue'),
         blogVideo:require('../../../components/admin/post-edit/post-style/video.vue'),
-        blogTags:require('../../../components/admin/post-edit/others/tags.vue')
+        blogTags:require('../../../components/admin/post-edit/others/tags.vue'),
+        blogGallery: require('../../../components/admin/post-edit/post-style/gallery.vue'),
     }
 
 }

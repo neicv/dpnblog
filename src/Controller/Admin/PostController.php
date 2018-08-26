@@ -59,6 +59,10 @@ class PostController
             'category_id' => $selected->id,
             'date' => new \DateTime(),
             'data' => array(
+                'video' => [
+                    'source' => '',
+                    'image' => '',
+                ],
                 'meta' => [
                     'og:title' => null,
                     'og:description' => null
