@@ -37,30 +37,12 @@ class ApiTagsController{
     }
 
     /**
-    * @Route("/addtags" , methods="POST")
-    * @Request({"tags":"string"} , csrf="true")
+    * @inheritdoc
     */
-    public function addTagsAction($tags = null){
-        $back = new BackAnswer;
-        try {
+    public function checkedTags($data = array()){
 
-            $tagsLower = ucwords(strtolower($tags));
-
-            if ( $query = Tags::where(['tags = :tags' , 'slug = :tags'] , ['tags' => $tagsLower])->get() ) {
-                return $back->abort(400 , 'That\'s Already There');
-            }
-
-            $query = Tags::create([
-                'tags' => $tagsLower,
-                'slug' => App::filter($tagsLower , 'slugify'),
-                'date' => new \DateTime(),
-                'user_id' => App::user()->id
-            ]);
-            $query->save();
-            return $back->success($query , 'A new tag has been added');
-
-        } catch (\Exception $e) {
-            return $back->return();
+        if (empty($data)) {
+            return false;
         }
 
     }

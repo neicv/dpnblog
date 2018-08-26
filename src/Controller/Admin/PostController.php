@@ -59,6 +59,9 @@ class PostController
             'category_id' => $selected->id,
             'date' => new \DateTime(),
             'data' => array(
+                'gallery' => [
+                    ['image' => '']
+                ],
                 'video' => [
                     'source' => '',
                     'image' => '',

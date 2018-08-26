@@ -14,6 +14,20 @@ class ApiPostController
 {
 
     /**
+    * @Route("/save" , methods="POST")
+    * @Request({"data":"array"} , csrf="true")
+    */
+    public function saveAction($data = null){
+        $back = new BackAnswer;
+        try {
+
+        } catch (\Exception $e) {
+            return $back->return();
+        }
+
+    }
+
+    /**
     * @Route("/get-categories" , methods="GET")
     * @Request(csrf=true)
     */

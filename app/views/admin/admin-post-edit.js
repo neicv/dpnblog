@@ -1,8 +1,6 @@
 window.Post = {
     name: 'PostEdit',
-
     el:'#post',
-
     data:function(){
         return _.merge({
             sections: [],
@@ -10,21 +8,14 @@ window.Post = {
     },
 
     created: function () {
-
         var sections = [];
-
         _.forIn(this.$options.components, function (component, name) {
-
             var options = component.options || {};
-
             if (options.section) {
                 sections.push(_.extend({name: name, priority: 0}, options.section));
             }
-
         });
-
         this.$set('sections', _.sortBy(sections, 'priority'));
-
     },
 
     ready:function(){
@@ -32,11 +23,20 @@ window.Post = {
         this.tab = UIkit.tab(this.$els.tab, {connect: this.$els.content});
     },
 
+    methods:{
+        save:function(){
+            this.$http.post('' , {}).then(res => {
+                // error
+            } , err => {
+                // error
+            })
+        }
+    },
+
     components: {
         settings: require('../../components/admin/post-edit/settings.vue'),
         meta: require('../../components/admin/post-edit/meta.vue'),
     }
-
 }
 
 Vue.ready(window.Post);
