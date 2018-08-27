@@ -26,7 +26,18 @@ window.Post = {
     methods:{
         save:function(){
             this.$http.post('admin/apidpnblog/post/save' , {data:this.data.post , id:this.data.post.id}).then(res => {
-                console.log(res.data);
+
+                console.log(res)
+                var data = res.data.data;
+
+                if (!this.data.post.id) {
+                    window.history.replaceState({}, '', this.$url.route('admin/dpnblog/posts/edit', {id: data.id}))
+                }
+
+                this.$set('post', data);
+
+                this.$notify('Post saved.');
+
             } , err => {
                 console.log(res.data);
             })

@@ -19,6 +19,7 @@ class ApiPostController
     * @Request({"data":"array" , "id":"integer"} , csrf="true")
     */
     public function saveAction($data = [] , $id = 0){
+
         if (empty($data)) {
             return $back->abort(404 , 'Empty Data');
         }
@@ -28,21 +29,37 @@ class ApiPostController
             $query = Post::create();
         }
 
-        $data['title'] = ucwords($data['title']);
         $data['modified'] = new \DateTime();
-        $data['tags'] = ApiTagsController::checkedTags($data['tags']);
 
         if (empty($data['date'])) {
             $data['date'] = new \DateTime();
         }
 
+        $data['title'] = ucwords($data['title']);
+        if ($titleController = Post::where('title = ?' , [$data['title']])->first() ) {
+            $data['title'] = $data['title'] . ' - Copy' ;
+        }
+
         if (empty($data['slug'])) {
             $data['slug'] = App::filter( $data['slug'] ?? $data['title'] , 'slugify');
+            if ($slugController = Post::where('slug = ?' , [$data['slug']])->first() ) {
+                $data['slug'] = $data['slug'] . '-copy';
+            }
         }
 
         $query->save($data);
-        return ['hi' => 'Hi'];
-        //$back->success( $data , 'Success Post' );
+        return ['data' => $query];
+
+        $back = new BackAnswer;
+        /***
+        try {
+
+            return $back->success( $query , 'Success Post' );
+
+        } catch (\Exception $e) {
+            return $back->return();
+        }*/
+
 
     }
 

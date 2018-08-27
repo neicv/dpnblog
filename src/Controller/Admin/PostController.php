@@ -55,6 +55,7 @@ class PostController
             'user_id' => App::user()->id,
             'status' => Post::STATUS_PUBLISHED,
             'post_style' => 0,
+            'date' => new \DateTime(),
             'tags' => [],
             'category_id' => $selected->id,
             'data' => array(
@@ -101,12 +102,13 @@ class PostController
           'name'  => 'dpnblog/admin/post-edit.php'
         ],
         '$data' => [
-          'data' => [
-              'post'     => $post,
-              'statuses' => Post::getStatuses(),
-              'roles'    => array_values(Role::findAll()),
-              'authors'  => $authors,
-          ]
+            'data' => [
+                'post'     => $post,
+                'statuses' => Post::getStatuses(),
+                'roles'    => array_values(Role::findAll()),
+                'authors'  => $authors,
+            ],
+            'post' => $post
         ]
       ];
 

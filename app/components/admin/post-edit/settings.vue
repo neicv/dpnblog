@@ -88,11 +88,6 @@
             </div>
 
             <div class="uk-form-row">
-                <label class="uk-form-label">{{'Tags' | trans}}</label>
-                <blog-tags :post="post.tags"></blog-tags>
-            </div>
-
-            <div class="uk-form-row">
                 <label for="form-status" class="uk-form-label">{{ 'Status' | trans }}</label>
                 <div class="uk-form-controls">
                     <select id="form-status" class="uk-width-1-1" v-model="post.status">
@@ -178,7 +173,6 @@ export default {
     components:{
         blogImage:require('../../../components/admin/post-edit/post-style/image.vue'),
         blogVideo:require('../../../components/admin/post-edit/post-style/video.vue'),
-        blogTags:require('../../../components/admin/post-edit/others/tags.vue'),
         blogGallery: require('../../../components/admin/post-edit/post-style/gallery.vue'),
     }
 
