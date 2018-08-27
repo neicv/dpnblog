@@ -57,7 +57,6 @@ class PostController
             'post_style' => 0,
             'tags' => [],
             'category_id' => $selected->id,
-            'date' => new \DateTime(),
             'data' => array(
                 'gallery' => [
                     ['image' => '']

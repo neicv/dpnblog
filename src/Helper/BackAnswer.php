@@ -14,7 +14,7 @@ class BackAnswer
   *   if (!$post) {
   *     $backanswer->abort(404 , 'Found Not Post');
   *   }
-  *   return $backanswer->success('Success Post');
+  *   return $backanswer->success( array() , 'Success Post');
   * } catch (\Exception $e) {
   *   return $backanswer->return();
   * }

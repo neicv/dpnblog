@@ -25,10 +25,10 @@ window.Post = {
 
     methods:{
         save:function(){
-            this.$http.post('admin/apidpnblog/post/save' , {data:this.post}).then(res => {
+            this.$http.post('admin/apidpnblog/post/save' , {data:this.data.post , id:this.data.post.id}).then(res => {
                 console.log(res.data);
             } , err => {
-                // error
+                console.log(res.data);
             })
         }
     },

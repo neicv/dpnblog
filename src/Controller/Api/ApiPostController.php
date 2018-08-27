@@ -16,23 +16,33 @@ class ApiPostController
 
     /**
     * @Route("/save" , methods="POST")
-    * @Request({"data":"array"} , csrf="true")
+    * @Request({"data":"array" , "id":"integer"} , csrf="true")
     */
-    public function saveAction($data = null){
-        $back = new BackAnswer;
-        try {
-            if (empty($data)) {
-                return $back->abort(404 , 'Empty Data');
-            }
-
-
-
-            $tags = ApiTagsController::checkedTags($data['tags']);
-
-            //return $backanswer->success($tags , 'GET All Categories');
-        } catch (\Exception $e) {
-            return $back->return();
+    public function saveAction($data = [] , $id = 0){
+        if (empty($data)) {
+            return $back->abort(404 , 'Empty Data');
         }
+
+        if (!$query = Post::where(compact('id'))->first() ) {
+            unset($data['id']);
+            $query = Post::create();
+        }
+
+        $data['title'] = ucwords($data['title']);
+        $data['modified'] = new \DateTime();
+        $data['tags'] = ApiTagsController::checkedTags($data['tags']);
+
+        if (empty($data['date'])) {
+            $data['date'] = new \DateTime();
+        }
+
+        if (empty($data['slug'])) {
+            $data['slug'] = App::filter( $data['slug'] ?? $data['title'] , 'slugify');
+        }
+
+        $query->save($data);
+        return ['hi' => 'Hi'];
+        //$back->success( $data , 'Success Post' );
 
     }
 

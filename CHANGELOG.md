@@ -1,5 +1,13 @@
 # Changelog
 
+## To Do List
+
+        Delete DB Post Model Page
+        @Column(type="boolean")
+        public $comment_status;
+        @Column(type="integer")
+        public $comment_count = 0;
+
 ## 1.4.6
 
 **August 1, 2018 12:18 PM**

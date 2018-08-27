@@ -22,7 +22,7 @@ return [
             $table->addColumn('category_id', 'integer', ['notnull' => false]);
             $table->addColumn('tags', 'simple_array' , ['notnull' => false]);
             $table->setPrimaryKey(['id']);
-            $table->addUniqueIndex(['slug'], '@DPNBLOG_POST_SLUG');
+            $table->addIndex(['slug'], '@DPNBLOG_POST_SLUG');
             $table->addIndex(['title'], '@DPNBLOG_POST_TITLE');
             $table->addIndex(['user_id'], '@DPNBLOG_POST_USER_ID');
             $table->addIndex(['date'], '@DPNBLOG_POST_DATE');
