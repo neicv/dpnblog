@@ -2,6 +2,7 @@
 
 namespace Pastheme\Blog\Model;
 
+use Pagekit\Application as App;
 use Pagekit\Database\ORM\ModelTrait;
 use Pagekit\System\Model\DataModelTrait;
 use Pagekit\User\Model\AccessModelTrait;
@@ -10,7 +11,7 @@ use Pagekit\User\Model\User;
 /**
 * @Entity(tableClass="@dpnblog_post")
 */
-class Post
+class Post implements \JsonSerializable
 {
     use ModelTrait , DataModelTrait , AccessModelTrait;
 
@@ -123,13 +124,6 @@ class Post
       $data = [
           'url' => App::url('@dpnblog/id', ['id' => $this->id ?: 0], 'base')
       ];
-
-      if ($this->comments) {
-          $data['comments_pending'] = count(array_filter($this->comments, function ($comment) {
-              return $comment->status == Comment::STATUS_PENDING;
-          }));
-      }
-
       return $this->toArray($data);
     }
 

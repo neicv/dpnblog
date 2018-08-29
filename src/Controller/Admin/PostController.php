@@ -55,8 +55,8 @@ class PostController
             'user_id' => App::user()->id,
             'status' => Post::STATUS_PUBLISHED,
             'post_style' => 0,
-            'date' => new \DateTime(),
             'tags' => [],
+            'date' => new \DateTime(),
             'category_id' => $selected->id,
             'data' => array(
                 'gallery' => [
