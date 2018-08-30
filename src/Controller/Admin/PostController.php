@@ -113,10 +113,8 @@ class PostController
       ];
 
     } catch (\Exception $e) {
-
       App::message()->error($e->getMessage());
       return App::redirect('@dpnblog/posts');
-
     }
 
   }

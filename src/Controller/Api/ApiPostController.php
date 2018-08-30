@@ -16,31 +16,31 @@ class ApiPostController
 
     /**
     * @Route("/save" , methods="POST")
-    * @Request({"data":"array"} , csrf="true")
+    * @Request({"post":"array"} , csrf="true")
     */
-    public function saveAction($data = []){
+    public function saveAction($post = []){
         $back = new BackAnswer;
         try {
-            $id = $data['id'];
-            if (empty($data)) {
+            $id = $post['id'];
+            if (empty($post)) {
                 return $back->abort(404 , 'Empty Data');
             }
-            $data['modified'] = new \DateTime();
+            $post['modified'] = new \DateTime();
             if ( !$query = Post::where('id = ?' , [$id])->first() ) {
-                unset($data['id']);
+                unset($post['id']);
                 $query = Post::create();
-                if ( Post::where('title = ?' , [$data['title']])->first() ) {
-                    $data['title'] = $data['title'] . ' - Copy' ;
+                if ( Post::where('title = ?' , [$post['title']])->first() ) {
+                    $post['title'] = $post['title'] . ' - Copy' ;
                 }
             }
-            $data['title'] = ucwords($data['title']);
-            if (empty($data['slug'])) {
-                $data['slug'] = App::filter( $data['slug'] ?? $data['title'] , 'slugify');
-                if ($slugController = Post::where('slug = ?' , [$data['slug']])->first() ) {
-                    $data['slug'] = $data['slug'] . '-copy';
+            $post['title'] = ucwords($post['title']);
+            if (empty($post['slug'])) {
+                $post['slug'] = App::filter( empty($post['slug']) ? $post['title']:$post['slug'] , 'slugify');
+                if ($slugController = Post::where('slug = ?' , [$post['slug']])->first() ) {
+                    $post['slug'] = $post['slug'] . '-copy';
                 }
             }
-            $query->save($data);
+            $query->save($post);
             return $back->success( $query , __('Post Saved') );
         } catch (\Exception $e) {
             return $back->return();

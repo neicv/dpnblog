@@ -6,7 +6,7 @@
 
             <div class="uk-form-row">
                 <div class="uk-form-controls">
-                    <input type="text" class="uk-form-large uk-width-1-1" :placeholder="'Title' | trans" v-model="post.title">
+                    <input type="text" class="uk-form-large uk-width-1-1" :placeholder="'Title' | trans" v-model="post.title" required>
                 </div>
             </div>
 

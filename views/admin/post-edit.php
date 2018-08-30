@@ -19,23 +19,6 @@
         </div>
     </div>
 
-    <div class="uk-margin uk-panel uk-panel-box uk-panel-box-muted">
-        <ul class="uk-list">
-            <li>
-                <span class="uk-text-small">Meta title:</span>
-            </li>
-            <li>
-                <span class="uk-text-small">Meta description:</span>
-            </li>
-            <li>
-                <span class="uk-text-small">Content length:</span>
-            </li>
-            <li>
-                <span class="uk-text-small">Excerpt:</span>
-            </li>
-        </ul>
-    </div>
-
     <ul class="uk-tab" v-el:tab v-show="sections.length > 1">
         <li v-for="section in sections"><a>{{ section.label | trans }}</a></li>
     </ul>
