@@ -15,6 +15,53 @@ class ApiPostController
 {
 
     /**
+    * @Route("/posts", methods="GET")
+    * @Request({"filter": "array", "page":"int"})
+    */
+    public function postsAction($filter = [], $page = 0){
+
+        $query  = Post::query();
+
+        $filter = array_merge(array_fill_keys(['status', 'search', 'author', 'order', 'limit', 'category'], ''), $filter);
+
+        extract($filter, EXTR_SKIP);
+
+        if(!App::user()->hasAccess('dpnblog: manage all posts')) {
+            $author = App::user()->id;
+        }
+
+        if (is_numeric($status)) {
+            $query->where(['status' => (int) $status]);
+        }
+
+        if ($category > 0) {
+            $query->where(['category_id' => (int) $category]);
+        }
+
+        if ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->orWhere(['title LIKE :search', 'slug LIKE :search'], ['search' => "%{$search}%"]);
+            });
+        }
+
+        if ($author) {
+            $query->where(function ($query) use ($author) {
+                $query->orWhere(['user_id' => (int) $author]);
+            });
+        }
+        if (!preg_match('/^(date|title|comment_count)\s(asc|desc)$/i', $order, $order)) {
+            $order = [1 => 'date', 2 => 'desc'];
+        }
+
+        $limit = (int) $limit ?: App::module('dpnblog')->config('posts.posts_per_page');
+        $count = $query->count();
+        $pages = ceil($count / $limit);
+        $page  = max(0, min($pages - 1, $page));
+        $posts = array_values($query->offset($page * $limit)->related('user', 'comments')->limit($limit)->orderBy($order[1], $order[2])->get());
+        return compact('posts', 'pages', 'count');
+    }
+
+    /**
     * @Route("/save" , methods="POST")
     * @Request({"post":"array"} , csrf="true")
     */
