@@ -21,9 +21,7 @@ class ApiPostController
     public function postsAction($filter = [], $page = 0){
 
         $query  = Post::query();
-
         $filter = array_merge(array_fill_keys(['status', 'search', 'author', 'order', 'limit', 'category'], ''), $filter);
-
         extract($filter, EXTR_SKIP);
 
         if(!App::user()->hasAccess('dpnblog: manage all posts')) {
@@ -57,7 +55,7 @@ class ApiPostController
         $count = $query->count();
         $pages = ceil($count / $limit);
         $page  = max(0, min($pages - 1, $page));
-        $posts = array_values($query->offset($page * $limit)->related('user', 'comments')->limit($limit)->orderBy($order[1], $order[2])->get());
+        $posts = array_values($query->offset($page * $limit)->related('user')->limit($limit)->orderBy($order[1], $order[2])->get());
         return compact('posts', 'pages', 'count');
     }
 

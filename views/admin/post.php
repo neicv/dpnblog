@@ -22,7 +22,7 @@
             </div>
         </div>
         <div data-uk-margin>
-            <button class="uk-button uk-button-primary uk-align-right" @click="editCategory()">{{'Add Category' | trans}}</button>
+            <a href="@dpnblog/posts/edit" class="uk-button uk-button-primary uk-align-right">{{'Add Post' | trans}}</a>
         </div>
     </div>
 
