@@ -41,12 +41,10 @@ class Category
   /** @Column(type="simple_array") **/
   public $sub_category;
 
-  /** @var array */
-  protected static $properties = [
-      'author' => 'getAuthor',
-      'published' => 'isPublished',
-      'accessible' => 'isAccessible'
-  ];
+  /**
+  * @HasMany(targetEntity="Post", keyFrom="id", keyTo="category_id")
+  */
+  public $post;
 
   public static function getStatuses()
   {

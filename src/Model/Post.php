@@ -61,8 +61,9 @@ class Post implements \JsonSerializable
   /** @var array */
     protected static $properties = [
       'author' => 'getAuthor',
+      'categories' => 'getCategory',
       'published' => 'isPublished',
-      'accessible' => 'isAccessible'
+      'accessible' => 'isAccessible',
     ];
 
     public static function getStatuses()
@@ -89,7 +90,6 @@ class Post implements \JsonSerializable
     public function getStatusText()
     {
       $statuses = self::getStatuses();
-
       return isset($statuses[$this->status]) ? $statuses[$this->status] : __('Unknown');
     }
 
@@ -97,13 +97,16 @@ class Post implements \JsonSerializable
     {
       $blog      = App::module('dpnblog');
       $autoclose = $blog->config('comments.autoclose') ? $blog->config('comments.autoclose_days') : 0;
-
       return $this->comment_status && (!$autoclose or $this->date >= new \DateTime("-{$autoclose} day"));
     }
 
     public function getAuthor()
     {
       return $this->user ? $this->user->username : null;
+    }
+    public function getCategory()
+    {
+      return $this->category ? $this->category->title : null;
     }
 
     public function isPublished()

@@ -39,19 +39,18 @@ class PostController
   public function editAction($id = null)
   {
     try {
-
       if ( !$post = Post::where(compact('id'))->first() ) {
 
-        if ($id) {
-          App::abort(404, __('Invalid post id.'));
-        }
+         if ($id) {
+            App::abort(404, __('Invalid post id.'));
+         }
 
-        if (!$selected = Category::where('status = 2')->first()) {
+         if (!$selected = Category::where('status = 2')->first()) {
             App::abort(400 , 'No Categories Found');
-        }
-        $module = App::module('dpnblog');
+         }
+         $module = App::module('dpnblog');
 
-        $post = Post::create([
+         $post = Post::create([
             'user_id' => App::user()->id,
             'status' => Post::STATUS_PUBLISHED,
             'post_style' => 0,
@@ -71,16 +70,16 @@ class PostController
                     'og:description' => null
                 ]
             )
-        ]);
+         ]);
 
-        $post->set('title', $module->config('posts.show_title'));
-        $post->set('markdown', $module->config('posts.markdown_enabled'));
+         $post->set('title', $module->config('posts.show_title'));
+         $post->set('markdown', $module->config('posts.markdown_enabled'));
 
       }
 
       $user = App::user();
       if(!$user->hasAccess('dpnblog: manage all posts') && $post->user_id !== $user->id) {
-          App::abort(403, __('Insufficient User Rights.'));
+         App::abort(403, __('Insufficient User Rights.'));
       }
 
       $roles = App::db()->createQueryBuilder()
@@ -97,11 +96,11 @@ class PostController
         ->fetchAll();
 
       return [
-        '$view' => [
-          'title' => $id ? __('Edit Post') : __('Add Post'),
-          'name'  => 'dpnblog/admin/post-edit.php'
-        ],
-        '$data' => [
+         '$view' => [
+            'title' => $id ? __('Edit Post') : __('Add Post'),
+            'name'  => 'dpnblog/admin/post-edit.php'
+         ],
+         '$data' => [
             'data' => [
                 'post'     => $post,
                 'statuses' => Post::getStatuses(),
@@ -109,7 +108,7 @@ class PostController
                 'authors'  => $authors,
             ],
             'post' => $post
-        ]
+         ]
       ];
 
     } catch (\Exception $e) {
