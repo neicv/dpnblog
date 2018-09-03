@@ -108,5 +108,68 @@ class ApiPostController
         }
     }
 
+    /**
+     * @Route("/{id}", methods="DELETE", requirements={"id"="\d+"})
+     * @Request({"id": "int"}, csrf=true)
+     */
+    public function deleteAction($id)
+    {
+        if ($post = Post::find($id)) {
+            if(!App::user()->hasAccess('dpnblog: manage all posts') && !App::user()->hasAccess('dpnblog: manage own posts') && $post->user_id !== App::user()->id) {
+                App::abort(400, __('Access denied.'));
+            }
+            $post->delete();
+        }
+        return ['message' => 'success'];
+    }
+
+    /**
+ * @Route(methods="POST")
+ * @Request({"ids": "int[]"}, csrf=true)
+ */
+public function copyAction($ids = [])
+{
+    foreach ($ids as $id) {
+        if ($post = Post::find((int) $id)) {
+            if(!App::user()->hasAccess('dpnblog: manage all posts') && !App::user()->hasAccess('dpnblog: manage own posts') && $post->user_id !== App::user()->id) {
+                continue;
+            }
+            $post = clone $post;
+            $post->id = null;
+            $post->status = Post::STATUS_DRAFT;
+            $post->title = $post->title.' - '.__('Copy');
+            $post->slug  = $post->slug.'-'.__('copy');
+            $post->comment_count = 0;
+            $post->date = new \DateTime();
+            $post->save();
+        }
+    }
+    return ['message' => 'success'];
+}
+
+    /**
+     * @Route("/bulk", methods="POST")
+     * @Request({"posts": "array"}, csrf=true)
+     */
+    public function bulkSaveAction($posts = [])
+    {
+        foreach ($posts as $data) {
+            $this->saveAction($data, isset($data['id']) ? $data['id'] : 0);
+        }
+        return ['message' => 'success'];
+    }
+
+    /**
+     * @Route("/bulk", methods="DELETE")
+     * @Request({"ids": "array"}, csrf=true)
+     */
+    public function bulkDeleteAction($ids = [])
+    {
+        foreach (array_filter($ids) as $id) {
+            $this->deleteAction($id);
+        }
+        return ['message' => 'success'];
+    }
+
 }
 ?>

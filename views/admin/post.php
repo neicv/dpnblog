@@ -4,7 +4,7 @@
 
    <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
       <div class="uk-flex uk-flex-middle uk-flex-wrap" data-uk-margin>
-         <h2 class="uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Posts|{1} %count% Post|]1,Inf[ %count% Posts' | transChoice count {count:count} }}</h2>
+         <h2 class="uk-margin-remove" v-if="!selected.length">{{ count }} {{ count > 1 ? 'Posts':'Post' | trans }} </h2>
          <template v-else>
             <h2 class="uk-margin-remove">{{ '{1} %count% Post selected|]1,Inf[ %count% Posts selected' | transChoice selected.length {count:selected.length} }}</h2>
             <div class="uk-margin-left" >
