@@ -3,6 +3,7 @@
     "type": "pagekit-extension",
     "version": "2.0.0",
     "title": "Advanced Blog",
+    "repository": "https://github.com/pastheme/dpnblog",
     "description": "An Advanced Blog Extension with some extra features.",
     "license": "MIT",
     "authors": [
@@ -20,7 +21,7 @@
     ],
     "extra": {
         "icon": "icon.svg",
-        "image": "image.png",
+        "image": "image.svg",
         "scripts": "scripts.php"
     },
     "archive": {

@@ -1,6 +1,6 @@
 <template lang="html">
     <a class="uk-placeholder uk-text-center uk-display-block uk-margin-remove" v-if="!post.data.video.source" @click.prevent="pick">
-        <img width="60" height="60" :alt="'Placeholder Video' | trans" :src="$url('packages/pastheme/dpnblog/assets/image/video.svg')">
+        <img width="60" height="60" :alt="'Placeholder Video' | trans" :src="$url('app/system/assets/images/placeholder-video.svg')">
         <p class="uk-text-muted uk-margin-small-top">{{ 'Add Video'| trans }}</p>
     </a>
 

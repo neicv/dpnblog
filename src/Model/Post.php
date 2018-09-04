@@ -64,59 +64,64 @@ class Post implements \JsonSerializable
       'categories' => 'getCategory',
       'published' => 'isPublished',
       'accessible' => 'isAccessible',
+      'post_name' => 'isPostStyle'
     ];
 
     public static function getStatuses()
     {
-      return [
-          self::STATUS_PUBLISHED        => __('Published'),
-          self::STATUS_UNPUBLISHED      => __('Unpublished'),
-          self::STATUS_DRAFT            => __('Draft'),
-          self::STATUS_PENDING_REVIEW   => __('Pending Review')
-      ];
+        return [
+            self::STATUS_PUBLISHED        => __('Published'),
+            self::STATUS_UNPUBLISHED      => __('Unpublished'),
+            self::STATUS_DRAFT            => __('Draft'),
+            self::STATUS_PENDING_REVIEW   => __('Pending Review')
+        ];
     }
 
     public static function getPostStyle()
     {
-      return [
-          self::POST_DEFAULT    => __('Default Post'),
-          self::POST_VIDEO      => __('Video Content'),
-          self::POST_ARTICLE    => __('Article Post'),
-          self::POST_GALLERY    => __('Image Galleries'),
-          self::POST_DOCUMENT   => __('Document')
-      ];
+        return [
+            self::POST_DEFAULT    => __('Default Post'),
+            self::POST_VIDEO      => __('Video Content'),
+            self::POST_ARTICLE    => __('Article Post'),
+            self::POST_GALLERY    => __('Image Gallery'),
+            self::POST_DOCUMENT   => __('Document')
+        ];
+    }
+
+    public function isPostStyle(){
+        return $postStyleName = self::getPostStyle()[$this->post_style];
     }
 
     public function getStatusText()
     {
-      $statuses = self::getStatuses();
-      return isset($statuses[$this->status]) ? $statuses[$this->status] : __('Unknown');
+        $statuses = self::getStatuses();
+        return isset($statuses[$this->status]) ? $statuses[$this->status] : __('Unknown');
     }
 
     public function isCommentable()
     {
-      $blog      = App::module('dpnblog');
-      $autoclose = $blog->config('comments.autoclose') ? $blog->config('comments.autoclose_days') : 0;
-      return $this->comment_status && (!$autoclose or $this->date >= new \DateTime("-{$autoclose} day"));
+        $blog = App::module('dpnblog');
+        $autoclose = $blog->config('comments.autoclose') ? $blog->config('comments.autoclose_days') : 0;
+        return $this->comment_status && (!$autoclose or $this->date >= new \DateTime("-{$autoclose} day"));
     }
 
     public function getAuthor()
     {
-      return $this->user ? $this->user->username : null;
+        return $this->user ? $this->user->username : null;
     }
     public function getCategory()
     {
-      return $this->category ? $this->category->title : null;
+        return $this->category ? $this->category->title : null;
     }
 
     public function isPublished()
     {
-      return $this->status === self::STATUS_PUBLISHED && $this->date < new \DateTime;
+        return $this->status === self::STATUS_PUBLISHED && $this->date < new \DateTime;
     }
 
     public function isAccessible(User $user = null)
     {
-      return $this->isPublished() && $this->hasAccess($user ?: App::user());
+        return $this->isPublished() && $this->hasAccess($user ?: App::user());
     }
 
     /**
@@ -124,10 +129,10 @@ class Post implements \JsonSerializable
     */
     public function jsonSerialize()
     {
-      $data = [
-          'url' => App::url('@dpnblog/id', ['id' => $this->id ?: 0], 'base')
-      ];
-      return $this->toArray($data);
+        $data = [
+            'url' => App::url('@dpnblog/id', ['id' => $this->id ?: 0], 'base')
+        ];
+        return $this->toArray($data);
     }
 
 }

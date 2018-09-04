@@ -1,6 +1,6 @@
 <template lang="html">
     <a class="uk-placeholder uk-text-center uk-display-block uk-margin-remove" @click.prevent="pick">
-        <img width="60" height="60" :alt="'Placeholder Video' | trans" :src="$url('packages/pastheme/dpnblog/assets/image/gallery1.svg')">
+        <img width="105" height="105" :alt="'Placeholder Video' | trans" :src="$url('packages/pastheme/dpnblog/assets/image/gallery.svg')">
         <p class="uk-text-muted uk-margin-small-top">{{ 'Add Gallery'| trans }}</p>
     </a>
 

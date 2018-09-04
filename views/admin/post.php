@@ -57,7 +57,7 @@
                     <th class="pk-table-width-200 pk-table-min-width-200">{{ 'URL' | trans }}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="uk-text-small">
                 <tr class="check-item" v-for="post in posts" :class="{'uk-active': active(post)}">
                     <td><input type="checkbox" name="id" :value="post.id"></td>
                     <td>
@@ -79,10 +79,10 @@
                         {{post.categories}}
                     </td>
                     <td>
-                    {{ post.date | date }}
+                        {{ post.date | date }}
                     </td>
                     <td class="pk-table-text-break">
-                        {{'Post Style' |  trans}}
+                        <span class="uk-text-muted">{{ post.post_name }}</span>
                     </td>
                     <td class="pk-table-text-break">
                         <a target="_blank" v-if="post.accessible && post.url" :href="this.$url.route(post.url.substr(1))">{{ decodeURI(post.url) }}</a>
