@@ -32,7 +32,7 @@ class ApiPostController
             $query->where(['status' => (int) $status]);
         }
 
-        if ($category > 0) {
+        if (!empty($category)) {
             $query->where(['category_id' => (int) $category]);
         }
 
