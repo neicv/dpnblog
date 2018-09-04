@@ -54,6 +54,18 @@ return [
       ]
     ],
 
+    'nodes' => [
+        'dpnblog' => [
+            'name'  => '@dpnblog',
+            'label' => _('Blog'),
+            'protected' => true,
+            'frontpage' => true,
+            'controller' => [
+                'Pastheme\\Blog\\Controller\\BlogController'
+            ]
+        ]
+    ],
+
     'permissions' => [
       'dpnblog: manage own posts' => [
         'title' => 'Manage own posts',
@@ -92,7 +104,8 @@ return [
     'config' => [
       'posts' => [
         'posts_per_page' => 10,
-        'markdown_enabled' => true
+        'markdown_enabled' => true,
+        'posts_excerpt_limit' => 100
       ],
 
       'permalink' => [
