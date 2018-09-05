@@ -4,14 +4,14 @@
         <?php if ($post->post_style == 0 && !empty($post->data['image']['src'])): ?>
             <img class="dpnblog-height" src="<?= $post->data['image']['src'] ?>" alt="<?= $post->data['image']['alt'] ?>">
         <?php endif; ?>
-        <article class="uk-grid uk-grid-small uk-margin">
+        <article class="uk-grid uk-margin">
             <sidebar class="uk-width-medium-1-6 uk-flex uk-flex-center">
                 <div>
                     <?php if ($authorBox === true): ?>
                         <div class="uk-flex uk-flex-center uk-flex-middle">
                             <div class="uk-text-center">
                                 <img src="<?= $post->getGravatar() ?>" class="dpnblog-avatar"/>
-                                <span class="uk-text-large uk-display-block"><?= $post->user->username ?></span>
+                                <span class="uk-display-block"><?= $post->user->username ?></span>
                             </div>
                         </div>
                     <?php endif; ?>
