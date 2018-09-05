@@ -1,7 +1,5 @@
 <?php
-
 namespace Pastheme\Blog\Model;
-
 use Pagekit\Application as App;
 use Pagekit\Database\ORM\ModelTrait;
 use Pagekit\System\Model\DataModelTrait;
@@ -123,6 +121,30 @@ class Post implements \JsonSerializable
     {
         return $this->isPublished() && $this->hasAccess($user ?: App::user());
     }
+
+    public function getGravatar()
+    {
+        if (isset($this->user)) {
+            $email = $this->user->email;
+            $s = 200;
+            $d = 'mp';
+            $r = 'g';
+            $img = false;
+            $atts = array();
+            $url = 'https://www.gravatar.com/avatar/';
+            $url .= md5( strtolower( trim( $email ) ) );
+            $url .= "?s=$s&d=$d&r=$r";
+            if ( $img ) {
+                $url = '<img src="' . $url . '"';
+                foreach ( $atts as $key => $val )
+                    $url .= ' ' . $key . '="' . $val . '"';
+                $url .= ' />';
+            }
+            return $url;
+        }
+        return false;
+    }
+
 
     /**
     * {@inheritdoc}

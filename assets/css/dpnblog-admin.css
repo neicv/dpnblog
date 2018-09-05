@@ -13,3 +13,11 @@
     height: 400px;
     object-fit: cover;
 }
+
+.dpnblog-avatar{
+    display: block;
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}

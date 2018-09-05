@@ -57,7 +57,8 @@ class BlogController
             'blog' => $this->blog,
             'posts' => $posts,
             'total' => $total,
-            'page' => $page
+            'page' => $page,
+            'authorBox' => $this->blog->config('posts.author_box_show')
         ];
     }
 }
