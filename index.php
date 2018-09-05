@@ -105,7 +105,7 @@ return [
       'posts' => [
         'posts_per_page' => 10,
         'markdown_enabled' => true,
-        'posts_excerpt_limit' => 100
+        'author_box_show' => true,
       ],
 
       'permalink' => [

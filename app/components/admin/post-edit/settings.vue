@@ -11,16 +11,16 @@
             </div>
 
             <div class="uk-form-row">
-                <label class="uk-form-label">{{'Content' | trans}}</label>
+                <label class="uk-form-label">{{'Excerpt' | trans}}</label>
                 <div class="uk-form-controls">
-                    <v-editor id="post-content" :value.sync="post.content" :options="{markdown : post.data.markdown}"></v-editor>
+                    <v-editor id="post-content" :value.sync="post.excerpt" :options="{markdown : post.data.markdown , height:100}"></v-editor>
                 </div>
             </div>
 
             <div class="uk-form-row">
-                <label class="uk-form-label">{{'Excerpt' | trans}}</label>
+                <label class="uk-form-label">{{'Content' | trans}}</label>
                 <div class="uk-form-controls">
-                    <v-editor id="post-content" :value.sync="post.excerpt" :options="{markdown : post.data.markdown , height:200}"></v-editor>
+                    <v-editor id="post-content" :value.sync="post.content" :options="{markdown : post.data.markdown}"></v-editor>
                 </div>
             </div>
 

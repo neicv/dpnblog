@@ -87,6 +87,16 @@
                 </p>
             </div>
         </div>
+
+        <div class="uk-form-row">
+            <span class="uk-form-label">{{ 'Show of Author Box' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="config.posts.author_box_show"> {{ 'Enable Author Box' | trans }}</label>
+                </p>
+            </div>
+        </div>
+
     </div>
 
 </div>
