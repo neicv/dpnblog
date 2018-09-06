@@ -63,7 +63,7 @@ return [
             'controller' => [
                 'Pastheme\\Blog\\Controller\\BlogController'
             ]
-        ]
+        ],
     ],
 
     'permissions' => [

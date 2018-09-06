@@ -61,5 +61,60 @@ class BlogController
             'authorBox' => $this->blog->config('posts.author_box_show')
         ];
     }
+
+    /**
+    * @Route("/{id}" , name="id")
+    */
+    public function postAction($id = 0){
+
+        if (!$post = Post::where(['id = ?', 'status = ?', 'date < ?'], [$id, Post::STATUS_PUBLISHED, new \DateTime])->related(['user' , 'category'])->first()) {
+            App::abort(404, __('Post not found!'));
+        }
+
+        if (!$post->hasAccess(App::user())) {
+            App::abort(403, __('Insufficient User Rights.'));
+        }
+
+        $post->excerpt = App::content()->applyPlugins($post->excerpt, ['post' => $post, 'markdown' => $post->get('markdown')]);
+        $post->content = App::content()->applyPlugins($post->content, ['post' => $post, 'markdown' => $post->get('markdown')]);
+
+        $user = App::user();
+        $description = $post->get('meta.og:description');
+        if (!$description) {
+            $description = strip_tags($post->excerpt ?: $post->content);
+            $description = rtrim(mb_substr($description, 0, 150), " \t\n\r\0\x0B.,") . '...';
+        }
+
+        if ( $post->isPostStyle() == 'Default Post' || $post->isPostStyle() == 'Article Post' || $post->isPostStyle() == 'Document' ) {
+            $ogimage = $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [], 0) : false;
+        }
+
+        if ( $post->isPostStyle() == 'Video Content' ) {
+            $ogimage = !empty($post->get('video.image')) ? App::url()->getStatic($post->get('video.image')) : false;
+        }
+
+        if ( $post->isPostStyle() == 'Image Gallery' ) {
+            $ogimage = !empty($post->data['gallery'][0]['image']) ? App::url()->getStatic($post->data['gallery'][0]['image']) : false;
+        }
+
+        return [
+            '$view' => [
+                'title' => __($post->title),
+                'name' => 'dpnblog/post.php',
+                'og:type' => 'article',
+                'article:published_time' => $post->date->format(\DateTime::ATOM),
+                'article:modified_time' => $post->modified->format(\DateTime::ATOM),
+                'article:author' => $post->user->name,
+                'og:title' => $post->get('meta.og:title') ?: $post->title,
+                'og:description' => $description,
+                'og:image' =>  $ogimage
+            ],
+            'blog' => $this->blog,
+            'post' => $post,
+            'user' => $post->user,
+            'category' => $post->category
+        ];
+
+    }
 }
 ?>

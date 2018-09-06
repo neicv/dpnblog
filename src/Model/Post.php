@@ -122,29 +122,36 @@ class Post implements \JsonSerializable
         return $this->isPublished() && $this->hasAccess($user ?: App::user());
     }
 
-    public function getGravatar()
+    public function getGravatar($params = [])
     {
-        if (isset($this->user)) {
-            $email = $this->user->email;
-            $s = 200;
-            $d = 'mp';
-            $r = 'g';
-            $img = false;
-            $atts = array();
-            $url = 'https://www.gravatar.com/avatar/';
-            $url .= md5( strtolower( trim( $email ) ) );
-            $url .= "?s=$s&d=$d&r=$r";
-            if ( $img ) {
-                $url = '<img src="' . $url . '"';
-                foreach ( $atts as $key => $val )
-                    $url .= ' ' . $key . '="' . $val . '"';
-                $url .= ' />';
-            }
-            return $url;
-        }
-        return false;
-    }
+        $email = $this->user->email;
+        $params = array_merge([
+            'size'    => 50,
+            'default' => 'mm',
+            'rating'  => 'g',
+            'img'     => false,
+            'attrs'   => []
+        ], $params);
 
+        $url = sprintf('//gravatar.com/avatar/%s?s=%s&d=%s&r=%s', md5(strtolower(trim($email))), $params['size'], $params['default'], $params['rating']);
+
+        if ($params['img']) {
+
+            $attrs = array_merge([
+                'src'    => $url,
+                'width'  => $params['size'],
+                'height' => $params['size']
+            ], $params['attrs']);
+
+            $attrs = array_map(function($name, $value) {
+                return sprintf('%s="%s"', $name, htmlspecialchars($value));
+            }, array_keys($attrs), $attrs);
+
+            return '<img '.implode(' ', $attrs).'/>';
+        }
+
+        return $url;
+    }
 
     /**
     * {@inheritdoc}
