@@ -1,5 +1,5 @@
-<?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css') ?>
-<?= $view->script('dpnblog-posts' , 'dpnblog:app/bundle/dpnblog-posts.js' , 'vue') ?>
+<?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , ['uikit-slideshow']) ?>
+<?= $view->script('dpnblog-posts' , 'dpnblog:app/bundle/dpnblog-posts.js' , ['vue' , 'uikit-slideshow']) ?>
 <section id="posts">
     <?php
         switch($post->post_style){
@@ -20,8 +20,6 @@
         }
     ?>
     <article class="uk-margin">
-
-        <h1 class="uk-margin-small-bottom"><?= $post->title ?></h1>
 
         <div class="uk-comment-meta">
           <?= __('Posted in') ?>

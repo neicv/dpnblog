@@ -52,13 +52,13 @@
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <a class="dpnblog-readme"><?= __('Readme') ?></a>
+                            <a href="<?= $view->url('@dpnblog/id', ['id' => $post->id]) ?>" class="dpnblog-readme"><?= __('Readme') ?></a>
                         </div>
                     </div>
                 </sidebar>
                 <main class="uk-width-medium-5-6">
                     <h3 class="uk-h1 uk-margin-remove">
-                        <a class="uk-link-reset" href=""><?= $post->title ?></a>
+                        <a class="uk-link-reset" href="<?= $view->url('@dpnblog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a>
                     </h3>
                     <div class="uk-margin-remove">
                         <?= !empty($post->excerpt) ? $post->excerpt:$post->content ?>
