@@ -166,13 +166,13 @@
 	            $(function () {
 	                console.log('Running Tags System');
 	                $('#goodies-tag').tagEditor({
+	                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
 	                    autocomplete: {
 	                        delay: 1,
 	                        position: { collision: 'flip' },
 	                        source: ['ActionScript', 'AppleScript', 'Asp', 'Python', 'Ruby']
 	                    },
 	                    forceLowercase: true,
-	                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
 	                    placeholder: 'Enter tags ...'
 	                });
 	            });

@@ -173,13 +173,13 @@ export default {
             $(function() {
                 console.log('Running Tags System')
                 $('#goodies-tag').tagEditor({
+                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
                     autocomplete: {
                         delay: 1, // show suggestions immediately
                         position: { collision: 'flip' }, // automatic menu position up/down
                         source: ['ActionScript', 'AppleScript', 'Asp', 'Python', 'Ruby']
                     },
                     forceLowercase: true,
-                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
                     placeholder: 'Enter tags ...'
                 });
             });
