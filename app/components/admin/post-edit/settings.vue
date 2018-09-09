@@ -88,6 +88,12 @@
             </div>
 
             <div class="uk-form-row">
+                <div>
+                    <textarea id="goodies-tags"></textarea>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
                 <label for="form-status" class="uk-form-label">{{ 'Status' | trans }}</label>
                 <div class="uk-form-controls">
                     <select id="form-status" class="uk-width-1-1" v-model="post.status">
@@ -150,14 +156,34 @@ export default {
     data:function(){
         return {
             categories:'',
+            tags:'',
         }
     },
 
     ready:function(){
         this.getCategories();
+        this.getTags();
+    },
+
+    created:function(){
+        $(function() {
+            console.log('Running Tags System')
+            $('#goodies-tags').tagEditor({
+                placeholder: 'Enter tags ...',
+            });
+        });
     },
 
     methods:{
+        getTags:function(){
+            this.$http.get('admin/apidpnblog/tags/getalltags').then( res => {
+                //console.log(res.data.msg)
+            }, err => {
+                //console.log(res.data.msg)
+
+            } )
+        },
+
         getCategories:function(){
             this.$http.get('admin/apidpnblog/post/get-categories').then(res => {
                 if (res.data.status == 200) {

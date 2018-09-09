@@ -36,7 +36,6 @@
     "vue-style-loader": "^1.0.0"
   },
   "dependencies": {
-    "@voerro/vue-tagsinput": "^1.8.0",
     "vue-loader-v1": "^8.5.4"
   }
 }

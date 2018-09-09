@@ -27,21 +27,27 @@
                                     <div class="uk-text-center">
                                         <div class="dpnblog-avatar">
                                             <img src="<?= $post->getGravatar() ?>"/>
+
                                             <?php if ( $post->isPostStyle() == 'Default Post'): ?>
                                                 <span class="uk-icon-file"></span>
                                             <?php endif; ?>
+
                                             <?php if ( $post->isPostStyle() == 'Video Content'): ?>
                                                 <span class="uk-icon-youtube-play"></span>
                                             <?php endif; ?>
+
                                             <?php if ( $post->isPostStyle() == 'Article Post'): ?>
                                                 <span class="uk-icon-list-alt"></span>
                                             <?php endif; ?>
+
                                             <?php if ( $post->isPostStyle() == 'Image Gallery'): ?>
                                                 <span class="uk-icon-image"></span>
                                             <?php endif; ?>
+
                                             <?php if ( $post->isPostStyle() == 'Document'): ?>
                                                 <span class="uk-icon-mortar-board"></span>
                                             <?php endif; ?>
+
                                         </div>
                                         <h6 class="uk-margin-remove"><?= $post->user->username ?></h6>
                                         <p class="uk-text-small uk-margin-remove"><?= $post->user->email ?></p>
@@ -79,7 +85,6 @@
     <?php if ($total > 1) : ?>
         <ul class="uk-pagination">
 
-
             <?php for($i=1;$i<=$total;$i++): ?>
                 <?php if ($i <= ($pageIndex+$range) && $i >= ($pageIndex-$range)): ?>
 
@@ -107,7 +112,6 @@
 
                 <?php endif; ?>
             <?php endfor; ?>
-
 
         </ul>
     <?php endif ?>

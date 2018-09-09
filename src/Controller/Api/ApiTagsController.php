@@ -15,7 +15,7 @@ class ApiTagsController{
     * @Route(methods="GET")
     * @Request(csrf=true)
     */
-    public function getTagsAction(){
+    public function getAllTagsAction(){
         $back = new BackAnswer;
         try {
             $db = App::db()->createQueryBuilder();
