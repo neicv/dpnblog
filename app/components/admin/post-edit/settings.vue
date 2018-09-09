@@ -89,7 +89,7 @@
 
             <div class="uk-form-row">
                 <div>
-                    <textarea id="goodies-tags"></textarea>
+                    <textarea id="goodies-tag"></textarea>
                 </div>
             </div>
 
@@ -162,19 +162,29 @@ export default {
 
     ready:function(){
         this.getCategories();
-        this.getTags();
-    },
+        //this.getTags();
+        this.goodies();
 
-    created:function(){
-        $(function() {
-            console.log('Running Tags System')
-            $('#goodies-tags').tagEditor({
-                placeholder: 'Enter tags ...',
-            });
-        });
     },
 
     methods:{
+
+        goodies:function(){
+            $(function() {
+                console.log('Running Tags System')
+                $('#goodies-tag').tagEditor({
+                    autocomplete: {
+                        delay: 1, // show suggestions immediately
+                        position: { collision: 'flip' }, // automatic menu position up/down
+                        source: ['ActionScript', 'AppleScript', 'Asp', 'Python', 'Ruby']
+                    },
+                    forceLowercase: true,
+                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
+                    placeholder: 'Enter tags ...'
+                });
+            });
+        },
+
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/getalltags').then( res => {
                 //console.log(res.data.msg)
