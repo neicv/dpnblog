@@ -89,7 +89,7 @@
 
             <div class="uk-form-row">
                 <div>
-                    <textarea id="goodies-tag"></textarea>
+                    <textarea id="goodies-tag" v-model="post.tags"></textarea>
                 </div>
             </div>
 
@@ -162,9 +162,8 @@ export default {
 
     ready:function(){
         this.getCategories();
-        //this.getTags();
+        this.getTags();
         this.goodies();
-
     },
 
     methods:{
@@ -173,11 +172,8 @@ export default {
             $(function() {
                 console.log('Running Tags System')
                 $('#goodies-tag').tagEditor({
-                    initialTags: ['Hello', 'World', 'Example', 'Tags'],
                     autocomplete: {
-                        delay: 1, // show suggestions immediately
-                        position: { collision: 'flip' }, // automatic menu position up/down
-                        source: ['ActionScript', 'AppleScript', 'Asp', 'Python', 'Ruby']
+                        source: this.tags
                     },
                     forceLowercase: true,
                     placeholder: 'Enter tags ...'
@@ -187,11 +183,12 @@ export default {
 
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/getalltags').then( res => {
-                //console.log(res.data.msg)
-            }, err => {
-                //console.log(res.data.msg)
-
-            } )
+                var arrayObj = [];
+                for (var obj in res.data.data) {
+                    arrayObj.push(res.data.data[obj])
+                }
+                this.tags = arrayObj;
+            });
         },
 
         getCategories:function(){
