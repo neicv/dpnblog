@@ -30,7 +30,7 @@ class ApiTagsController{
             foreach ($query as $key => $value) {
                 array_push($data,$value['tags']);
             }
-            return $back->success( (object) $data , 'GET All Tags');
+            return $back->success( (array) $data , 'GET All Tags');
         } catch (\Exception $e) {
             return $back->return();
         }

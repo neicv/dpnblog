@@ -89,7 +89,7 @@
 
             <div class="uk-form-row">
                 <div>
-                    <textarea id="goodies-tag" v-model="post.tags"></textarea>
+                    <input type="text" class="uk-form-large" id="goodies-tag" v-model="post.tags">
                 </div>
             </div>
 
@@ -156,7 +156,7 @@ export default {
     data:function(){
         return {
             categories:'',
-            tags:'',
+            tags:[],
         }
     },
 
@@ -169,25 +169,22 @@ export default {
     methods:{
 
         goodies:function(){
-            $(function() {
-                console.log('Running Tags System')
-                $('#goodies-tag').tagEditor({
-                    autocomplete: {
-                        source: this.tags
-                    },
-                    forceLowercase: true,
-                    placeholder: 'Enter tags ...'
-                });
+            $('#goodies-tag').tagEditor({
+                initialTags: this.post.tags,
+                autocomplete: {
+                    delay:0,
+                    source: this.tags
+                },
+                forceLowercase: true,
+                placeholder: 'Enter tags ...'
             });
         },
 
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/getalltags').then( res => {
-                var arrayObj = [];
                 for (var obj in res.data.data) {
-                    arrayObj.push(res.data.data[obj])
+                    this.tags.push(res.data.data[obj])
                 }
-                this.tags = arrayObj;
             });
         },
 
