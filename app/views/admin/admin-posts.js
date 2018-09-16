@@ -73,9 +73,9 @@ module.exports = {
             });
         },
         toggleStatus: function (post) {
-            post.status = post.status === 2 ? 3 : 2;
-            this.save(post);
-        },
+           post.status = post.status === 2 ? 3 : 2;
+           this.save(post);
+       },
         copy: function() {
             if (!this.selected.length) {
                 return;

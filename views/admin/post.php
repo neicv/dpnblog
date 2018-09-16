@@ -70,7 +70,7 @@
                         'pk-icon-circle-success': post.status == 2 && post.published,
                         'pk-icon-circle-danger': post.status == 3,
                         'pk-icon-schedule': post.status == 2 && !post.published
-                        }" @click="toggleStatus(post)"></a>
+                    }" @click="toggleStatus(post)"></a>
                     </td>
                     <td>
                         <a :href="$url.route('admin/user/edit', { id: post.user_id })">{{ post.author }}</a>

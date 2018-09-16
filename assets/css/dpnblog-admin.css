@@ -45,3 +45,48 @@
     background-color:#f7f7f7;
     color:#6d6c6c;
 }
+
+.tm-badge-grid{
+    display: block;
+}
+.tm-badge-grid > span{
+    background:#3dc372;
+    color:white;
+    font-size: 10px;
+    padding:2px 5px;
+    margin:3px;
+}
+.tm-tags ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tm-tags ul li {
+	display: inline-block;
+	margin: 0 .3em .3em 0;
+	padding: 0;
+}
+.tm-tags ul li a {
+    text-align: center;
+	display: inline-block;
+	max-width: 100px;
+	height: 28px;
+	line-height: 28px;
+	padding: 0 1em;
+	background-color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #333;
+	font-size: 13px;
+	text-decoration: none;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.tm-tags ul li a:hover {
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	color: #fff;
+}

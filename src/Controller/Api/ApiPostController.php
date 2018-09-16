@@ -85,6 +85,7 @@ class ApiPostController
                     $post['slug'] = $post['slug'] . '-copy';
                 }
             }
+            ApiTagsController::checkedTags($post['tags']);
             $query->save($post);
             return $back->success( $query , __('Post Saved') );
         } catch (\Exception $e) {

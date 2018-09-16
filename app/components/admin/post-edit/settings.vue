@@ -89,7 +89,7 @@
 
             <div class="uk-form-row">
                 <div>
-                    <input type="text" class="uk-form-large" id="goodies-tag" v-model="post.tags">
+                    <input-tags :post.sync="post.tags" :tags.sync="tags"></input-tags>
                 </div>
             </div>
 
@@ -163,7 +163,6 @@ export default {
     ready:function(){
         this.getCategories();
         this.getTags();
-        this.goodies();
     },
 
     methods:{
@@ -182,9 +181,7 @@ export default {
 
         getTags:function(){
             this.$http.get('admin/apidpnblog/tags/getalltags').then( res => {
-                for (var obj in res.data.data) {
-                    this.tags.push(res.data.data[obj])
-                }
+                this.tags = res.data.data;
             });
         },
 
@@ -204,6 +201,7 @@ export default {
         blogImage:require('../../../components/admin/post-edit/post-style/image.vue'),
         blogVideo:require('../../../components/admin/post-edit/post-style/video.vue'),
         blogGallery: require('../../../components/admin/post-edit/post-style/gallery.vue'),
+        inputTags: require('../../../module/input-tags.vue')
     }
 
 }
