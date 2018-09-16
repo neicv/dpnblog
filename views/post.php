@@ -29,6 +29,14 @@
 
         <div class="uk-margin-small"><?= $post->content ?></div>
 
+        <div class="uk-margin">
+            <ul class="uk-subnav uk-text-small">
+                <?php foreach ($post->tags as $tag): ?>
+                    <li><a><?= $tag ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+
         <div class="uk-comment">
             <div class="uk-comment-header">
                 <img class="uk-comment-avatar" src="<?= $post->getGravatar() ?>">
