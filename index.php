@@ -61,7 +61,9 @@ return [
             'protected' => true,
             'frontpage' => true,
             'controller' => [
-                'Pastheme\\Blog\\Controller\\BlogController'
+                'Pastheme\\Blog\\Controller\\BlogController',
+                'Pastheme\\Blog\\Controller\\CategoryController',
+                'Pastheme\\Blog\\Controller\\TagController'
             ]
         ],
     ],
