@@ -31,8 +31,8 @@
 
         <div class="uk-margin">
             <ul class="uk-subnav uk-text-small">
-                <?php foreach ($post->tags as $tag): ?>
-                    <li><a href="<?= $view->url('@dpnblog/tags') ?>"><?= $tag ?></a></li>
+                <?php foreach ($post->tagsSerialize() as $tag): ?>
+                    <li><a href="<?= $view->url('@dpnblog/tags' , ['tags' => $tag->id ]) ?>"><?= $tag->tags ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>

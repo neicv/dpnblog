@@ -21,10 +21,9 @@ class TagController{
 
     /**
     * @Route("/tags/{tags}" , name="tags" , requirements={"tags" = "\d+"})
-    * @Request({"page": "int" , "tags":"string"})
+    * @Request({"page": "int"})
     */
     public function tagsAction($page = 1 , $tags = null){
-
         if (empty($tags)) {
             App::abort('404' , 'Not Found Tags');
         }
@@ -51,7 +50,7 @@ class TagController{
             $post->excerpt = App::content()->applyPlugins($post->excerpt, ['post' => $post, 'markdown' => $post->get('markdown')]);
             $post->content = App::content()->applyPlugins($post->content, ['post' => $post, 'markdown' => $post->get('markdown'), 'readmore' => true]);
         }
-
+        print_r($tagsQuery);
         return [
             '$view' => [
                 'title' => __('Blog'),

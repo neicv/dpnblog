@@ -155,7 +155,13 @@ class Post implements \JsonSerializable
     }
 
     public function tagsSerialize(){
-
+        $tagsSerialize = [];
+        foreach ($this->tags as $value) {
+            if ( $query = Tags::where('tags = ?' , [$value])->first() ) {
+                array_push($tagsSerialize , $query);
+            }
+        }
+        return $tagsSerialize;
     }
 
     /**
