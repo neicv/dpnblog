@@ -115,4 +115,10 @@ return [
         'custom' => '{slug}'
       ],
     ],
+
+    'events' => [
+        'view.scripts' => function ($event, $scripts) {
+            $scripts->register('link-blog', 'dpnblog:app/bundle/link-blog.js', '~panel-link');
+        }
+    ]
 ];

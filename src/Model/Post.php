@@ -5,6 +5,7 @@ use Pagekit\Database\ORM\ModelTrait;
 use Pagekit\System\Model\DataModelTrait;
 use Pagekit\User\Model\AccessModelTrait;
 use Pagekit\User\Model\User;
+use Pastheme\Blog\Model\Tags;
 
 /**
 * @Entity(tableClass="@dpnblog_post")
@@ -151,6 +152,10 @@ class Post implements \JsonSerializable
         }
 
         return $url;
+    }
+
+    public function tagsSerialize(){
+
     }
 
     /**

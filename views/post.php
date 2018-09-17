@@ -23,7 +23,7 @@
 
         <div class="uk-comment-meta">
           <?= __('Posted in') ?>
-          <a class="uk-text-bold" href=""><?= $post->category->title ?></a>
+          <a class="uk-text-bold" href="<?= $view->url('@dpnblog/category' , ['category' => $post->category_id]) ?>"><?= $post->category->title ?></a>
           <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format(\DateTime::ATOM).'" v-cloak>{{ "'.$post->date->format(\DateTime::ATOM).'" | date "longDate" }}</time>' ]) ?>
         </div>
 
@@ -32,7 +32,7 @@
         <div class="uk-margin">
             <ul class="uk-subnav uk-text-small">
                 <?php foreach ($post->tags as $tag): ?>
-                    <li><a><?= $tag ?></a></li>
+                    <li><a href="<?= $view->url('@dpnblog/tags') ?>"><?= $tag ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
