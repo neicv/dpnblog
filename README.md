@@ -14,12 +14,12 @@ Dpnblog V2.0* çalışmalarını devam ettiriyoruz, ancak siz yine de V1.X versi
 
 #### Neler Gelecek?
 
- - Categories
- - Tags
- - Post Style `default` , `video` , `gallery` , `document`
+ - ~~Categories~~
+ - ~~Tags~~
+ - ~~Post Style `default` , `video` , `gallery` , `document`~~
  - Social Share
- - Categories menu module and widget
- - Tags list widget
+ - ~~Categories menu module and widget~~
+ - ~~Tags list widget~~
  - Sitemap XML
  - ~~Comment System and Lıke~~  _This is a different module_ 
 
