@@ -68,6 +68,10 @@ return [
         ],
     ],
 
+    'widgets' => [
+        'widgets/categories.php'
+    ],
+
     'permissions' => [
       'dpnblog: manage own posts' => [
         'title' => 'Manage own posts',
@@ -104,16 +108,17 @@ return [
     ],
 
     'config' => [
-      'posts' => [
-        'posts_per_page' => 10,
-        'markdown_enabled' => true,
-        'author_box_show' => true,
-      ],
 
-      'permalink' => [
-        'type' => '',
-        'custom' => '{slug}'
-      ],
+        'posts' => [
+            'posts_per_page' => 10,
+            'markdown_enabled' => true,
+            'author_box_show' => true,
+        ],
+
+        'permalink' => [
+            'type' => '',
+            'custom' => '{slug}'
+        ],
     ],
 
     'events' => [

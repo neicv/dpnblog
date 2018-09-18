@@ -8,6 +8,7 @@ module.exports = [
           "admin-settings": "./app/views/admin/admin-settings.js",
           "dpnblog-posts": "./app/views/dpnblog-posts.js",
           "link-blog": "./app/components/link-blog.vue",
+          "categories-widget": "./app/components/widgets/categories.vue",
         },
         output: {
             filename: "./app/bundle/[name].js"

@@ -31,8 +31,9 @@ class TagController{
         if (!$tagsQuery = Tags::where('id = ?' , [$tags])->first() ) {
             App::abort('404' , 'Not Found Tags');
         }
+
         $query = Post::query();
-        $query->where(['status = :status', 'date < :date' , 'tags LIKE :tags'], ['status' => Post::STATUS_PUBLISHED, 'date' => new \DateTime , 'tags' => $tagsQuery->tags])->where(function ($query) {
+        $query->where(['status = :status', 'date < :date' , 'tags LIKE :tags'], ['status' => Post::STATUS_PUBLISHED, 'date' => new \DateTime , 'tags' => "%{$tagsQuery->tags}%"])->where(function ($query) {
             return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
         })->related('user' , 'category');
 
@@ -50,7 +51,7 @@ class TagController{
             $post->excerpt = App::content()->applyPlugins($post->excerpt, ['post' => $post, 'markdown' => $post->get('markdown')]);
             $post->content = App::content()->applyPlugins($post->content, ['post' => $post, 'markdown' => $post->get('markdown'), 'readmore' => true]);
         }
-        print_r($tagsQuery);
+
         return [
             '$view' => [
                 'title' => __('Blog'),
