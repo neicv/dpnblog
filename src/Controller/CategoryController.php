@@ -55,13 +55,16 @@ class CategoryController{
         return [
             '$view' => [
                 'title' => __('Blog'),
-                'name' => 'dpnblog/tags.php',
+                'name' => 'dpnblog/categories.php',
                 'link:feed' => [
                     'rel' => 'alternate',
                     'href' => App::url('@dpnblog/feed'),
                     'title' => App::module('system/site')->config('title'),
                     'type' => App::feed()->create($this->blog->config('feed.type'))->getMIMEType()
-                ]
+                ],
+                'og:type' => 'article',
+                'og:title' => $categoryQuery->data['meta']['og:title'] ?: $categoryQuery->title,
+                'og:description' => $categoryQuery->data['meta']['og:description'] ?: '',
             ],
             'blog' => $this->blog,
             'posts' => $posts,

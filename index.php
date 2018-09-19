@@ -69,7 +69,8 @@ return [
     ],
 
     'widgets' => [
-        'widgets/categories.php'
+        'widgets/categories.php',
+        'widgets/tags.php'
     ],
 
     'permissions' => [

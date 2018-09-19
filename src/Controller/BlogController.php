@@ -52,7 +52,14 @@ class BlogController
                     'href' => App::url('@dpnblog/feed'),
                     'title' => App::module('system/site')->config('title'),
                     'type' => App::feed()->create($this->blog->config('feed.type'))->getMIMEType()
-                ]
+                ],
+                'og:type' => 'article',
+                'article:published_time' => $post->date->format(\DateTime::ATOM),
+                'article:modified_time' => $post->modified->format(\DateTime::ATOM),
+                'article:author' => $post->user->name,
+                'og:title' => $post->get('meta.og:title') ?: $post->title,
+                'og:description' => $description,
+                'og:image' =>  $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [], 0) : false
             ],
             'blog' => $this->blog,
             'posts' => $posts,
