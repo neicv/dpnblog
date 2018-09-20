@@ -37,7 +37,7 @@
             </ul>
         </div>
 
-        <div class="uk-comment">
+        <div class="uk-comment uk-margin-bottom">
             <div class="uk-comment-header">
                 <img class="uk-comment-avatar" src="<?= $post->getGravatar() ?>">
                 <h4 class="uk-comment-title"><?= $user->name ?></h4>
@@ -46,6 +46,8 @@
                 </div>
             </div>
         </div>
+
+        <?= $view->render('dpnblog/components/social-share.php'); ?>
 
     </article>
 </section
