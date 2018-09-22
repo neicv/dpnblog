@@ -2,7 +2,7 @@
     <ul class="uk-nav uk-nav-default">
         <?php foreach ($categories as $category): ?>
             <li>
-                <a href="<?= $view->url('@dpnblog/category' , ['category' => $category->id]) ?>"><?= $category->title ?></a>
+                <a href="<?= $view->url('@dpnblog/category/id' , ['id' => $category->id]) ?>"><?= $category->title ?></a>
             </li>
         <?php endforeach; ?>
     </ul>

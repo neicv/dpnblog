@@ -1,7 +1,5 @@
 <?php
-
 namespace Pastheme\Blog\Controller\Admin;
-
 use Pagekit\Application as App;
 
 /**

@@ -20,15 +20,15 @@ class TagController{
     }
 
     /**
-    * @Route("/tags/{tags}" , name="tags" , requirements={"tags" = "\d+"})
+    * @Route("/tags/{id}" , name="tags/id" , requirements={"id" = "\d+"})
     * @Request({"page": "int"})
     */
-    public function tagsAction($page = 1 , $tags = null){
-        if (empty($tags)) {
+    public function tagsAction($page = 1 , $id = null){
+        if (empty($id)) {
             App::abort('404' , 'Not Found Tags');
         }
 
-        if (!$tagsQuery = Tags::where('id = ?' , [$tags])->first() ) {
+        if (!$tagsQuery = Tags::where('id = ?' , [$id])->first() ) {
             App::abort('404' , 'Not Found Tags');
         }
 

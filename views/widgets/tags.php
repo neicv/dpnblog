@@ -2,7 +2,7 @@
     <ul class="uk-grid uk-grid-small uk-text-small">
         <?php foreach ($tags as $tag): ?>
             <li>
-                <a href="<?= $view->url('@dpnblog/tags' , ['tags' => $tag->id ]) ?>"><?= $tag->tags ?></a>
+                <a href="<?= $view->url('@dpnblog/tags/id' , ['id' => $tag->id ]) ?>"><?= $tag->tags ?></a>
             </li>
         <?php endforeach; ?>
     </ul>

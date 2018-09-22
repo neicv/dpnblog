@@ -1,13 +1,13 @@
 <?php
 namespace Pastheme\Blog;
 use Pagekit\Application as App;
-use Pastheme\Blog\Model\Category;
+use Pastheme\Blog\Model\Tags;
 use Pagekit\Routing\ParamsResolverInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
-class CategoryUrlResolver implements ParamsResolverInterface
+class TagsUrlResolver implements ParamsResolverInterface
 {
-    const CACHE_KEY = 'dpnblogcategory.routing';
+    const CACHE_KEY = 'dpnblogtags.routing';
 
     /**
      * @var bool
@@ -37,7 +37,7 @@ class CategoryUrlResolver implements ParamsResolverInterface
         }
 
         if (!isset($parameters['slug'])) {
-            App::abort(404, 'Category not found.');
+            App::abort(404, 'Tags not found.');
         }
 
         $slug = $parameters['slug'];
@@ -51,8 +51,8 @@ class CategoryUrlResolver implements ParamsResolverInterface
 
         if (!$id) {
 
-            if (!$category = Category::where(compact('slug'))->first()) {
-                App::abort(404, 'Category not found.');
+            if (!$category = Tags::where(compact('slug'))->first()) {
+                App::abort(404, 'Tags not found.');
             }
 
             $this->addCache($category);
@@ -72,8 +72,8 @@ class CategoryUrlResolver implements ParamsResolverInterface
 
         if (!isset($this->cacheEntries[$id])) {
 
-            if (!$category = Category::where(compact('id'))->first()) {
-                throw new RouteNotFoundException('Category not found!');
+            if (!$category = Tags::where(compact('id'))->first()) {
+                throw new RouteNotFoundException('Tags not found!');
             }
 
             $this->addCache($category);

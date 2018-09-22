@@ -34,7 +34,7 @@ module.exports = {
 
     filters: {
         link: function (category) {
-            return '@dpnblog/category?category='+category.id;
+            return '@dpnblog/category/id?id='+category.id;
         }
     },
 

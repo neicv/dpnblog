@@ -3,6 +3,7 @@ use Pastheme\Blog\Content\ReadmorePlugin;
 use Pastheme\Blog\Event\PostListener;
 use Pastheme\Blog\Event\RouteListener;
 use Pastheme\Blog\Event\CategoryRouteListener;
+use Pastheme\Blog\Event\TagsRouteListener;
 
 return [
     'name' => 'dpnblog',
@@ -128,6 +129,7 @@ return [
             $app->subscribe(
                 new RouteListener,
                 new CategoryRouteListener,
+                new TagsRouteListener,
                 new PostListener()
             );
         },

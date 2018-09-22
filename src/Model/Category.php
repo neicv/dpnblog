@@ -5,15 +5,12 @@ use Pagekit\Application as App;
 use Pagekit\User\Model\User;
 use Pagekit\Database\ORM\ModelTrait;
 use Pagekit\System\Model\DataModelTrait;
-use Pagekit\User\Model\AccessModelTrait;
-
-
 /**
 * @Entity(tableClass="@dpnblog_category")
 */
 class Category implements \JsonSerializable
 {
-      use ModelTrait , DataModelTrait , AccessModelTrait;
+      use ModelTrait , DataModelTrait;
 
     /* Post draft status. */
     const STATUS_DRAFT = 0;
@@ -78,7 +75,7 @@ class Category implements \JsonSerializable
 
     public function isAccessible(User $user = null)
     {
-        return $this->isPublished() && $this->hasAccess($user ?: App::user());
+        return $this->isPublished();
     }
 
     /**
@@ -97,7 +94,7 @@ class Category implements \JsonSerializable
         $data = [];
         if ( $this->status ==  self::STATUS_PUBLISHED ) {
             $data = [
-                'url' => App::url('@dpnblog/category' , ['category' => $this->id], 'base')
+                'url' => App::url('@dpnblog/category/id' , ['id' => $this->id], 'base')
             ];
         }
         return $this->toArray($data);

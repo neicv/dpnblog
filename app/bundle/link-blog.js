@@ -101,7 +101,7 @@
 
 	    filters: {
 	        link: function link(category) {
-	            return '@dpnblog/category?category=' + category.id;
+	            return '@dpnblog/category/id?id=' + category.id;
 	        }
 	    },
 

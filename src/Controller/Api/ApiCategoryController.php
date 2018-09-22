@@ -132,10 +132,10 @@ class ApiCategoryController
   {
     $backanswer = new BackAnswer;
     foreach ($data as $value) {
-      if ($query = Category::find($value)) {
-        $query->status = $status;
-        $query->save();
-      }
+        if ($query = Category::find($value)) {
+            $query->status = $status;
+            $query->save();
+        }
     }
     return $backanswer->success(array() , 'Update');
   }

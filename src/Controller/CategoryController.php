@@ -20,17 +20,17 @@ class CategoryController{
     }
 
     /**
-    * @Route("/category/{category}" , name="category" , requirements={"category" = "\d+"})
-    * @Request({"page": "int" , "category":"string"})
+    * @Route("/category/{id}" , name="category/id" , requirements={"id" = "\d+"})
+    * @Request({"id":"int" , "page": "int"})
     */
-    public function categoryAction($page = 1 , $category = null){
+    public function categoryAction($id = null , $page = 1){
 
-        if (empty($category)) {
-            App::abort('404' , 'Not Found Tags');
+        if (empty($id)) {
+            App::abort('404' , 'Not Found Category');
         }
 
-        if (!$categoryQuery = Category::where('id = ?' , [$category])->first() ) {
-            App::abort('404' , 'Not Found Tags');
+        if (!$categoryQuery = Category::where('id = ?' , [$id])->first() ) {
+            App::abort('404' , 'Not Found Category');
         }
         $query = Post::query();
         $query->where(['status = :status', 'date < :date' , 'category_id = :category'], ['status' => Post::STATUS_PUBLISHED, 'date' => new \DateTime , 'category' => $categoryQuery->id])->where(function ($query) {

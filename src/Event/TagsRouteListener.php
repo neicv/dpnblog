@@ -1,26 +1,26 @@
 <?php
 namespace Pastheme\Blog\Event;
 use Pagekit\Application as App;
-use Pastheme\Blog\CategoryUrlResolver;
+use Pastheme\Blog\TagsUrlResolver;
 use Pagekit\Event\EventSubscriberInterface;
 
-class CategoryRouteListener implements EventSubscriberInterface
+class TagsRouteListener implements EventSubscriberInterface
 {
     /**
      * Adds cache breaker to router.
      */
     public function onAppRequest()
     {
-        App::router()->setOption('dpnblog.permalink', CategoryUrlResolver::getPermalink());
+        App::router()->setOption('dpnblog.permalink', TagsUrlResolver::getPermalink());
     }
 
     /**
      * Registers permalink route alias.
      */
-    public function onCategoryRoute($event, $route)
+    public function onTagsRoute($event, $route)
     {
-        if ($route->getName() == '@dpnblog/category/id' && CategoryUrlResolver::getPermalink()) {
-            App::routes()->alias(dirname($route->getPath()).'/'.ltrim(CategoryUrlResolver::getPermalink(), '/'), '@dpnblog/category/id', ['_resolver' => 'Pastheme\Blog\CategoryUrlResolver']);
+        if ($route->getName() == '@dpnblog/tags/id' && TagsUrlResolver::getPermalink()) {
+            App::routes()->alias(dirname($route->getPath()).'/'.ltrim(TagsUrlResolver::getPermalink(), '/'), '@dpnblog/tags/id', ['_resolver' => 'Pastheme\Blog\TagsUrlResolver']);
         }
 
     }
@@ -30,7 +30,7 @@ class CategoryRouteListener implements EventSubscriberInterface
      */
     public function clearCache()
     {
-        App::cache()->delete(CategoryUrlResolver::CACHE_KEY);
+        App::cache()->delete(TagsUrlResolver::CACHE_KEY);
     }
 
     /**
@@ -40,7 +40,7 @@ class CategoryRouteListener implements EventSubscriberInterface
     {
         return [
             'request'                 => ['onAppRequest', 130],
-            'route.configure'         => 'onCategoryRoute',
+            'route.configure'         => 'onTagsRoute',
             'model.post.saved'        => 'clearCache',
             'model.post.deleted'      => 'clearCache'
         ];
