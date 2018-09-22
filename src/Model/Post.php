@@ -57,7 +57,7 @@ class Post implements \JsonSerializable
     */
     public $category;
 
-  /** @var array */
+    /** @var array */
     protected static $properties = [
       'author' => 'getAuthor',
       'categories' => 'getCategory',
@@ -74,6 +74,10 @@ class Post implements \JsonSerializable
             self::STATUS_DRAFT            => __('Draft'),
             self::STATUS_PENDING_REVIEW   => __('Pending Review')
         ];
+    }
+
+    public function getUrl(){
+        return App::url()->base(0).App::url('@dpnblog/id', ['id' => $this->id]);
     }
 
     public static function getPostStyle()

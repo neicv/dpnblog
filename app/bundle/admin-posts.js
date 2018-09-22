@@ -119,8 +119,12 @@
 	            });
 	        },
 	        toggleStatus: function (post) {
-	           post.status = post.status === 2 ? 3 : 2;
-	           this.save(post);
+	            post.status = post.status === 2 ? 3 : 2;
+	            this.$http.post('admin/apidpnblog/post/status-change' , {data:post}).then( res => {
+	               if (res.data.status == 200) {
+	                   this.$notify('Change Status');
+	               }
+	            })
 	       },
 	        copy: function() {
 	            if (!this.selected.length) {

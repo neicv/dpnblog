@@ -172,5 +172,19 @@ public function copyAction($ids = [])
         return ['message' => 'success'];
     }
 
+    /**
+    * @Route("/status-change" , methods="POST")
+    * @Request({"data":"array"} , csrc=true)
+    */
+    public function statusChangeAction($data = []){
+        if (empty($data)) {
+            return ['status' => 400];
+        }
+        $query = Post::find($data['id']);
+        unset($data['id']);
+        $query->save($data);
+        return ['status' => 200];
+    }
+
 }
 ?>

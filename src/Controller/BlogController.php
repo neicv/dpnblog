@@ -112,7 +112,7 @@ class BlogController
             'blog' => $this->blog,
             'post' => $post,
             'user' => $post->user,
-            'category' => $post->category
+            'category' => $post->category,
         ];
 
     }

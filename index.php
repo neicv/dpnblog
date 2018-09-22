@@ -123,6 +123,15 @@ return [
     ],
 
     'events' => [
+
+        'boot' => function($event , $app) {
+            $app->subscribe(
+                new RouteListener,
+                new CategoryRouteListener,
+                new PostListener()
+            );
+        },
+
         'view.scripts' => function ($event, $scripts) {
             $scripts->register('link-blog', 'dpnblog:app/bundle/link-blog.js', '~panel-link');
         }

@@ -49,7 +49,11 @@
               }" @click="status(category.id , category.status)"></a></div>
             <div class="pk-table-width-100 uk-text-center" v-html="category.data.meta['og:title'] | lengthMeta"></div>
             <div class="pk-table-width-100 uk-text-center" v-html="category.data.meta['og:description'] | lengthDesc"></div>
-            <div class="pk-table-width-100 uk-text-center">{{ 'URL' | trans}}</div>
+            <div class="pk-table-width-100 uk-text-center">
+                <a target="_blank" v-if="category.accessible && category.url" :href="this.$url.route(category.url.substr(1))">{{ decodeURI(category.url) }}</a>
+                <span v-if="!category.accessible && category.url">{{ decodeURI(category.url) }}</span>
+                <span v-if="!category.url">{{ 'Disabled' | trans }}</span>
+            </div>
           </div>
         </li>
       </ul>
@@ -104,7 +108,7 @@
               <button class="uk-button uk-button-primary" type="submit" v-else>{{'Save' | trans}}</button>
             </div>
 
-          </form>
+         </form>
       </div>
     </div>
   </aside>
