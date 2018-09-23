@@ -1,4 +1,5 @@
 
+
 ![dpnblogBanner](https://pastheme.com/storage/modules/dpnblog.svg)
 
 |||
@@ -17,11 +18,12 @@ Dpnblog V2.0* çalışmalarını devam ettiriyoruz, ancak siz yine de V1.X versi
  - ~~Categories~~
  - ~~Tags~~
  - ~~Post Style `default` , `video` , `gallery` , `document`~~
- - Social Share
+ - ~~Social Share~~
  - ~~Categories menu module and widget~~
  - ~~Tags list widget~~
- - Sitemap XML
+ - ~~Sitemap XML~~ `After`
  - ~~Comment System and Lıke~~  _This is a different module_ 
 
-#### Post style page video
-http://www.fubiz.net/en/tv/jains-last-video-is-a-remarkable-come-back-2/
+[Transifex](https://www.transifex.com/pastheme/advanced-blog-dpnblog)  The language files of this project are edited with transifex. If you can contribute to this translation.
+
+
