@@ -72,7 +72,7 @@ return [
     'enable' => function ($app) {},
     'disable' => function ($app) {},
     'updates' => [
-        '2.0.0' => function ($app) {
+        '2.0.1' => function ($app) {
             $util = $app['db']->getUtility();
 			if ($util->tableExists('@dpnblog_post')) {
 				$table =  $util->listTableDetails('@dpnblog_post');
@@ -87,13 +87,6 @@ return [
             if ($util->tableExists('@dpnblog_like')) {
                 $util->dropTable('@dpnblog_like');
             }
-
-            if ($util->tableExists('@dpnblog_comment')) {
-                $util->dropTable('@dpnblog_comment');
-            }
-
-            $util->migrate();
-
         }
     ]
 ];
