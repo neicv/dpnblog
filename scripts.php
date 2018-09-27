@@ -82,7 +82,23 @@ return [
 					$util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
 					$app['db']->executeQuery('UPDATE @dpnblog_post SET status = 0');
 				}
+                if ($table->hasColumn('comment_status')) {
+                    $table->dropColumn('comment_status');
+                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
+                }
+                if ($table->hasColumn('comment_count')) {
+                    $table->dropColumn('comment_count');
+                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
+                }
 			}
+
+            if ($util->tableExists('@dpnblog_category')) {
+                $table = $util->listTableDetails('@dpnblog_category');
+                if ($table->hasColumn('sub_category')) {
+                    $table->dropColumn('sub_category');
+                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_category'), $table));
+                }
+            }
 
             if ($util->tableExists('@dpnblog_like')) {
                 $util->dropTable('@dpnblog_like');
