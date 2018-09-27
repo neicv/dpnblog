@@ -28,7 +28,7 @@ module.exports = {
 
   filters:{
 
-    lengthMeta:function(val )
+    lengthMeta:function(val)
     {
       if ( val.length > 70 ) {
         return '<span class="uk-badge uk-badge-notification uk-badge-danger">Too Much ('+val.length+')</span>';

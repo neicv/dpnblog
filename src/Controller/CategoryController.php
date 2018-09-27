@@ -63,8 +63,8 @@ class CategoryController{
                     'type' => App::feed()->create($this->blog->config('feed.type'))->getMIMEType()
                 ],
                 'og:type' => 'article',
-                'og:title' => $categoryQuery->data['meta']['og:title'] ?: $categoryQuery->title,
-                'og:description' => $categoryQuery->data['meta']['og:description'] ?: '',
+                'og:title' => !empty($categoryQuery->data['meta']['og:title']) ? $categoryQuery->data['meta']['og:title']:$categoryQuery->title,
+                'og:description' => !empty($categoryQuery->data['meta']['og:description']) ?  $categoryQuery->data['meta']['og:description']:'',
             ],
             'blog' => $this->blog,
             'posts' => $posts,
