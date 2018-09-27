@@ -39,9 +39,6 @@ class Category implements \JsonSerializable
     /** @Column(type="json_array") */
     public $data;
 
-    /** @Column(type="simple_array") **/
-    public $sub_category;
-
     /**
     * @HasMany(targetEntity="Post", keyFrom="id", keyTo="category_id")
     */

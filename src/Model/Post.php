@@ -101,13 +101,6 @@ class Post implements \JsonSerializable
         return isset($statuses[$this->status]) ? $statuses[$this->status] : __('Unknown');
     }
 
-    public function isCommentable()
-    {
-        $blog = App::module('dpnblog');
-        $autoclose = $blog->config('comments.autoclose') ? $blog->config('comments.autoclose_days') : 0;
-        return $this->comment_status && (!$autoclose or $this->date >= new \DateTime("-{$autoclose} day"));
-    }
-
     public function getAuthor()
     {
         return $this->user ? $this->user->username : null;
