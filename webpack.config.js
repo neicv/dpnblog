@@ -7,7 +7,7 @@ module.exports = [
           "admin-post-edit": "./app/views/admin/admin-post-edit.js",
           "admin-settings": "./app/views/admin/admin-settings.js",
           "dpnblog-posts": "./app/views/dpnblog-posts.js",
-          "link-blog": "./app/components/link-blog.vue",
+          "link-dpnblog": "./app/components/link-blog.vue",
           "categories-widget": "./app/components/widgets/categories.vue",
           "tags-widget": "./app/components/widgets/tags.vue",
         },

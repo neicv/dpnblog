@@ -135,7 +135,7 @@ return [
         },
 
         'view.scripts' => function ($event, $scripts) {
-            $scripts->register('link-blog', 'dpnblog:app/bundle/link-blog.js', '~panel-link');
+            $scripts->register('link-dpnblog', 'dpnblog:app/bundle/link-dpnblog.js', '~panel-link');
         }
     ]
 ];
