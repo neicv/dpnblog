@@ -1,6 +1,7 @@
 <?php
 use Doctrine\DBAL\Schema\Comparator;
 use Pastheme\Blog\Model\Category;
+use Pastheme\Blog\Model\Post;
 return [
 
     'install' => function ($app) {
@@ -105,7 +106,8 @@ return [
                 $util->dropTable('@dpnblog_like');
             }
         },
-        '2.0.2' => function () {
+        '2.0.2' => function ($app) {
+            
             $categories = Category::findAll();
             foreach ($categories as $category) {
                 if ( !isset($category->data['meta']['og:title']) || !isset($category->data['meta']['og:description']) ) {
@@ -117,6 +119,7 @@ return [
                     }
                     $category->save();
                 }
+
             }
             $util = $app['db']->getUtility();
             if ($util->tableExists('@dpnblog_tags') === false) {
@@ -129,6 +132,15 @@ return [
                     $table->setPrimaryKey(['id']);
                 });
             }
+
+            if ($util->tableExists('@dpnblog_post')) {
+                $posts = Post::findAll();
+                foreach ($posts as $post) {
+                    $post->tags = [];
+                    $post->save();
+                }
+            }
+
         }
     ]
 ];
