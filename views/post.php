@@ -49,5 +49,7 @@
 
         <?= $view->render('dpnblog/components/social-share.php'); ?>
 
+        <?= $view->render('dpnblog/components/comments.php'); ?>
+
     </article>
 </section
