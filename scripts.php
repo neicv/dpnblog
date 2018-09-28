@@ -118,6 +118,17 @@ return [
                     $category->save();
                 }
             }
+            $util = $app['db']->getUtility();
+            if ($util->tableExists('@dpnblog_tags') === false) {
+                $util->createTable('@dpnblog_tags' , function($table){
+                    $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+                    $table->addColumn('tags' , 'string' , ['length' => 100 , 'notnull' => false]);
+                    $table->addColumn('slug', 'string', ['length' => 255]);
+                    $table->addColumn('user_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
+                    $table->addColumn('date', 'datetime');
+                    $table->setPrimaryKey(['id']);
+                });
+            }
         }
     ]
 ];
