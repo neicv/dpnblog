@@ -109,6 +109,10 @@ class BlogController
                 'og:description' => $description,
                 'og:image' =>  $ogimage
             ],
+            '$data' => [
+                'id' => $post->id,
+                'type' => 'post'
+            ],
             'blog' => $this->blog,
             'post' => $post,
             'user' => $post->user,

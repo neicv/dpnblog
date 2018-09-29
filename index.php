@@ -14,7 +14,7 @@ return [
         'label' => 'Blog',
         'icon'  => 'dpnblog:icon.svg',
         'url'   => '@dpnblog/posts',
-        'priority' => 110
+        'priority' => 110,
       ],
       'dpnblog: posts' => [
         'parent'=> 'dpnblog',

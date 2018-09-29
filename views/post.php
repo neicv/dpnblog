@@ -1,6 +1,6 @@
 <?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , ['uikit-slideshow']) ?>
 <?= $view->script('dpnblog-posts' , 'dpnblog:app/bundle/dpnblog-posts.js' , ['vue' , 'uikit-slideshow']) ?>
-<section id="posts">
+<section>
     <?php
         switch($post->post_style){
             case 1:
@@ -19,7 +19,7 @@
                 echo $view->render('dpnblog/post_style/default.php');
         }
     ?>
-    <article class="uk-margin">
+    <article id="posts" class="uk-margin">
 
         <div class="uk-comment-meta">
           <?= __('Posted in') ?>
@@ -46,10 +46,7 @@
                 </div>
             </div>
         </div>
-
         <?= $view->render('dpnblog/components/social-share.php'); ?>
-
-        <?= $view->render('dpnblog/components/comments.php'); ?>
-
     </article>
-</section
+    <?= $view->render('dpnblog/components/comments.php'); ?>
+</section>
