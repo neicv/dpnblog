@@ -27,7 +27,14 @@ return [
         'label' => _('Categories'),
         'url'   => '@dpnblog/categories',
         'active'=> '@dpnblog/categories*'
-    ],
+      ],
+      'dpnblog: comments' => [
+        'label' => 'Comments',
+        'parent' => 'dpnblog',
+        'url' => '@dpnblog/comment',
+        'active' => '@dpnblog/comment*',
+        'access' => 'dpnblog: manage comments'
+      ],
       'dpnblog: settings' => [
         'parent'=> 'dpnblog',
         'label' => _('Settings'),
@@ -43,6 +50,7 @@ return [
           'Pastheme\\Blog\\Controller\\Admin\\PostController',
           'Pastheme\\Blog\\Controller\\Admin\\CategoryController',
           'Pastheme\\Blog\\Controller\\Admin\\SettingsController',
+          'Pastheme\\Blog\\Controller\\Admin\\CommentsController'
         ]
       ],
       '/apidpnblog' => [
@@ -51,6 +59,7 @@ return [
           'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController',
           'Pastheme\\Blog\\Controller\\Api\\ApiPostController',
           'Pastheme\\Blog\\Controller\\Api\\ApiTagsController',
+          'Pastheme\\Blog\\Controller\\Api\\ApiCommentsController'
         ]
       ]
     ],
@@ -115,6 +124,22 @@ return [
             'posts_per_page' => 10,
             'markdown_enabled' => true,
             'author_box_show' => true,
+        ],
+
+        'comments' => [
+            'autoclose' => false,
+            'autoclose_days' => 14,
+            'blacklist' => '',
+            'comments_per_page' => 20,
+            'gravatar' => true,
+            'max_depth' => 5,
+            'maxlinks' => 2,
+            'minidle' => 120,
+            'nested' => true,
+            'notifications' => 'always',
+            'order' => 'ASC',
+            'replymail' => true,
+            'require_email' => true
         ],
 
         'permalink' => [

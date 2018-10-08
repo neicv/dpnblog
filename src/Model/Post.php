@@ -40,6 +40,10 @@ class Post implements \JsonSerializable
     public $excerpt = '';
     /** @Column(type="smallint") */
     public $status;
+    /** @Column(type="boolean") */
+    public $comment_status;
+    /** @Column(type="integer") */
+    public $comment_count = 0;
     /** @Column(type="datetime") */
     public $modified;
     /** @Column(type="integer") */
@@ -78,6 +82,13 @@ class Post implements \JsonSerializable
 
     public function getUrl(){
         return App::url()->base(0).App::url('@dpnblog/id', ['id' => $this->id]);
+    }
+
+    public function isCommentable()
+    {
+        $blog      = App::module('dpnblog');
+        $autoclose = $blog->config('comments.autoclose') ? $blog->config('comments.autoclose_days') : 0;
+        return $this->comment_status && (!$autoclose or $this->date >= new \DateTime("-{$autoclose} day"));
     }
 
     public static function getPostStyle()

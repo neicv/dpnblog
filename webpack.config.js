@@ -10,6 +10,8 @@ module.exports = [
           "link-dpnblog": "./app/components/link-blog.vue",
           "categories-widget": "./app/components/widgets/categories.vue",
           "tags-widget": "./app/components/widgets/tags.vue",
+          "comment-index": "./app/views/admin/comment-index.js",
+          "comments": "./app/views/comments.js",
         },
         output: {
             filename: "./app/bundle/[name].js"

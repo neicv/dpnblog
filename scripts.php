@@ -16,6 +16,8 @@ return [
                 $table->addColumn('date', 'datetime', ['notnull' => false]);
                 $table->addColumn('modified', 'datetime');
                 $table->addColumn('content', 'text');
+                $table->addColumn('comment_status', 'boolean', ['default' => false]);
+                $table->addColumn('comment_count', 'integer', ['default' => 0]);
                 $table->addColumn('excerpt', 'text' , ['notnull' => false]);
                 $table->addColumn('data', 'json_array', ['notnull' => false]);
                 $table->addColumn('roles', 'simple_array', ['notnull' => false]);
@@ -53,6 +55,29 @@ return [
                 $table->setPrimaryKey(['id']);
             });
         }
+
+        if ($util->tableExists('@dpnblog_comment') === false) {
+            $util->createTable('@dpnblog_comment', function ($table) {
+                $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+                $table->addColumn('parent_id', 'integer', ['unsigned' => true, 'length' => 10]);
+                $table->addColumn('post_id', 'integer', ['unsigned' => true, 'length' => 10]);
+                $table->addColumn('user_id', 'string', ['length' => 255]);
+                $table->addColumn('author', 'string', ['length' => 255]);
+                $table->addColumn('email', 'string', ['length' => 255]);
+                $table->addColumn('url', 'string', ['length' => 255, 'notnull' => false]);
+                $table->addColumn('ip', 'string', ['length' => 255]);
+                $table->addColumn('created', 'datetime');
+                $table->addColumn('content', 'text');
+                $table->addColumn('status', 'smallint');
+                $table->setPrimaryKey(['id']);
+                $table->addIndex(['author'], '@DPNBLOG_COMMENT_AUTHOR');
+                $table->addIndex(['created'], '@DPNBLOG_COMMENT_CREATED');
+                $table->addIndex(['status'], '@DPNBLOG_COMMENT_STATUS');
+                $table->addIndex(['post_id'], '@DPNBLOG_COMMENT_POST_ID');
+                $table->addIndex(['post_id', 'status'], '@DPNBLOG_COMMENT_POST_ID_STATUS');
+            });
+        }
+
     },
 
     'uninstall' => function ($app) {
@@ -70,8 +95,35 @@ return [
             $util->dropTable('@dpnblog_tags');
         }
 
+        if ($util->tableExists('@dpnblog_comments')) {
+            $util->dropTable('@dpnblog_comments');
+        }
+
     },
-    'enable' => function ($app) {},
+    'enable' => function ($app) {
+        $util = $app['db']->getUtility();
+        if ($util->tableExists('@dpnblog_comment') === false) {
+            $util->createTable('@dpnblog_comment', function ($table) {
+                $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+                $table->addColumn('parent_id', 'integer', ['unsigned' => true, 'length' => 10]);
+                $table->addColumn('post_id', 'integer', ['unsigned' => true, 'length' => 10]);
+                $table->addColumn('user_id', 'string', ['length' => 255]);
+                $table->addColumn('author', 'string', ['length' => 255]);
+                $table->addColumn('email', 'string', ['length' => 255]);
+                $table->addColumn('url', 'string', ['length' => 255, 'notnull' => false]);
+                $table->addColumn('ip', 'string', ['length' => 255]);
+                $table->addColumn('created', 'datetime');
+                $table->addColumn('content', 'text');
+                $table->addColumn('status', 'smallint');
+                $table->setPrimaryKey(['id']);
+                $table->addIndex(['author'], '@DPNBLOG_COMMENT_AUTHOR');
+                $table->addIndex(['created'], '@DPNBLOG_COMMENT_CREATED');
+                $table->addIndex(['status'], '@DPNBLOG_COMMENT_STATUS');
+                $table->addIndex(['post_id'], '@DPNBLOG_COMMENT_POST_ID');
+                $table->addIndex(['post_id', 'status'], '@DPNBLOG_COMMENT_POST_ID_STATUS');
+            });
+        }
+    },
     'disable' => function ($app) {},
     'updates' => [
         '2.0.1' => function ($app) {
@@ -84,14 +136,6 @@ return [
 					$util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
 					$app['db']->executeQuery('UPDATE @dpnblog_post SET status = 0');
 				}
-                if ($table->hasColumn('comment_status')) {
-                    $table->dropColumn('comment_status');
-                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
-                }
-                if ($table->hasColumn('comment_count')) {
-                    $table->dropColumn('comment_count');
-                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
-                }
 			}
 
             if ($util->tableExists('@dpnblog_category')) {
@@ -107,7 +151,7 @@ return [
             }
         },
         '2.0.2' => function ($app) {
-            
+
             $categories = Category::findAll();
             foreach ($categories as $category) {
                 if ( !isset($category->data['meta']['og:title']) || !isset($category->data['meta']['og:description']) ) {
