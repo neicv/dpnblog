@@ -53,6 +53,7 @@ class PostController
                 $post = Post::create([
                     'user_id' => App::user()->id,
                     'status' => Post::STATUS_PUBLISHED,
+                    'comment_status' => $module->config('posts.comment_enabled'),
                     'post_style' => 0,
                     'tags' => [],
                     'date' => new \DateTime(),

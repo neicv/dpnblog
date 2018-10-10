@@ -140,7 +140,6 @@ public function copyAction($ids = [])
             $post->status = Post::STATUS_DRAFT;
             $post->title = $post->title.' - '.__('Copy');
             $post->slug  = $post->slug.'-'.__('copy');
-            $post->comment_count = 0;
             $post->date = new \DateTime();
             $post->save();
         }

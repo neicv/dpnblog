@@ -42,8 +42,6 @@ class Post implements \JsonSerializable
     public $status;
     /** @Column(type="boolean") */
     public $comment_status;
-    /** @Column(type="integer") */
-    public $comment_count = 0;
     /** @Column(type="datetime") */
     public $modified;
     /** @Column(type="integer") */

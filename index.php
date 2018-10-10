@@ -27,14 +27,7 @@ return [
         'label' => _('Categories'),
         'url'   => '@dpnblog/categories',
         'active'=> '@dpnblog/categories*'
-      ],
-      'dpnblog: comments' => [
-        'label' => 'Comments',
-        'parent' => 'dpnblog',
-        'url' => '@dpnblog/comment',
-        'active' => '@dpnblog/comment*',
-        'access' => 'dpnblog: manage comments'
-      ],
+      ],     
       'dpnblog: settings' => [
         'parent'=> 'dpnblog',
         'label' => _('Settings'),
@@ -50,7 +43,6 @@ return [
           'Pastheme\\Blog\\Controller\\Admin\\PostController',
           'Pastheme\\Blog\\Controller\\Admin\\CategoryController',
           'Pastheme\\Blog\\Controller\\Admin\\SettingsController',
-          'Pastheme\\Blog\\Controller\\Admin\\CommentsController'
         ]
       ],
       '/apidpnblog' => [
@@ -59,7 +51,6 @@ return [
           'Pastheme\\Blog\\Controller\\Api\\ApiCategoryController',
           'Pastheme\\Blog\\Controller\\Api\\ApiPostController',
           'Pastheme\\Blog\\Controller\\Api\\ApiTagsController',
-          'Pastheme\\Blog\\Controller\\Api\\ApiCommentsController'
         ]
       ]
     ],
@@ -95,26 +86,6 @@ return [
       'dpnblog: manage all categories' => [
         'title' => 'Manage all categories',
         'description' => 'Create, edit, delete and publish categories by all users'
-      ],
-      'dpnblog: manage comments' => [
-        'title' => 'Manage comments',
-        'description' => 'Approve, edit and delete comments'
-      ],
-      'dpnblog: post comments' => [
-        'title' => 'Post comments',
-        'description' => 'Allowed to write comments on the site'
-      ],
-      'dpnblog: skip comment approval' => [
-        'title' => 'Skip comment approval',
-        'description' => 'User can write comments without admin approval'
-      ],
-      'dpnblog: comment approval required once' => [
-        'title' => 'Comment approval required only once',
-        'description' => 'First comment needs to be approved, later comments are approved automatically'
-      ],
-      'dpnblog: skip comment min idle' => [
-        'title' => 'Skip comment minimum idle time',
-        'description' => 'User can write multiple comments without having to wait in between'
       ]
     ],
 
@@ -124,22 +95,7 @@ return [
             'posts_per_page' => 10,
             'markdown_enabled' => true,
             'author_box_show' => true,
-        ],
-
-        'comments' => [
-            'autoclose' => false,
-            'autoclose_days' => 14,
-            'blacklist' => '',
-            'comments_per_page' => 20,
-            'gravatar' => true,
-            'max_depth' => 5,
-            'maxlinks' => 2,
-            'minidle' => 120,
-            'nested' => true,
-            'notifications' => 'always',
-            'order' => 'ASC',
-            'replymail' => true,
-            'require_email' => true
+            'comment_enabled' => true
         ],
 
         'permalink' => [
