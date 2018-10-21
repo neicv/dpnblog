@@ -1,38 +1,36 @@
-<?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , ['uikit-slideshow']) ?>
-<?= $view->script('dpnblog-posts' , 'dpnblog:app/bundle/dpnblog-posts.js' , ['vue' , 'uikit-slideshow']) ?>
+<?= $view->style('dpnblog-admin-css', 'dpnblog:assets/css/dpnblog-admin.css', ['uikit-slideshow']) ?>
+<?= $view->script('dpnblog-posts', 'dpnblog:app/bundle/dpnblog-posts.js', ['vue', 'uikit-slideshow']) ?>
 <section>
     <?php
-        switch($post->post_style){
-            case 1:
-                echo $view->render('dpnblog/post_style/video.php');
-                break;
-            case 2:
-                echo $view->render('dpnblog/post_style/article.php');
-                break;
-            case 3:
-                echo $view->render('dpnblog/post_style/gallery.php');
-                break;
-            case 4:
-                echo $view->render('dpnblog/post_style/document.php');
-                break;
-            default:
-                echo $view->render('dpnblog/post_style/default.php');
-        }
+    switch ($post->post_style) {
+        case 1:
+            echo $view->render('dpnblog/post_style/video.php');
+            break;
+        case 2:
+            echo $view->render('dpnblog/post_style/article.php');
+            break;
+        case 3:
+            echo $view->render('dpnblog/post_style/gallery.php');
+            break;
+        case 4:
+            echo $view->render('dpnblog/post_style/document.php');
+            break;
+        default:
+            echo $view->render('dpnblog/post_style/default.php');
+    }
     ?>
     <article id="posts" class="uk-margin">
 
         <div class="uk-comment-meta">
           <?= __('Posted in') ?>
-          <a class="uk-text-bold" href="<?= $view->url('@dpnblog/category/id' , ['id' => $post->category_id]) ?>"><?= $post->category->title ?></a>
-          <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format(\DateTime::ATOM).'" v-cloak>{{ "'.$post->date->format(\DateTime::ATOM).'" | date "longDate" }}</time>' ]) ?>
+          <a class="uk-text-bold" href="<?= $view->url('@dpnblog/category/id', ['id' => $post->category_id]) ?>"><?= $post->category->title ?></a>
+          <?= __('%date%', ['%date%' => '<time datetime="' . $post->date->format(\DateTime::ATOM) . '" v-cloak>{{ "' . $post->date->format(\DateTime::ATOM) . '" | date "longDate" }}</time>']) ?>
         </div>
-
-        <div class="uk-margin-small"><?= $post->content ?></div>
 
         <div class="uk-margin">
             <ul class="uk-subnav uk-text-small">
-                <?php foreach ($post->tagsSerialize() as $tag): ?>
-                    <li><a href="<?= $view->url('@dpnblog/tags/id' , ['id' => $tag->id ]) ?>"><?= $tag->tags ?></a></li>
+                <?php foreach ($post->tagsSerialize() as $tag) : ?>
+                    <li><a href="<?= $view->url('@dpnblog/tags/id', ['id' => $tag->id]) ?>"><?= $tag->tags ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -46,6 +44,8 @@
                 </div>
             </div>
         </div>
-        <?= $view->render('dpnblog/components/social-share.php'); ?>
+        
+        <div class="uk-margin-small"><?= $post->content ?></div>
+
     </article>
 </section>
