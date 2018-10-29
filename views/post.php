@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="uk-margin-small"><?= $post->content ?></div>
 
     </article>
