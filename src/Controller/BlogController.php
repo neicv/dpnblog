@@ -107,10 +107,10 @@ class BlogController
                 'article:author' => $post->user->name,
                 'og:title' => $post->get('meta.og:title') ?: $post->title,
                 'og:description' => $description,
-                'og:image' =>  $ogimage,
+                'og:image' =>  App::url()->base(0).$ogimage,
                 'twitter:title' => $post->get('meta.og:title') ?: $post->title,
                 'twitter:description' => $description,
-                'twitter:image' =>  $ogimage
+                'twitter:image' =>  App::url()->base(0).$ogimage
             ],
             '$data' => [
                 'id' => $post->id,

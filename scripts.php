@@ -136,6 +136,17 @@ return [
                 }
             }
 
+        },
+
+        '2.0.5' => function ($app) {
+            $util = $app['db']->getUtility();
+            if ($util->tableExists('@dpnblog_post')) {
+                $table = $util->listTableDetails('@dpnblog_post');
+                if ($table->hasColumn('comment_status')) {
+                    $table->addColumn('comment_status', 'boolean', ['default' => false]);
+                    $util->alterTable((new Comparator())->diffTable($util->listTableDetails('@dpnblog_post'), $table));
+                }
+            }
         }
     ]
 ];
