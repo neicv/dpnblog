@@ -34,16 +34,17 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-
-        <div class="uk-comment uk-margin-bottom">
-            <div class="uk-comment-header">
-                <img class="uk-comment-avatar" src="<?= $post->getGravatar() ?>">
-                <h4 class="uk-comment-title"><?= $user->name ?></h4>
-                <div class="uk-comment-meta">
-                    <?= $user->email ?>
+        <?php if ($authorBox === true): ?>
+            <div class="uk-comment uk-margin-bottom">
+                <div class="uk-comment-header">
+                    <img class="uk-comment-avatar" src="<?= $post->getGravatar() ?>">
+                    <h4 class="uk-comment-title"><?= $user->name ?></h4>
+                    <div class="uk-comment-meta">
+                        <?= $user->email ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
 
         <div class="uk-margin-small"><?= $post->content ?></div>
 

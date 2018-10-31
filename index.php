@@ -4,6 +4,7 @@ use Pastheme\Blog\Event\PostListener;
 use Pastheme\Blog\Event\RouteListener;
 use Pastheme\Blog\Event\CategoryRouteListener;
 use Pastheme\Blog\Event\TagsRouteListener;
+use Pastheme\Blog\Event\SocialShare;
 
 return [
     'name' => 'dpnblog',
@@ -27,7 +28,7 @@ return [
         'label' => _('Categories'),
         'url'   => '@dpnblog/categories',
         'active'=> '@dpnblog/categories*'
-      ],     
+      ],
       'dpnblog: settings' => [
         'parent'=> 'dpnblog',
         'label' => _('Settings'),
@@ -111,7 +112,8 @@ return [
                 new RouteListener,
                 new CategoryRouteListener,
                 new TagsRouteListener,
-                new PostListener()
+                new PostListener(),
+                new SocialShare()
             );
         },
 
