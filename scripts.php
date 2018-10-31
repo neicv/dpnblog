@@ -138,7 +138,7 @@ return [
 
         },
 
-        '2.0.5' => function ($app) {
+        '2.0.7' => function ($app) {
             $util = $app['db']->getUtility();
             if ($util->tableExists('@dpnblog_post')) {
                 $table = $util->listTableDetails('@dpnblog_post');
