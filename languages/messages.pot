@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pagekit 1.0.14 (pastheme/dpnblog, messages)\n"
-"POT-Creation-Date: 2018-09-22 22:49+0000\n"
+"POT-Creation-Date: 2018-11-01 20:31+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,6 +145,12 @@ msgid "Enable Markdown"
 msgstr ""
 
 msgid "Enable Comments"
+msgstr ""
+
+msgid "Thank you! Your comment needs approval before showing up."
+msgstr ""
+
+msgid "Unable to comment. Please try again later."
 msgstr ""
 
 msgid "Filter by"

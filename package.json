@@ -1,6 +1,6 @@
 {
   "name": "dpnblog",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "An Advanced Blog Extension with some extra features.",
   "main": "webpack.config.js",
   "scripts": {

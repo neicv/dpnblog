@@ -34,7 +34,7 @@
         <div class="pk-table-width-100 uk-text-center">{{ 'Status' | trans}}</div>
         <div class="pk-table-width-100 uk-text-center">{{ 'Meta' | trans}}</div>
         <div class="pk-table-width-100 uk-text-center">{{ 'Description' | trans}}</div>
-        <div class="pk-table-width-100 uk-text-center">{{ 'URL' | trans}}</div>
+        <div class="pk-table-width-200 uk-text-center">{{ 'URL' | trans}}</div>
       </div>
       <ul class="uk-nestable uk-margin-remove uk-nestable-empty">
         <li v-for="category in categories" class="uk-nestable-item check-item">
@@ -49,7 +49,7 @@
               }" @click="status(category.id , category.status)"></a></div>
             <div class="pk-table-width-100 uk-text-center" v-html="category.data.meta['og:title'] | lengthMeta"></div>
             <div class="pk-table-width-100 uk-text-center" v-html="category.data.meta['og:description'] | lengthDesc"></div>
-            <div class="pk-table-width-100 uk-text-center">
+            <div class="pk-table-width-200 uk-text-center">
                 <a target="_blank" v-if="category.accessible && category.url" :href="this.$url.route(category.url.substr(1))">{{ decodeURI(category.url) }}</a>
                 <span v-if="!category.accessible && category.url">{{ decodeURI(category.url) }}</span>
                 <span v-if="!category.url">{{ 'Disabled' | trans }}</span>

@@ -86,15 +86,15 @@ class BlogController
         }
 
         if ( $post->isPostStyle() == 'Default Post' || $post->isPostStyle() == 'Article Post' || $post->isPostStyle() == 'Document' ) {
-            $ogimage = $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [], 0) : false;
+            $ogimage = $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [] , true) : false;
         }
 
         if ( $post->isPostStyle() == 'Video Content' ) {
-            $ogimage = !empty($post->get('video.image')) ? App::url()->getStatic($post->get('video.image')) : false;
+            $ogimage = !empty($post->get('video.image')) ? App::url()->getStatic($post->get('video.image') , [] , true) : false;
         }
 
         if ( $post->isPostStyle() == 'Image Gallery' ) {
-            $ogimage = !empty($post->data['gallery'][0]['image']) ? App::url()->getStatic($post->data['gallery'][0]['image']) : false;
+            $ogimage = !empty($post->data['gallery'][0]['image']) ? App::url()->getStatic($post->data['gallery'][0]['image'] , [] , true) : false;
         }
 
         return [
@@ -107,10 +107,10 @@ class BlogController
                 'article:author' => $post->user->name,
                 'og:title' => $post->get('meta.og:title') ?: $post->title,
                 'og:description' => $description,
-                'og:image' =>  App::url()->base(0).$ogimage,
+                'og:image' =>  $ogimage,
                 'twitter:title' => $post->get('meta.og:title') ?: $post->title,
                 'twitter:description' => $description,
-                'twitter:image' =>  App::url()->base(0).$ogimage
+                'twitter:image' =>  $ogimage
             ],
             '$data' => [
                 'id' => $post->id,
