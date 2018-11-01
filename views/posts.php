@@ -58,7 +58,7 @@
                                 <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format(\DateTime::ATOM).'" v-cloak>{{ "'.$post->date->format(\DateTime::ATOM).'" | date "longDate" }}</time>' ]) ?>
                                  - <a href="<?= $view->url('@dpnblog/category/id' , ['id' => $post->category_id]) ?>"><?= $post->category->title ?></a>
                             </div>
-                            <a href="<?= $view->url('@dpnblog/id', ['id' => $post->id]) ?>" class="dpnblog-readme"><?= __('Readme') ?></a>
+                            <a href="<?= $view->url('@dpnblog/id', ['id' => $post->id]) ?>" class="dpnblog-readme"><?= __('Readmore') ?></a>
                         </div>
                     </div>
                 </sidebar>
