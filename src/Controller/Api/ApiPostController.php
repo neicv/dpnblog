@@ -105,7 +105,7 @@ class ApiPostController
             }
             return $backanswer->success((array)$categories , 'GET All Categories');
         } catch (\Exception $e) {
-            return $backanswer->return();
+            return $backanswer->preturn();
         }
     }
 

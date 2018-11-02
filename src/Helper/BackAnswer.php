@@ -16,7 +16,7 @@ class BackAnswer
   *   }
   *   return $backanswer->success( array() , 'Success Post');
   * } catch (\Exception $e) {
-  *   return $backanswer->return();
+  *   return $backanswer->preturn();
   * }
   */
 
@@ -47,7 +47,7 @@ class BackAnswer
   /**
   * This function can return msg that comes from abort
   */
-  public function return()
+  public function preturn()
   {
     if ( !empty($this->BackError) && !empty($this->BackMsg) ) {
       return [

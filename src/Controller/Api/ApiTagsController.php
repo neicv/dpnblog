@@ -32,7 +32,7 @@ class ApiTagsController{
             }
             return $back->success( (array) $data , 'GET All Tags');
         } catch (\Exception $e) {
-            return $back->return();
+            return $back->preturn();
         }
     }
 

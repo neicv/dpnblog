@@ -39,7 +39,7 @@ class ApiCategoryController
 
       return compact('categories' , 'filter' , 'page' , 'count');
     } catch (\Exception $e) {
-      return $backanswer->return();
+      return $backanswer->preturn();
     }
   }
 
@@ -65,7 +65,7 @@ class ApiCategoryController
       }
       return $backanswer->success($query , 'Get operation succeeded');
     } catch (\Exception $e) {
-      return $backanswer->return();
+      return $backanswer->preturn();
     }
   }
 
@@ -95,7 +95,7 @@ class ApiCategoryController
       $query->save($data);
       return $backanswer->success($query , 'Category add');
     } catch (\Exception $e) {
-      return $backanswer->return();
+      return $backanswer->preturn();
     }
   }
 
@@ -120,7 +120,7 @@ class ApiCategoryController
       $query->save();
       return $backanswer->success([] , $ids.' Update');
     } catch (\Exception $e) {
-      return $backanswer->return();
+      return $backanswer->preturn();
     }
   }
 

@@ -16,8 +16,8 @@ class SocialShare implements EventSubscriberInterface{
         $post = $event['post'];
         $data = [
             'id' => $post->id,
-            'title' => $post->data['meta']['og:title'] ? $post->data['meta']['og:title']:$post->title,
-            'desc' => $post->data['meta']['og:description'] ? $post->data['meta']['og:description']:$post->excerpt,
+            'title' => isset($post->data['meta']['og:title']) ? $post->data['meta']['og:title']:$post->title,
+            'desc' => isset($post->data['meta']['og:description']) ? $post->data['meta']['og:description']:$post->excerpt,
         ];
         $content = $event->getContent();
         $reply = App::view('dpnblog/components/social.php', compact(['data']));
