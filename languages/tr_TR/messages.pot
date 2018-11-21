@@ -1,0 +1,249 @@
+# Translators:
+# Yunus SENEM <senemyunus@gmail.com>, 2018
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pagekit 1.0.15 (pastheme/dpnblog, messages)\n"
+"POT-Creation-Date: 2018-11-20 07:12+0000\n"
+"PO-Revision-Date: 2018-09-22 22:52+0000\n"
+"Last-Translator: Yunus SENEM <senemyunus@gmail.com>, 2018\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/pastheme/teams/91806/tr_TR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Filter by"
+msgstr "Filtreler"
+
+msgid "Thank you! Your comment needs approval before showing up."
+msgstr "Teşekkür ederim! Yorumunuzun gösterilmeden önce onaylanması gerekiyor."
+
+msgid "Unable to comment. Please try again later."
+msgstr "Yorum yapılamıyor. Lütfen daha sonra tekrar deneyiniz."
+
+msgid "Posts View"
+msgstr "Gönderileri Görüntüle"
+
+msgid "Add Video"
+msgstr "Video Ekle"
+
+msgid "Add Gallery"
+msgstr "Galeri Ekle"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Author"
+msgstr "Yazar"
+
+msgid "Publish on"
+msgstr "Yayınlandı"
+
+msgid "Restrict Access"
+msgstr "Erişimi Kısıtla"
+
+msgid "Options"
+msgstr "Seçenekler"
+
+msgid "Enable Markdown"
+msgstr "Markdown'u Etkinleştir"
+
+msgid "Enable Comments"
+msgstr "Yorumları Etkinleştir"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Cancel"
+msgstr "Vazgeç"
+
+msgid "Select"
+msgstr "Seç"
+
+msgid "Complete"
+msgstr "Tamamla"
+
+msgid "New Field"
+msgstr "Yeni Alan"
+
+msgid "Remove Field"
+msgstr "Alanı Sil"
+
+msgid "Description"
+msgstr "Açıklama"
+
+msgid "Title cannot be blank."
+msgstr "Başlık Boş Bırakılamaz"
+
+msgid "Order"
+msgstr "Sıralama"
+
+msgid "Published"
+msgstr "Yayınlanmış"
+
+msgid "Unpublished"
+msgstr "Yayınlanmamış"
+
+msgid "Draft"
+msgstr "Taslak"
+
+msgid "Pending Review"
+msgstr "Tekrar Görüntüleme Bekliyor"
+
+msgid "Default Post"
+msgstr "Standart Gönderi"
+
+msgid "Video Content"
+msgstr "Video İçerik"
+
+msgid "Article Post"
+msgstr "Makale"
+
+msgid "Image Gallery"
+msgstr "Resim Galerisi"
+
+msgid "Document"
+msgstr "Belge"
+
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Post not found!"
+msgstr "Gönderi Bulunamadı"
+
+msgid "Insufficient User Rights."
+msgstr "Yetersiz Kullanıcı Hakları."
+
+msgid "Categories List"
+msgstr "Kategorilerin Listesi"
+
+msgid "Posts List"
+msgstr "Gönderilerin Listesi"
+
+msgid "Invalid post id."
+msgstr "Gönderi Id Bulunamadı"
+
+msgid "Edit Post"
+msgstr "Gönderiyi Düzenle"
+
+msgid "Add Post"
+msgstr "Gönderi Ekle"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Post Saved"
+msgstr "Gönderi Kaydedildi"
+
+msgid "Access denied."
+msgstr "Erişim reddedildi."
+
+msgid "Copy"
+msgstr "Kopya"
+
+msgid "copy"
+msgstr "kopya"
+
+msgid "Not Message"
+msgstr "Mesaj Yok"
+
+msgid "Success"
+msgstr "Başarılı"
+
+msgid "Posted in"
+msgstr "Yayınlanan"
+
+msgid "%date%"
+msgstr "%date%"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Disabled"
+msgstr "Engelli"
+
+msgid "No posts found."
+msgstr "Gönderiler Bulunamadı"
+
+msgid "{1} %count% Post selected|]1,Inf[ %count% Posts selected"
+msgstr "{1} %count% Gönderi Seçildi|]1,Inf[ %count% Gönderiler Seçildi"
+
+msgid "{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Categories"
+msgstr "{0} %count% Kategoriler|{1} %count% Kategori|]1,Inf[ %count% Kategoriler"
+
+msgid "{1} %count% Category selected|]1,Inf[ %count% Categories selected"
+msgstr "{1} %count% Kategori Seçildi|]1,Inf[ %count% Kategoriler Seçildi"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Permalink"
+msgstr "Permalink"
+
+msgid "Numeric"
+msgstr "Sayısal"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Day and name"
+msgstr "Gün ve İsim"
+
+msgid "Month and name"
+msgstr "Ay ve İsim"
+
+msgid "Custom"
+msgstr "Özelleştirilmiş"
+
+msgid "Posts per page"
+msgstr "Her Sayfada Gönderi Sayısı"
+
+msgid "Default post settings"
+msgstr "Standart gönderi ayarları"
+
+msgid "Show of Author Box"
+msgstr "Yazar Kutusunu Göster"
+
+msgid "Enable Author Box"
+msgstr "Yazar Kutusunu Etkinleştir"
+
+msgid "Project"
+msgstr "Proje"
+
+msgid "Version"
+msgstr "Versiyon"
+
+msgid "License"
+msgstr "Lisans"
+
+msgid "Readme"
+msgstr "Beni Oku"
+
+msgid "Changelog"
+msgstr "Değişiklikler"
+
+msgid "Readmore"
+msgstr "Devamını Oku"
+
+msgid "Category Not Found"
+msgstr "Kategori Bulunamadı"
+
+msgid "Tags Not Found"
+msgstr "Etiketler Bulunamadı"
