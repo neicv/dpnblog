@@ -11,7 +11,7 @@
             "name": "Pastheme",
             "email": "me@pastheme.com",
             "homepage": "http://pastheme.com"
-        },
+        }
     ],
     "extra": {
         "icon": "icon.svg",
