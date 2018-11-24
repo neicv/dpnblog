@@ -11,6 +11,7 @@ class CategoryController
   /**
   * @Route("/categories")
   * @Request({"page":"int" , "filter":"array"})
+  * @Access("dpnblog: manage all categories")
   */
   public function categoriesAction( $page = 0 , $filter = array() )
   {
@@ -38,7 +39,7 @@ class CategoryController
         return App::redirect('@dpnblog/posts');
     }
   }
-  
+
 }
 
 

@@ -1,0 +1,256 @@
+# Translators:
+# Yunus SENEM <senemyunus@gmail.com>, 2018
+# Fosphatic Duke <f.duke@web.de>, 2018
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Pagekit 1.0.15 (pastheme/dpnblog, messages)\n"
+"POT-Creation-Date: 2018-11-24 12:49+0000\n"
+"PO-Revision-Date: 2018-09-22 22:52+0000\n"
+"Last-Translator: Fosphatic Duke <f.duke@web.de>, 2018\n"
+"Language-Team: German (Germany) (https://www.transifex.com/pastheme/teams/91806/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Posted in"
+msgstr "Veröffentlicht in"
+
+msgid "%date%"
+msgstr "%date%"
+
+msgid "Readmore"
+msgstr "Weiterlesen"
+
+msgid "Readme"
+msgstr "Liesmich"
+
+msgid "Category Not Found"
+msgstr "Kategorie nicht gefunden"
+
+msgid "Tags Not Found"
+msgstr "Tags nicht gefunden"
+
+msgid "Add Post"
+msgstr "Beitrag hinzufügen"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Post Style"
+msgstr ""
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+msgid "No posts found."
+msgstr "Keine Beiträge gefunden."
+
+msgid "{1} %count% Post selected|]1,Inf[ %count% Posts selected"
+msgstr "{1} %count% Beitrag ausgewählt|]1,Inf[ %count% Beiträge ausgewählt"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Categories"
+msgstr ""
+"{0} %count% Kategorien|{1} %count% Kategorie|]1,Inf[ %count% Kategorien"
+
+msgid "{1} %count% Category selected|]1,Inf[ %count% Categories selected"
+msgstr ""
+"{1} %count% Kategorie ausgewählt|]1,Inf[ %count% Kategorien ausgewählt"
+
+msgid "Edit Post"
+msgstr "Beitrag bearbeiten"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Permalink"
+msgstr "Permanenter Link"
+
+msgid "Numeric"
+msgstr "Numerisch"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Day and name"
+msgstr "Tag und Name"
+
+msgid "Month and name"
+msgstr "Monat und Name"
+
+msgid "Custom"
+msgstr "Angepasst"
+
+msgid "Posts per page"
+msgstr "Beiträge pro Seite"
+
+msgid "Default post settings"
+msgstr "Standard Einstellungen"
+
+msgid "Enable Markdown"
+msgstr "Aktiviere Markdown"
+
+msgid "Show of Author Box"
+msgstr "Zeige Autor Avatar Box"
+
+msgid "Enable Author Box"
+msgstr "Aktiviere Autor Avatar Box"
+
+msgid "Project"
+msgstr "Projekt"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "License"
+msgstr "Lizenz"
+
+msgid "Changelog"
+msgstr "Changelog"
+
+msgid "Thank you! Your comment needs approval before showing up."
+msgstr ""
+"Vielen Dank! Ihr Kommentar muss vor der Veröffentlichung geprüft werden."
+
+msgid "Unable to comment. Please try again later."
+msgstr "Kommentieren nicht möglich. Versuchen Sie es später nochmal."
+
+msgid "Filter by"
+msgstr "Sortiere nach"
+
+msgid "Posts View"
+msgstr "Beiträge Ansicht"
+
+msgid "Add Video"
+msgstr "Video hinzufügen"
+
+msgid "Add Gallery"
+msgstr "Galerie hinzufügen"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Title cannot be blank."
+msgstr "Titel darf nicht leer sein."
+
+msgid "Order"
+msgstr "Reihenfolge"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Select"
+msgstr "Auswahl"
+
+msgid "Complete"
+msgstr "Fertig stellen"
+
+msgid "New Field"
+msgstr "Neues Feld"
+
+msgid "Remove Field"
+msgstr "Feld entfernen"
+
+msgid "Publish on"
+msgstr "Veröffentlicht am"
+
+msgid "Restrict Access"
+msgstr "Eingeschränkter Zugriff"
+
+msgid "Options"
+msgstr "Optionen"
+
+msgid "Enable Comments"
+msgstr "Aktiviere Kommentare"
+
+msgid "Posts List"
+msgstr "Beiträge Liste"
+
+msgid "Invalid post id."
+msgstr "Falsche Beitrag ID"
+
+msgid "Insufficient User Rights."
+msgstr "Unzureichende Berechtigungen"
+
+msgid "Categories List"
+msgstr "Kategorien Liste"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Post not found!"
+msgstr "Beitrag nicht gefunden!"
+
+msgid "Post Saved"
+msgstr "Beitrag gespeichert"
+
+msgid "Access denied."
+msgstr "Zugriff verweigert."
+
+msgid "Copy"
+msgstr "Kopie"
+
+msgid "copy"
+msgstr "kopieren"
+
+msgid "Published"
+msgstr "Veröffentlicht"
+
+msgid "Unpublished"
+msgstr "Unveröffentlicht"
+
+msgid "Draft"
+msgstr "Entwurf"
+
+msgid "Pending Review"
+msgstr "Revision ausstehend"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Default Post"
+msgstr "Standard Beitrag"
+
+msgid "Video Content"
+msgstr "Video Inhalt"
+
+msgid "Article Post"
+msgstr "Beitrag"
+
+msgid "Image Gallery"
+msgstr "Bilder Galerie"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "Not Message"
+msgstr "Keine Nachricht"
+
+msgid "Success"
+msgstr "Erfolg"

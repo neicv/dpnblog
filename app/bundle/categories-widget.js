@@ -43,7 +43,7 @@
 /******/ ({
 
 /***/ 0:
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
@@ -74,10 +74,10 @@
 	  }
 	})()}
 
-/***/ },
+/***/ }),
 
 /***/ 19:
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -97,13 +97,13 @@
 	};
 	window.Widgets.components['dpnblog-categories:settings'] = module.exports;
 
-/***/ },
+/***/ }),
 
 /***/ 20:
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "\n\n<div class=\"uk-grid pk-grid-large pk-width-sidebar-large\" data-uk-grid-margin>\n\n    <div class=\"pk-width-content uk-form-horizontal\">\n\n        <div class=\"uk-form-row\">\n            <label for=\"form-title\" class=\"uk-form-label\">{{ 'Title' | trans }}</label>\n            <div class=\"uk-form-controls\">\n                <input id=\"form-title\" class=\"uk-form-width-large uk-width-1-1\" type=\"text\" name=\"title\" v-model=\"widget.title\" v-validate:required>\n                <p class=\"uk-form-help-block uk-text-danger\" v-show=\"form.title.invalid\">{{ 'Title cannot be blank.' | trans }}</p>\n            </div>\n        </div>\n        <div class=\"uk-form-row\">\n            <label class=\"uk-form-label\">{{ 'Order' | trans }}</label>\n            <div class=\"uk-form-controls\">\n                <select class=\"uk-width-1-1\" v-model=\"widget.data.order\">\n                    <option value=\"asc\">ASC</option>\n                    <option value=\"desc\">DESC</option>\n                </select>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"pk-width-sidebar\">\n        <partial name=\"settings\"></partial>\n    </div>\n\n</div>\n\n";
 
-/***/ }
+/***/ })
 
 /******/ });

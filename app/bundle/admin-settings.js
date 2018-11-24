@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 	    el: '#settings',
@@ -66,5 +66,5 @@
 	Vue.ready(module.exports)
 
 
-/***/ }
+/***/ })
 /******/ ]);

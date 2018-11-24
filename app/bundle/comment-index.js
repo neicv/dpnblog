@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 	    name: 'comment',
@@ -201,5 +201,5 @@
 	Vue.ready(module.exports);
 
 
-/***/ }
+/***/ })
 /******/ ]);

@@ -16,18 +16,21 @@ return [
         'icon'  => 'dpnblog:icon.svg',
         'url'   => '@dpnblog/posts',
         'priority' => 110,
+        'access' => 'dpnblog: editor'
       ],
       'dpnblog: posts' => [
         'parent'=> 'dpnblog',
         'label' => _('Posts'),
         'url'   => '@dpnblog/posts',
-        'active'=> '@dpnblog/posts*'
+        'active'=> '@dpnblog/posts*',
+        'access' => 'dpnblog: manage all posts'
       ],
       'dpnblog: categories' => [
         'parent'=> 'dpnblog',
         'label' => _('Categories'),
         'url'   => '@dpnblog/categories',
-        'active'=> '@dpnblog/categories*'
+        'active'=> '@dpnblog/categories*',
+        'access' => 'dpnblog: manage all categories'
       ],
       'dpnblog: settings' => [
         'parent'=> 'dpnblog',
@@ -76,18 +79,17 @@ return [
     ],
 
     'permissions' => [
-      'dpnblog: manage own posts' => [
-        'title' => 'Manage own posts',
-        'description' => 'Create, edit, delete and publish posts of their own'
-      ],
-      'dpnblog: manage all posts' => [
-        'title' => 'Manage all posts',
-        'description' => 'Create, edit, delete and publish posts by all users'
-      ],
-      'dpnblog: manage all categories' => [
-        'title' => 'Manage all categories',
-        'description' => 'Create, edit, delete and publish categories by all users'
-      ]
+        'dpnblog: manage all posts' => [
+            'title' => 'Manage all posts',
+            'description' => 'Create, edit, delete and publish posts by all users'
+        ],
+        'dpnblog: manage all categories' => [
+            'title' => 'Manage all categories',
+            'description' => 'Create, edit, delete and publish categories by all users'
+        ],
+        'dpnblog: editor' => [
+            'title' => 'Dpnblog General'
+        ]
     ],
 
     'config' => [

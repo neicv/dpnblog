@@ -8,6 +8,16 @@ Any changes to this project will be written to this document. With a detailed de
     - Nunc sem ligula, venenatis non accumsan quis
     ----
 
+*November 24, 2018 - 17:34PM*
+
+### *Added*
+    - tr_TR , de_De language,
+
+### *Fixed*
+    - permission
+
+----
+
 *September 4, 2018 - 17:35PM*
 ### **Added**
 - Settings Page Added at today

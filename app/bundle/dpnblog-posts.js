@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 	    el: '#posts',
@@ -51,5 +51,5 @@
 	Vue.ready(module.exports)
 
 
-/***/ }
+/***/ })
 /******/ ]);

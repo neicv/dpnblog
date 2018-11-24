@@ -24,7 +24,7 @@
          </div>
       </div>
       <div data-uk-margin>
-         <a class="uk-button uk-button-primary" :href="$url.route('admin/dpnblog/posts/edit')">{{ 'Add Post' | trans }}</a>
+         <a class="uk-button uk-button-primary" :href="$url.route('admin/dpnblog/posts/edit')">{{'Add Post'| trans }}</a>
       </div>
    </div>
 
@@ -38,23 +38,21 @@
                         <input-filter :title="$trans('Status')" :value.sync="config.filter.status" :options="statusOptions"></input-filter>
                     </th>
                     <th class="pk-table-width-100">
-                        <span v-if="!canEditAll">{{ 'Author' | trans }}</span>
+                        <span v-if="!canEditAll">{{'Author'| trans }}</span>
                         <input-filter :title="$trans('Author')" :value.sync="config.filter.author" :options="authors" v-else></input-filter>
                     </th>
                     <th class="pk-table-width-150">
                         <div class="uk-form-select pk-filter" data-uk-form-select="{target:'a'}">
-                            <span>{{ 'Category' | trans }} <i class="uk-icon-filter"></i></span>
+                            <span> {{'Category'| trans }} <i class="uk-icon-filter"></i></span>
                             <select v-model="config.filter.category">
                                 <option value="">{{'All' | trans}}</option>
                                 <option v-for="cat in categories" v-bind:value="cat.id">{{cat.title}}</option>
                             </select>
                         </div>
                     </th>
-                    <th class="pk-table-width-100" v-order:date="config.filter.order">{{ 'Date' | trans }}</th>
-                    <th class="pk-table-width-100">
-                        {{'Post Style' |  trans}}
-                    </th>
-                    <th class="pk-table-width-200 pk-table-min-width-200">{{ 'URL' | trans }}</th>
+                    <th class="pk-table-width-100" v-order:date="config.filter.order">{{'Date'| trans }}</th>
+                    <th class="pk-table-width-100">{{'Post Style'| trans }}</th>
+                    <th class="pk-table-width-200 pk-table-min-width-200">{{'URL'| trans }}</th>
                 </tr>
             </thead>
             <tbody class="uk-text-small">

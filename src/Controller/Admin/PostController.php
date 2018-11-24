@@ -13,6 +13,7 @@ class PostController
 {
     /**
     * @Request({"page":"int" , "filter":"array"})
+    * @Access("dpnblog: manage all posts")
     */
     public function postsAction($page = 0 , $filter = array()){
 

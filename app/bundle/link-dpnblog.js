@@ -43,7 +43,7 @@
 /******/ ({
 
 /***/ 0:
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
@@ -74,10 +74,10 @@
 	  }
 	})()}
 
-/***/ },
+/***/ }),
 
 /***/ 21:
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -120,13 +120,13 @@
 	};
 	window.Links.components['link-blog'] = module.exports;
 
-/***/ },
+/***/ }),
 
 /***/ 22:
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "\n<div class=\"uk-margin\" data-uk-margin>\n\n    <div class=\"uk-form-row\">\n        <select class=\"uk-width-1-1\" v-model=\"link\">\n            <option value=\"post\">{{ 'Posts View' | trans }}</option>\n            <optgroup :label=\"'Categories' | trans\">\n                <option v-for=\"category in categories\" :value=\"category | link\">{{ category.title }}</option>\n            </optgroup>\n        </select>\n    </div>\n\n</div>\n";
 
-/***/ }
+/***/ })
 
 /******/ });
