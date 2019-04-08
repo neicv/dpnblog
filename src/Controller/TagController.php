@@ -55,7 +55,7 @@ class TagController{
         return [
             '$view' => [
                 'title' => __('Blog'),
-                'name' => 'dpnblog/tags.php',
+                'name' => 'dpnblog/posts.php',
                 'link:feed' => [
                     'rel' => 'alternate',
                     'href' => App::url('@dpnblog/feed'),

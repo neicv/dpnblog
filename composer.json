@@ -1,16 +1,16 @@
 {
     "name": "pastheme/dpnblog",
     "type": "pagekit-extension",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "title": "Advanced Blog",
     "repository": "https://github.com/pastheme/dpnblog",
     "description": "An Advanced Blog Extension with some extra features.",
     "license": "MIT",
     "authors": [
         {
-            "name": "Pastheme",
-            "email": "me@pastheme.com",
-            "homepage": "http://pastheme.com"
+            "name": "Wibuzz CO",
+            "email": "me@wibuzz.co",
+            "homepage": "http://wibuzz.co"
         }
     ],
     "extra": {

@@ -85,15 +85,15 @@ class BlogController
             $description = rtrim(mb_substr($description, 0, 150), " \t\n\r\0\x0B.,") . '...';
         }
 
-        if ( $post->isPostStyle() == 'Default Post' || $post->isPostStyle() == 'Article Post' || $post->isPostStyle() == 'Document' ) {
+        if ( $post->isPostStyle() == __('Default Post') || $post->isPostStyle() == 'Article Post' || $post->isPostStyle() == 'Document' ) {
             $ogimage = $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [] , true) : false;
         }
 
-        if ( $post->isPostStyle() == 'Video Content' ) {
+        if ( $post->isPostStyle() == __('Video Content') ) {
             $ogimage = !empty($post->get('video.image')) ? App::url()->getStatic($post->get('video.image') , [] , true) : false;
         }
 
-        if ( $post->isPostStyle() == 'Image Gallery' ) {
+        if ( $post->isPostStyle() == __('Image Gallery') ) {
             $ogimage = !empty($post->data['gallery'][0]['image']) ? App::url()->getStatic($post->data['gallery'][0]['image'] , [] , true) : false;
         }
 
@@ -107,10 +107,10 @@ class BlogController
                 'article:author' => $post->user->name,
                 'og:title' => $post->get('meta.og:title') ?: $post->title,
                 'og:description' => $description,
-                'og:image' =>  $ogimage,
+                'og:image' =>  isset($ogimage) ? $ogimage:null,
                 'twitter:title' => $post->get('meta.og:title') ?: $post->title,
                 'twitter:description' => $description,
-                'twitter:image' =>  $ogimage
+                'twitter:image' =>  isset($ogimage) ? $ogimage:null
             ],
             '$data' => [
                 'id' => $post->id,

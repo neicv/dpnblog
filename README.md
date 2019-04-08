@@ -1,11 +1,3 @@
-
-
-![dpnblogBanner](https://pastheme.com/storage/modules/dpnblog.svg)
-
-|||
-|:----:|:----:|
-|![TurkishDocuments](https://res.cloudinary.com/devpenguen/image/upload/v1535786102/Markdown/Turkish.png)|![EnglishDocuments](https://res.cloudinary.com/devpenguen/image/upload/v1535786102/Markdown/English.png)|
-
  - Her zaman güncel olan bir bloga sahip olmak istiyorsanız. Sizin için gelişmiş bir blog, Aslında bu blog pagekitin kendi blog yapısının üzerine inşaa edilmiştir. Ancak Advanced Blog'un sürekli güncellenme ve yenilikleri takip etme gibi bir kavramı vardır. Böylece en büyük farkı budur.
  - If you want to have a blog that is always up to date. An Advanced blog for you. In fact, It is quoted from the pagekit. But Advanced Blog has category and tags system. So that It is best biggest difference.
 

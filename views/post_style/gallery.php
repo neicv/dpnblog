@@ -1,4 +1,4 @@
-<?php if ($post->isPostStyle() == 'Image Gallery' && !empty($post->data['gallery'][0]['image'])): ?>
+<?php if ($post->isPostStyle() == __('Image Gallery') && !empty($post->data['gallery'][0]['image'])): ?>
     <div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
         <ul class="uk-slideshow" >
             <?php foreach ($post->data['gallery'] as $gallery): ?>

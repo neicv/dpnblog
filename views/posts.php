@@ -3,19 +3,19 @@
 <section id="posts">
     <?php foreach ($posts as $post): ?>
         <div>
-            <?php if ($post->isPostStyle() == 'Default Post' && !empty($post->data['image']['src'])): ?>
+            <?php if ($post->isPostStyle() == __('Default Post') && !empty($post->data['image']['src'])): ?>  
                 <img class="dpnblog-height" src="<?= $post->data['image']['src'] ?>" alt="<?= $post->data['image']['alt'] ?>">
             <?php endif; ?>
-            <?php if ($post->isPostStyle() == 'Video Content' && !empty($post->data['video']['image'])): ?>
+            <?php if ($post->isPostStyle() == __('Video Content') && !empty($post->data['video']['image'])): ?>
                 <img class="dpnblog-height" src="<?= $post->data['video']['image'] ?>" alt="<?= $post->category->title ?>">
             <?php endif; ?>
-            <?php if ($post->isPostStyle() == 'Article Post' && !empty($post->data['image']['src'])): ?>
+            <?php if ($post->isPostStyle() == __('Article Post') && !empty($post->data['image']['src'])): ?>
                 <img class="dpnblog-height" src="<?= $post->data['image']['src'] ?>" alt="<?= $post->data['image']['alt'] ?>">
             <?php endif; ?>
-            <?php if ($post->isPostStyle() == 'Image Gallery' && !empty($post->data['gallery'][0]['image'])): ?>
+            <?php if ($post->isPostStyle() == __('Image Gallery') && !empty($post->data['gallery'][0]['image'])): ?>
                 <img class="dpnblog-height" src="<?= $post->data['gallery'][0]['image'] ?>" alt="<?= $post->category->title ?>">
             <?php endif; ?>
-            <?php if ($post->isPostStyle() == 'Document' && !empty($post->data['image']['src'])): ?>
+            <?php if ($post->isPostStyle() == __('Document') && !empty($post->data['image']['src'])): ?>
                 <img class="dpnblog-height" src="<?= $post->data['image']['src'] ?>" alt="<?= $post->data['image']['alt'] ?>">
             <?php endif; ?>
             <article class="uk-grid uk-grid-small uk-margin">
@@ -28,23 +28,23 @@
                                         <div class="dpnblog-avatar">
                                             <img src="<?= $post->getGravatar() ?>"/>
 
-                                            <?php if ( $post->isPostStyle() == 'Default Post'): ?>
+                                            <?php if ( $post->isPostStyle() == __('Default Post')): ?>
                                                 <span class="uk-icon-file"></span>
                                             <?php endif; ?>
 
-                                            <?php if ( $post->isPostStyle() == 'Video Content'): ?>
+                                            <?php if ( $post->isPostStyle() == __('Video Content')): ?>
                                                 <span class="uk-icon-youtube-play"></span>
                                             <?php endif; ?>
 
-                                            <?php if ( $post->isPostStyle() == 'Article Post'): ?>
+                                            <?php if ( $post->isPostStyle() == __('Article Post')): ?>
                                                 <span class="uk-icon-list-alt"></span>
                                             <?php endif; ?>
 
-                                            <?php if ( $post->isPostStyle() == 'Image Gallery'): ?>
+                                            <?php if ( $post->isPostStyle() == __('Image Gallery')): ?>
                                                 <span class="uk-icon-image"></span>
                                             <?php endif; ?>
 
-                                            <?php if ( $post->isPostStyle() == 'Document'): ?>
+                                            <?php if ( $post->isPostStyle() == __('Document')): ?>
                                                 <span class="uk-icon-mortar-board"></span>
                                             <?php endif; ?>
 

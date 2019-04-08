@@ -17,57 +17,51 @@ class ApiCategoryController
   * @Route("/" , methods="GET")
   * @Request({"filter":"array" , "page":"int"} , csrf=true)
   */
-  public function indexAction( $filter = array() , $page = 0)
-  {
-    $backanswer = new BackAnswer;
-    try {
-      $query = Category::query();
-      $filter = array_merge(array_fill_keys(['status' , 'search' , 'order'] , '') , $filter);
-      extract($filter , EXTR_SKIP);
+    public function indexAction( $filter = array() , $page = 0){
+        $query = Category::query();
+        $filter = array_merge(array_fill_keys(['status' , 'search' , 'order'] , '') , $filter);
+        extract($filter , EXTR_SKIP);
 
-      if ( !empty($search) ) {
+        if ( !empty($search) ) {
         $query->where(['title LIKE :search' , 'slug LIKE :search'] , ['search' => "%{$search}%"]);
-      }
+        }
 
-      if ( !empty($status) ) {
+        if ( !empty($status) ) {
         $query->where('status = ?' , [$status]);
-      }
+        }
 
-      $categories = array_values($query->get());
-      $count = $query->count();
-      $page = 0;
+        $categories = array_values($query->get());
+        $count = $query->count();
+        $page = 0;
 
-      return compact('categories' , 'filter' , 'page' , 'count');
-    } catch (\Exception $e) {
-      return $backanswer->preturn();
+        return compact('categories' , 'filter' , 'page' , 'count');
     }
-  }
 
-  /**
-  * @Route("/get/" , methods="GET")
-  * @Route("/get/{id}" , methods="GET")
-  * @Request({"ids":"integer"} , csrf=true)
-  */
-  public function getAction($ids = null)
-  {
-    $backanswer = new BackAnswer;
-    try {
-      if ( !$query = Category::where('id = ?' , [$ids])->first() ) {
-        $query = Category::create([
-          'status' => Category::STATUS_PUBLISHED,
-          'data'  => [
-            'meta' => [
-              'og:title' => '',
-              'og:description' => '',
-            ]
-          ]
-        ]);
-      }
-      return $backanswer->success($query , 'Get operation succeeded');
-    } catch (\Exception $e) {
-      return $backanswer->preturn();
+    /**
+     * @Route("/get/" , methods="GET")
+    * @Route("/get/{id}" , methods="GET")
+    * @Request({"ids":"integer"} , csrf=true)
+    */
+    public function getAction($ids = null)
+    {
+        $backanswer = new BackAnswer;
+        try {
+        if ( !$query = Category::where('id = ?' , [$ids])->first() ) {
+            $query = Category::create([
+                'status' => Category::STATUS_PUBLISHED,
+                'data'  => [
+                    'meta' => [
+                        'og:title' => '',
+                        'og:description' => '',
+                    ]
+                ]
+            ]);
+        }
+        return $backanswer->success($query , 'Get operation succeeded');
+        } catch (\Exception $e) {
+        return $backanswer->preturn();
+        }
     }
-  }
 
   /**
   * @Route("/save" , methods="POST")

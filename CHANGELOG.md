@@ -1,12 +1,12 @@
 # Changelog
 Any changes to this project will be written to this document. With a detailed description, you can easily see what changes in V2.
-#### Example
 
-    *September 1, 2018 - 17:33PM*
-    ### **Alteration** `Update` , `Fixed` , `Delete` `Added`
-    - Lorem ipsum dolor sit amet
-    - Nunc sem ligula, venenatis non accumsan quis
-    ----
+*April 08, 2019 - 17:30PM*
+
+### *Fixed*
+    - image bug of posts
+
+----
 
 *November 24, 2018 - 17:34PM*
 

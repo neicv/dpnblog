@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Pagekit 1.0.15 (pastheme/dpnblog, messages)\n"
-"POT-Creation-Date: 2018-11-24 12:49+0000\n"
+"Project-Id-Version: Pagekit 1.0.16 (pastheme/dpnblog, messages)\n"
+"POT-Creation-Date: 2019-04-08 13:35+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,31 +9,157 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Posted in"
+msgid "Title"
 msgstr ""
 
-msgid "%date%"
+msgid "Filter by"
 msgstr ""
 
-msgid "Readmore"
+msgid "Thank you! Your comment needs approval before showing up."
 msgstr ""
 
-msgid "Readme"
+msgid "Unable to comment. Please try again later."
 msgstr ""
 
-msgid "Category Not Found"
+msgid "Posts View"
 msgstr ""
 
-msgid "Tags Not Found"
+msgid "Add Video"
+msgstr ""
+
+msgid "Add Gallery"
+msgstr ""
+
+msgid "Slug"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Publish on"
+msgstr ""
+
+msgid "Restrict Access"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Enable Markdown"
+msgstr ""
+
+msgid "Enable Comments"
+msgstr ""
+
+msgid "Video"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Complete"
+msgstr ""
+
+msgid "New Field"
+msgstr ""
+
+msgid "Remove Field"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Title cannot be blank."
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Unpublished"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Pending Review"
+msgstr ""
+
+msgid "Default Post"
+msgstr ""
+
+msgid "Video Content"
+msgstr ""
+
+msgid "Article Post"
+msgstr ""
+
+msgid "Image Gallery"
+msgstr ""
+
+msgid "Document"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Post not found!"
+msgstr ""
+
+msgid "Insufficient User Rights."
+msgstr ""
+
+msgid "Categories List"
+msgstr ""
+
+msgid "Posts List"
+msgstr ""
+
+msgid "Invalid post id."
+msgstr ""
+
+msgid "Edit Post"
 msgstr ""
 
 msgid "Add Post"
 msgstr ""
 
-msgid "Title"
+msgid "Settings"
 msgstr ""
 
-msgid "Author"
+msgid "Post Saved"
+msgstr ""
+
+msgid "Access denied."
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "copy"
+msgstr ""
+
+msgid "Not Message"
+msgstr ""
+
+msgid "Success"
+msgstr ""
+
+msgid "Posted in"
+msgstr ""
+
+msgid "%date%"
 msgstr ""
 
 msgid "Category"
@@ -57,16 +183,10 @@ msgstr ""
 msgid "{1} %count% Post selected|]1,Inf[ %count% Posts selected"
 msgstr ""
 
-msgid "Status"
-msgstr ""
-
 msgid "{0} %count% Categories|{1} %count% Category|]1,Inf[ %count% Categories"
 msgstr ""
 
 msgid "{1} %count% Category selected|]1,Inf[ %count% Categories selected"
-msgstr ""
-
-msgid "Edit Post"
 msgstr ""
 
 msgid "Save"
@@ -96,9 +216,6 @@ msgstr ""
 msgid "Default post settings"
 msgstr ""
 
-msgid "Enable Markdown"
-msgstr ""
-
 msgid "Show of Author Box"
 msgstr ""
 
@@ -114,135 +231,18 @@ msgstr ""
 msgid "License"
 msgstr ""
 
+msgid "Readme"
+msgstr ""
+
 msgid "Changelog"
 msgstr ""
 
-msgid "Thank you! Your comment needs approval before showing up."
+msgid "Readmore"
 msgstr ""
 
-msgid "Unable to comment. Please try again later."
+msgid "Category Not Found"
 msgstr ""
 
-msgid "Filter by"
-msgstr ""
-
-msgid "Posts View"
-msgstr ""
-
-msgid "Add Video"
-msgstr ""
-
-msgid "Add Gallery"
-msgstr ""
-
-msgid "Slug"
-msgstr ""
-
-msgid "Title cannot be blank."
-msgstr ""
-
-msgid "Order"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "Video"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Complete"
-msgstr ""
-
-msgid "New Field"
-msgstr ""
-
-msgid "Remove Field"
-msgstr ""
-
-msgid "Publish on"
-msgstr ""
-
-msgid "Restrict Access"
-msgstr ""
-
-msgid "Options"
-msgstr ""
-
-msgid "Enable Comments"
-msgstr ""
-
-msgid "Posts List"
-msgstr ""
-
-msgid "Invalid post id."
-msgstr ""
-
-msgid "Insufficient User Rights."
-msgstr ""
-
-msgid "Categories List"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
-msgid "Blog"
-msgstr ""
-
-msgid "Post not found!"
-msgstr ""
-
-msgid "Post Saved"
-msgstr ""
-
-msgid "Access denied."
-msgstr ""
-
-msgid "Copy"
-msgstr ""
-
-msgid "copy"
-msgstr ""
-
-msgid "Published"
-msgstr ""
-
-msgid "Unpublished"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Pending Review"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-msgid "Default Post"
-msgstr ""
-
-msgid "Video Content"
-msgstr ""
-
-msgid "Article Post"
-msgstr ""
-
-msgid "Image Gallery"
-msgstr ""
-
-msgid "Document"
-msgstr ""
-
-msgid "Not Message"
-msgstr ""
-
-msgid "Success"
+msgid "Tags Not Found"
 msgstr ""
 

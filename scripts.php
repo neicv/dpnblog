@@ -3,7 +3,6 @@ use Doctrine\DBAL\Schema\Comparator;
 use Pastheme\Blog\Model\Category;
 use Pastheme\Blog\Model\Post;
 return [
-
     'install' => function ($app) {
         $util = $app['db']->getUtility();
         if ($util->tableExists('@dpnblog_post') === false) {
@@ -55,7 +54,6 @@ return [
             });
         }
     },
-
     'uninstall' => function ($app) {
         $util = $app['db']->getUtility();
 
@@ -72,10 +70,6 @@ return [
         }
 
     },
-    'enable' => function ($app) {
-
-    },
-    'disable' => function ($app) {},
     'updates' => [
         '2.0.1' => function ($app) {
             $util = $app['db']->getUtility();
