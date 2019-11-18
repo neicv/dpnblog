@@ -58,7 +58,8 @@ class BlogController
             'posts' => $posts,
             'total' => $total,
             'page' => $page,
-            'authorBox' => $this->blog->config('posts.author_box_show')
+            'authorBox' => $this->blog->config('posts.author_box_show'),
+            'socialShare' => $this->blog->config('posts.social_share_enabled')
         ];
     }
 
@@ -120,7 +121,8 @@ class BlogController
             'post' => $post,
             'user' => $post->user,
             'category' => $post->category,
-            'authorBox' => $this->blog->config('posts.author_box_show')
+            'authorBox' => $this->blog->config('posts.author_box_show'),
+            'socialShare' => $this->blog->config('posts.social_share_enabled')
         ];
 
     }

@@ -1,4 +1,4 @@
-<?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , 'slideshow') ?>
+<!-- < ?= $view->style('dpnblog-admin-css' , 'dpnblog:assets/css/dpnblog-admin.css' , 'slideshow') ?> -->
 <?= $view->script('dpnblog-posts' , 'dpnblog:app/bundle/dpnblog-posts.js' , 'vue') ?>
 <section id="posts">
     <?php foreach ($posts as $post): ?>
@@ -18,7 +18,7 @@
             <?php if ($post->isPostStyle() == __('Document') && !empty($post->data['image']['src'])): ?>
                 <img class="dpnblog-height" src="<?= $post->data['image']['src'] ?>" alt="<?= $post->data['image']['alt'] ?>">
             <?php endif; ?>
-            <article class="uk-grid uk-grid-small uk-margin">
+            <article class="uk-grid uk-grid-small uk-margin uk-margin-right">
                 <div class="uk-width-medium-1-6">
                     <div class="uk-flex uk-flex-center uk-margin-small-top">
                         <div class="uk-text-center">
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <div class="uk-text-small">
+                            <div class="uk-text-small uk-margin-small-top">
                                 <?= __('%date%', ['%date%' => '<time datetime="'.$post->date->format(\DateTime::ATOM).'" v-cloak>{{ "'.$post->date->format(\DateTime::ATOM).'" | date "longDate" }}</time>' ]) ?>
                                  <div> <a href="<?= $view->url('@dpnblog/category/id' , ['id' => $post->category_id]) ?>"><?= $post->category->title ?></a></div>
                             </div>
@@ -66,7 +66,8 @@
                     <h3 class="uk-h1 uk-margin-remove">
                         <a class="uk-link-reset" href="<?= $view->url('@dpnblog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a>
                     </h3>
-                    <div class="uk-margin-remove">
+                    <br>
+                    <div class=""><!--uk-margin-remove-->
                         <?= !empty($post->excerpt) ? $post->excerpt:$post->content ?>
                     </div>
                     <div class="uk-text-right uk-margin-left">

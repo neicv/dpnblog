@@ -97,6 +97,15 @@
             </div>
         </div>
 
+        <div class="uk-form-row">
+            <span class="uk-form-label">{{ 'Show of Social Share' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="config.posts.social_share_enabled"> {{ 'Enable Social Share' | trans }}</label>
+                </p>
+            </div>
+        </div>
+
     </div>
 
 </div>

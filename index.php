@@ -75,7 +75,8 @@ return [
 
     'widgets' => [
         'widgets/categories.php',
-        'widgets/tags.php'
+        'widgets/tags.php',
+        'widgets/posts.php'
     ],
 
     'permissions' => [
@@ -98,7 +99,8 @@ return [
             'posts_per_page' => 10,
             'markdown_enabled' => true,
             'author_box_show' => true,
-            'comment_enabled' => true
+            'comment_enabled' => true,
+            'social_share_enabled' => false
         ],
 
         'permalink' => [
